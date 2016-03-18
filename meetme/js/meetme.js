@@ -1,4 +1,8 @@
 var server = "https://meetme.id/gateway";
+var iceServers = [
+	{"urls": "stun:meetme.id"},
+	{"urls": "turn:meetme.id", "credential": "public", "username": "public"}
+];
 var meetmeRoom = 1234567890;
 var videoWidth = 240;
 var debugLevel = "all"
@@ -32,6 +36,7 @@ $(document).ready(function() {
 			janus = new Janus(
 				{
 					server: server,
+					iceServers: iceServers,
 					success: function() {
 						// Attach to video room test plugin
 						janus.attach(
@@ -259,7 +264,9 @@ function publishOwnFeed(useAudio) {
 	$('#publish').attr('disabled', true).unbind('click');
 	sfutest.createOffer(
 		{
-			media: { audioRecv: false, videoRecv: false, audioSend: useAudio, videoSend: true},	// Publishers are sendonly
+			media: { audioRecv: false, videoRecv: false, audioSend: useAudio, videoSend: true, video: "lowres" },	// Publishers are sendonly
+			trickle: true,
+			data: true,
 			success: function(jsep) {
 				Janus.debug("Got publisher SDP!");
 				Janus.debug(jsep);
@@ -352,7 +359,9 @@ function newRemoteFeed(id, display) {
 					remoteFeed.createAnswer(
 						{
 							jsep: jsep,
-							media: { audioSend: false, videoSend: false },	// We want recvonly audio/video
+							media: { audioSend: false, videoSend: false, video: "lowres" },	// We want recvonly audio/video
+							trickle: true,
+							data: true,
 							success: function(jsep) {
 								Janus.debug("Got SDP!");
 								Janus.debug(jsep);
