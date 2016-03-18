@@ -1,6 +1,7 @@
 var server = "https://meetme.id/gateway";
 var meetmeRoom = 177771;
 var videoWidth = 240;
+var debugLevel = "all"
 
 var janus = null;
 var sfutest = null;
@@ -15,7 +16,7 @@ var bitrateTimer = [];
 
 $(document).ready(function() {
 	// Initialize the library (all console debuggers enabled)
-	Janus.init({debug: "all", callback: function() {
+	Janus.init({debug: debugLevel, callback: function() {
 		// Use a button to start the demo
 //		$('#start').click(function() {
 			if(started)
