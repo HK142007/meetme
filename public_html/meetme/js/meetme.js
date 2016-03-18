@@ -301,7 +301,7 @@ function publishOwnFeed(useAudio) {
 		success: function(jsep) {
 			Janus.debug("Got publisher SDP!");
 			Janus.debug(jsep);
-			var publish = { "request": "configure", "token": "", "audio": useAudio, "video": true };
+			var publish = { "request": "configure", "token": "", "audio": useAudio, "video": true, "bitrate": maxBitRate };
 			mcu.send({"message": publish, "jsep": jsep});
 		},
 		error: function(error) {
