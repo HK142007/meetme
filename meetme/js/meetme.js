@@ -3,15 +3,16 @@ var iceServers = [
 	{"urls": "stun:meetme.id"},
 	{"urls": "turn:meetme.id", "credential": "public", "username": "public"}
 ];
-var meetmeRoom = 1234567890;
 var videoWidth = 240;
 var maxVideoBox = 6;
+var maxBitRate = 96000;
 var debugLevel = "all"
 
 var janus = null;
 var mcu = null;
 
 var myDisplayName = null;
+var myRoomNumber = null;
 var myID = null;
 
 var feeds = [];
@@ -35,19 +36,13 @@ $(document).ready(function() {
 				janus.attach({
 					plugin: "janus.plugin.videoroom",
 					success: function(pluginHandle) {
-						$('#details').remove();
 						mcu = pluginHandle;
 						Janus.log("Plugin attached! (" + mcu.getPlugin() + ", id=" + mcu.getId() + ")");
 						Janus.log("  -- This is a publisher/manager");
-						// Prepare the displayName registration
-						$('#videojoin').removeClass('hide').show();
-						$('#registernow').removeClass('hide').show();
-						$('#register').click(registerDisplayName);
+						$('#joinroom').removeClass('hide').show();
+						$('#joinroomnow').removeClass('hide').show();
+						$('#join').click(joinRoomNumber);
 						$('#displayname').focus();
-						$('#start').removeAttr('disabled').html("Stop").click(function() {
-							$(this).attr('disabled', true);
-							janus.destroy();
-						});
 					},
 					error: function(error) {
 						Janus.error("  -- Error attaching plugin...", error);
@@ -58,7 +53,7 @@ $(document).ready(function() {
 					},
 					onmessage: function(msg, jsep) {
 						Janus.debug(" ::: Got a message (publisher) :::");
-						Janus.debug(JSON.stringify(msg));
+						Janus.debug("message: "+JSON.stringify(msg));
 						var event = msg["videoroom"];
 						Janus.debug("Event: " + event);
 						if(event != undefined && event != null) {
@@ -139,7 +134,11 @@ $(document).ready(function() {
 										remoteFeed.detach();
 									}
 								} else if(msg["error"] !== undefined && msg["error"] !== null) {
-									bootbox.alert(msg["error"]);
+									if(msg["error_code"] == 427) {
+										bootbox.alert("Room already exists");
+									} else {
+										bootbox.alert(msg["error"]);
+									}
 								}
 							}
 						}
@@ -153,7 +152,7 @@ $(document).ready(function() {
 						Janus.debug(" ::: Got a local stream :::");
 						Janus.debug(JSON.stringify(stream));
 						$('#videolocal').empty();
-						$('#videojoin').hide();
+						$('#joinroom').hide();
 						$('#videos').removeClass('hide').show();
 						if($('#myvideo').length === 0) {
 							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="100%" height="'+videoWidth+'" autoplay muted="muted"/>');
@@ -205,45 +204,88 @@ $(document).ready(function() {
 	}})
 })
 
-function checkEnter(field, event) {
+function checkRoomNumber(field, event) {
 	var theCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
 	if(theCode == 13) {
-		registerDisplayName();
+		joinRoomNumber();
 		return false;
 	} else {
 		return true;
 	}
 }
 
-function registerDisplayName() {
+function joinRoomNumber() {
 	if($('#displayname').length === 0) {
-		// Create fields to register
-		$('#register').click(registerDisplayName);
+		$('#join').click(joinRoomNumber);
 		$('#displayname').focus();
+	} else if($('#roomnumber').length === 0) {
+		$('#join').click(joinRoomNumber);
+		$('#roomnumber').focus();
 	} else {
-		// Try a registration
 		$('#displayname').attr('disabled', true);
-		$('#register').attr('disabled', true).unbind('click');
+		$('#roomnumber').attr('disabled', true);
+		$('#join').attr('disabled', true).unbind('click');
+
 		var displayName = $('#displayname').val();
+		var roomNumber = $('#roomnumber').val();
+
 		if(displayName === "") {
-			$('#you')
+			$('#notif')
 				.removeClass().addClass('label label-warning')
-				.html("Insert your display name (e.g., pippo)");
+				.html("Enter your name (eg: si komo)");
 			$('#displayname').removeAttr('disabled');
-			$('#register').removeAttr('disabled').click(registerDisplayName);
+			$('#roomnumber').removeAttr('disabled');
+			$('#join').removeAttr('disabled').click(joinRoomNumber);
 			return;
-		}
-		if(/[^a-zA-Z0-9\s_-]/.test(displayName)) {
-			$('#you')
+		} else if (roomNumber === "") {
+			$('#notif')
 				.removeClass().addClass('label label-warning')
-				.html('Input is not alphanumeric');
-			$('#displayname').removeAttr('disabled').val("");
-			$('#register').removeAttr('disabled').click(registerDisplayName);
+				.html("Enter room number (eg: 1234567890)");
+			$('#displayname').removeAttr('disabled');
+			$('#roomnumber').removeAttr('disabled');
+			$('#join').removeAttr('disabled').click(joinRoomNumber);
 			return;
 		}
-		var register = { "request": "join", "token": "", "room": meetmeRoom, "ptype": "publisher", "display": displayName };
-		myDisplayName = displayName;
-		mcu.send({"message": register});
+
+		if(/[^A-Za-z0-9\s_-]/.test(displayName)) {
+			$('#notif')
+				.removeClass().addClass('label label-warning')
+				.html("Your name is alphanumeric and spaces only");
+			$('#displayname').removeAttr('disabled');
+			$('#roomnumber').removeAttr('disabled');
+			$('#join').removeAttr('disabled').click(joinRoomNumber);
+			return;
+		}
+
+		if(/[^0-9]/.test(roomNumber)) {
+			$('#notif')
+				.removeClass().addClass('label label-warning')
+				.html("Room number is numeric only");
+			$('#displayname').removeAttr('disabled');
+			$('#roomnumber').removeAttr('disabled');
+			$('#join').removeAttr('disabled').click(joinRoomNumber);
+			return;
+		}
+
+		myRoomNumber = parseInt(roomNumber);
+		var create = { "request": "create", "token": "", "room": myRoomNumber, "ptype": "publisher", "description": "Room "+myRoomNumber, "is_private": true, "publishers": maxVideoBox, "bitrate": maxBitRate };
+		Janus.debug("Create room request");
+		mcu.send({
+			"message": create, 
+			success: function(resp) {
+				if (resp.videoroom === "created") {
+ 					Janus.debug("New room "+myRoomNumber+" has been created");
+      				} else if (resp.videoroom === "event") {
+      					if (resp.error_code === 427) {
+      						Janus.debug("Requested room "+myRoomNumber+"already exists");
+      					}
+      				}
+      				myDisplayName = displayName;
+				var join = { "request": "join", "token": "", "room": myRoomNumber, "ptype": "publisher", "display": displayName };
+				Janus.debug("User "+myDisplayName+" join room "+myRoomNumber+" request");
+				mcu.send({"message": join});
+      			}
+      		});
 	}
 }
 
@@ -301,7 +343,7 @@ function newRemoteFeed(id, display) {
 			Janus.log("Plugin attached! (" + remoteFeed.getPlugin() + ", id=" + remoteFeed.getId() + ")");
 			Janus.log("  -- This is a subscriber");
 			// We wait for the plugin to send us an offer
-			var listen = { "request": "join", "token": "", "room": meetmeRoom, "ptype": "listener", "feed": id };
+			var listen = { "request": "join", "token": "", "room": myRoomNumber, "ptype": "listener", "feed": id };
 			remoteFeed.send({"message": listen});
 		},
 		error: function(error) {
@@ -351,7 +393,7 @@ function newRemoteFeed(id, display) {
 					success: function(jsep) {
 						Janus.debug("Got SDP!");
 						Janus.debug(jsep);
-						var body = { "request": "start", "token": "", "room": meetmeRoom };
+						var body = { "request": "start", "token": "", "room": myRoomNumber };
 						remoteFeed.send({"message": body, "jsep": jsep});
 					},
 					error: function(error) {
@@ -372,7 +414,7 @@ function newRemoteFeed(id, display) {
 				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered relative hide" id="remotevideo' + remoteFeed.rfindex + '" width="100%" height="'+videoWidth+'" autoplay/>');
 			}
 			$('#videoremote'+remoteFeed.rfindex).append(
-				// Add a 'displayName' label
+				// Add a 'displayname' label
 				'<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+remoteFeed.rfdisplay+'</span>' +
 				'<span class="label label-primary hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; left: 15%; margin: 15px;"></span>' +
 				'<span class="label label-info hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; right: 15%; margin: 15px;"></span>');

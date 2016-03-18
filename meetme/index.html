@@ -27,16 +27,23 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<div class="container hide" id="videojoin">
+			<div class="container hide" id="joinroom">
 				<div class="row">
-					<span class="label label-info" id="you"></span>
 					<div class="col-md-12" id="controls">
-						<div class="input-group margin-bottom-md hide" id="registernow">
-							<span class="input-group-addon">@</span>
-							<input autocomplete="off" class="form-control" autocomplete="off" type="text" placeholder="Your name" id="displayname" onkeypress="return checkEnter(this, event);"></input>
-							<span class="input-group-btn">
-								<button class="btn btn-success" autocomplete="off" id="register">Join</button>
-							</span>
+						<div class="hide" id="joinroomnow">
+							<span class="label label-default" id="notif">Welcome</span>
+							<br /><br />
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">@</span>
+								<input autocomplete="off" class="form-control" autocomplete="off" type="text" placeholder="Your name" id="displayname" onkeypress="return checkRoomNumber(this, event);"></input>
+							</div>
+							<br />
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon2">@</span>
+								<input autocomplete="off" class="form-control" autocomplete="off" type="text" placeholder="Room number" id="roomnumber" onkeypress="return checkRoomNumber(this, event);"></input>
+							</div>
+							<br />
+							<button class="btn btn-success" autocomplete="off" id="join">Join</button>
 						</div>
 					</div>
 				</div>
