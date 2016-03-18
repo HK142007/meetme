@@ -1,5 +1,5 @@
-# janus-meetme
+# meetme
 
-WebRTC online meeting for Janus using videoroom plugin. This is a modification of janus demo apps.
+Online meeting for Janus WebRTC gateway. This is a modification of janus demo apps related to videoroom plugin.
 
 Maintainer: [Anton Raharja](http://antonraharja.com)
