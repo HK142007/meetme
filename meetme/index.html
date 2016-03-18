@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Meeting Room</title>
+<link rel="stylesheet" href="https://meetme.id/css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="https://meetme.id/css/meetme.css" type="text/css"/>
+<script type="text/javascript" src="https://meetme.id/js/jquery.min.js" ></script>
+<script type="text/javascript" src="https://meetme.id/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://meetme.id/js/bootbox.min.js"></script>
+<script type="text/javascript" src="https://meetme.id/js/spin.min.js"></script>
+<script type="text/javascript" src="https://meetme.id/js/adapter.js" ></script>
+<script type="text/javascript" src="https://meetme.id/js/janus.js" ></script>
+<script type="text/javascript" src="js/meetme.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="container">
+				<h1>Meeting Room</h1>
+			<div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="container hide" id="videojoin">
+				<div class="row">
+					<span class="label label-info" id="you"></span>
+					<div class="col-md-12" id="controls">
+						<div class="input-group margin-bottom-md hide" id="registernow">
+							<span class="input-group-addon">@</span>
+							<input autocomplete="off" class="form-control" autocomplete="off" type="text" placeholder="Your name" id="username" onkeypress="return checkEnter(this, event);"></input>
+							<span class="input-group-btn">
+								<button class="btn btn-success" autocomplete="off" id="register">Join</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container hide" id="videos">
+				<div class="row">
+					<div class="col-md-4">
+						<div id="videolocal"></div>
+					</div>
+					<div class="col-md-4">
+						<div id="videoremote1"></div>
+					</div>
+					<div class="col-md-4">
+						<div id="videoremote2"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div id="videoremote3"></div>
+					</div>
+					<div class="col-md-4">
+						<div id="videoremote4"></div>
+					</div>
+					<div class="col-md-4">
+						<div id="videoremote5"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
