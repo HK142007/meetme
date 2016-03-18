@@ -1,5 +1,5 @@
 var server = "https://meetme.id/gateway";
-var meetmeRoom = 177771;
+var meetmeRoom = 1234567890;
 var videoWidth = 240;
 var debugLevel = "all"
 
