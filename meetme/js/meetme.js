@@ -164,6 +164,8 @@ $(document).ready(function() {
 							// Add an 'unpublish' button
 							$('#videolocal').append('<button class="btn btn-warning btn-xs" id="unpublish" style="position: absolute; top: 5px; right: 15%; margin: 15px;">S</button>');
 							$('#unpublish').click(unpublishOwnFeed);
+							// Add welcome notif
+							$('#notifwelcome').html('Room number: '+myRoomNumber);
 						}
 						// $('#publisher').removeClass('hide').html(myDisplayName).show();
 						attachMediaStream($('#myvideo').get(0), stream);
@@ -231,7 +233,7 @@ function joinRoomNumber() {
 
 		if(displayName === "") {
 			$('#notif')
-				.removeClass().addClass('label label-warning')
+				.removeClass().addClass('label label-danger')
 				.html("Enter your name (eg: si komo)");
 			$('#displayname').removeAttr('disabled');
 			$('#roomnumber').removeAttr('disabled');
@@ -239,7 +241,7 @@ function joinRoomNumber() {
 			return;
 		} else if (roomNumber === "") {
 			$('#notif')
-				.removeClass().addClass('label label-warning')
+				.removeClass().addClass('label label-danger')
 				.html("Enter room number (eg: 1234567890)");
 			$('#displayname').removeAttr('disabled');
 			$('#roomnumber').removeAttr('disabled');
@@ -249,7 +251,7 @@ function joinRoomNumber() {
 
 		if(/[^A-Za-z0-9\s_-]/.test(displayName)) {
 			$('#notif')
-				.removeClass().addClass('label label-warning')
+				.removeClass().addClass('label label-danger')
 				.html("Your name is alphanumeric and spaces only");
 			$('#displayname').removeAttr('disabled');
 			$('#roomnumber').removeAttr('disabled');
@@ -259,7 +261,7 @@ function joinRoomNumber() {
 
 		if(/[^0-9]/.test(roomNumber)) {
 			$('#notif')
-				.removeClass().addClass('label label-warning')
+				.removeClass().addClass('label label-danger')
 				.html("Room number is numeric only");
 			$('#displayname').removeAttr('disabled');
 			$('#roomnumber').removeAttr('disabled');
@@ -268,7 +270,7 @@ function joinRoomNumber() {
 		}
 
 		myRoomNumber = parseInt(roomNumber);
-		var create = { "request": "create", "token": "", "room": myRoomNumber, "ptype": "publisher", "description": "Room "+myRoomNumber, "is_private": true, "publishers": maxVideoBox, "bitrate": maxBitRate };
+		var create = { "request": "create", "token": "", "room": myRoomNumber, "ptype": "publisher", "description": "Room "+myRoomNumber, "publishers": maxVideoBox, "bitrate": maxBitRate, "is_private": true };
 		Janus.debug("Create room request");
 		mcu.send({
 			"message": create, 
