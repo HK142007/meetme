@@ -5,11 +5,11 @@ var iceServers = [
 ];
 var meetmeRoom = 1234567890;
 var videoWidth = 240;
+var maxVideoBox = 6;
 var debugLevel = "all"
 
 var janus = null;
-var sfutest = null;
-var started = false;
+var mcu = null;
 
 var myusername = null;
 var myid = null;
@@ -21,11 +21,6 @@ var bitrateTimer = [];
 $(document).ready(function() {
 	// Initialize the library (all console debuggers enabled)
 	Janus.init({debug: debugLevel, callback: function() {
-		// Use a button to start the demo
-//		$('#start').click(function() {
-			if(started)
-				return;
-			started = true;
 			$(this).attr('disabled', true).unbind('click');
 			// Make sure the browser supports WebRTC
 			if(!Janus.isWebrtcSupported()) {
@@ -44,8 +39,8 @@ $(document).ready(function() {
 								plugin: "janus.plugin.videoroom",
 								success: function(pluginHandle) {
 									$('#details').remove();
-									sfutest = pluginHandle;
-									Janus.log("Plugin attached! (" + sfutest.getPlugin() + ", id=" + sfutest.getId() + ")");
+									mcu = pluginHandle;
+									Janus.log("Plugin attached! (" + mcu.getPlugin() + ", id=" + mcu.getId() + ")");
 									Janus.log("  -- This is a publisher/manager");
 									// Prepare the username registration
 									$('#videojoin').removeClass('hide').show();
@@ -130,7 +125,7 @@ $(document).ready(function() {
 												Janus.log("Publisher left: " + unpublished);
 												if(unpublished === 'ok') {
 													// That's us
-													sfutest.hangup();
+													mcu.hangup();
 													return;
 												}
 												var remoteFeed = null;
@@ -155,7 +150,7 @@ $(document).ready(function() {
 									if(jsep !== undefined && jsep !== null) {
 										Janus.debug("Handling SDP as well...");
 										Janus.debug(jsep);
-										sfutest.handleRemoteJsep({jsep: jsep});
+										mcu.handleRemoteJsep({jsep: jsep});
 									}
 								},
 								onlocalstream: function(stream) {
@@ -213,7 +208,6 @@ $(document).ready(function() {
 						window.location.reload();
 					}
 				});
-//		});
 	}});
 });
 
@@ -255,14 +249,14 @@ function registerUsername() {
 		}
 		var register = { "request": "join", "token": "", "room": meetmeRoom, "ptype": "publisher", "display": username };
 		myusername = username;
-		sfutest.send({"message": register});
+		mcu.send({"message": register});
 	}
 }
 
 function publishOwnFeed(useAudio) {
 	// Publish our stream
 	$('#publish').attr('disabled', true).unbind('click');
-	sfutest.createOffer(
+	mcu.createOffer(
 		{
 			media: { audioRecv: false, videoRecv: false, audioSend: useAudio, videoSend: true, video: "lowres" },	// Publishers are sendonly
 			trickle: true,
@@ -271,7 +265,7 @@ function publishOwnFeed(useAudio) {
 				Janus.debug("Got publisher SDP!");
 				Janus.debug(jsep);
 				var publish = { "request": "configure", "token": "", "audio": useAudio, "video": true };
-				sfutest.send({"message": publish, "jsep": jsep});
+				mcu.send({"message": publish, "jsep": jsep});
 			},
 			error: function(error) {
 				Janus.error("WebRTC error:", error);
@@ -286,13 +280,13 @@ function publishOwnFeed(useAudio) {
 }
 
 function toggleMute() {
-	var muted = sfutest.isAudioMuted();
+	var muted = mcu.isAudioMuted();
 	Janus.log((muted ? "Unmuting" : "Muting") + " local stream...");
 	if(muted)
-		sfutest.unmuteAudio();
+		mcu.unmuteAudio();
 	else
-		sfutest.muteAudio();
-	muted = sfutest.isAudioMuted();
+		mcu.muteAudio();
+	muted = mcu.isAudioMuted();
 	$('#mute').html(muted ? "Unmute" : "M");
 }
 
@@ -300,7 +294,7 @@ function unpublishOwnFeed() {
 	// Unpublish our stream
 	$('#unpublish').attr('disabled', true).unbind('click');
 	var unpublish = { "request": "unpublish", "token": "" };
-	sfutest.send({"message": unpublish});
+	mcu.send({"message": unpublish});
 }
 
 function newRemoteFeed(id, display) {
@@ -329,7 +323,7 @@ function newRemoteFeed(id, display) {
 				if(event != undefined && event != null) {
 					if(event === "attached") {
 						// Subscriber created and attached
-						for(var i=1;i<6;i++) {
+						for(var i=1;i<maxVideoBox;i++) {
 							if(feeds[i] === undefined || feeds[i] === null) {
 								feeds[i] = remoteFeed;
 								remoteFeed.rfindex = i;
