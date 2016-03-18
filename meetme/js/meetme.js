@@ -12,7 +12,7 @@ var janus = null;
 var mcu = null;
 
 var myDisplayName = null;
-var myid = null;
+var myID = null;
 
 var feeds = [];
 var bitrateTimer = [];
@@ -64,8 +64,8 @@ $(document).ready(function() {
 						if(event != undefined && event != null) {
 							if(event === "joined") {
 								// Publisher/manager created, negotiate WebRTC and attach to existing feeds, if any
-								myid = msg["id"];
-								Janus.log("Successfully joined room " + msg["room"] + " with ID " + myid);
+								myID = msg["id"];
+								Janus.log("Successfully joined room " + msg["room"] + " with ID " + myID);
 								publishOwnFeed(true);
 								// Any new feed to attach to?
 								if(msg["publishers"] !== undefined && msg["publishers"] !== null) {
