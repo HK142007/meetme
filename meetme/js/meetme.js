@@ -11,9 +11,8 @@ var debugLevel = "all"
 var janus = null;
 var mcu = null;
 
-var myusername = null;
+var myDisplayName = null;
 var myid = null;
-var mystream = null;
 
 var feeds = [];
 var bitrateTimer = [];
@@ -40,11 +39,11 @@ $(document).ready(function() {
 						mcu = pluginHandle;
 						Janus.log("Plugin attached! (" + mcu.getPlugin() + ", id=" + mcu.getId() + ")");
 						Janus.log("  -- This is a publisher/manager");
-						// Prepare the username registration
+						// Prepare the displayName registration
 						$('#videojoin').removeClass('hide').show();
 						$('#registernow').removeClass('hide').show();
-						$('#register').click(registerUsername);
-						$('#username').focus();
+						$('#register').click(registerDisplayName);
+						$('#displayname').focus();
 						$('#start').removeAttr('disabled').html("Stop").click(function() {
 							$(this).attr('disabled', true);
 							janus.destroy();
@@ -152,15 +151,14 @@ $(document).ready(function() {
 					},
 					onlocalstream: function(stream) {
 						Janus.debug(" ::: Got a local stream :::");
-						mystream = stream;
 						Janus.debug(JSON.stringify(stream));
 						$('#videolocal').empty();
 						$('#videojoin').hide();
 						$('#videos').removeClass('hide').show();
 						if($('#myvideo').length === 0) {
 							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="100%" height="'+videoWidth+'" autoplay muted="muted"/>');
-							// Add a 'username' label
-							$('#videolocal').append('<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+myusername+'</span>');
+							// Add a 'displayname' label
+							$('#videolocal').append('<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+myDisplayName+'</span>');
 							// Add a 'mute' button
 							$('#videolocal').append('<button class="btn btn-warning btn-xs" id="mute" style="position: absolute; top: 5px; right: 22%; margin: 15px;">M</button>');
 							$('#mute').click(toggleMute)
@@ -168,7 +166,7 @@ $(document).ready(function() {
 							$('#videolocal').append('<button class="btn btn-warning btn-xs" id="unpublish" style="position: absolute; top: 5px; right: 15%; margin: 15px;">S</button>');
 							$('#unpublish').click(unpublishOwnFeed);
 						}
-						// $('#publisher').removeClass('hide').html(myusername).show();
+						// $('#publisher').removeClass('hide').html(myDisplayName).show();
 						attachMediaStream($('#myvideo').get(0), stream);
 						$("#myvideo").get(0).muted = "muted";
 						var videoTracks = stream.getVideoTracks();
@@ -187,8 +185,7 @@ $(document).ready(function() {
 					},
 					oncleanup: function() {
 						Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
-						mystream = null;
-						$('#videolocal').html('<p><span class="label label-success" id="displayname">'+myusername+'</span></p><p><button id="publish" class="btn btn-primary">Start publishing</button></p>');
+						$('#videolocal').html('<p><span class="label label-success" id="displayname">'+myDisplayName+'</span></p><p><button id="publish" class="btn btn-primary">Start publishing</button></p>');
 						$('#publish').click(function() { 
 							publishOwnFeed(true); 
 						});
@@ -211,41 +208,41 @@ $(document).ready(function() {
 function checkEnter(field, event) {
 	var theCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
 	if(theCode == 13) {
-		registerUsername();
+		registerDisplayName();
 		return false;
 	} else {
 		return true;
 	}
 }
 
-function registerUsername() {
-	if($('#username').length === 0) {
+function registerDisplayName() {
+	if($('#displayname').length === 0) {
 		// Create fields to register
-		$('#register').click(registerUsername);
-		$('#username').focus();
+		$('#register').click(registerDisplayName);
+		$('#displayname').focus();
 	} else {
 		// Try a registration
-		$('#username').attr('disabled', true);
+		$('#displayname').attr('disabled', true);
 		$('#register').attr('disabled', true).unbind('click');
-		var username = $('#username').val();
-		if(username === "") {
+		var displayName = $('#displayname').val();
+		if(displayName === "") {
 			$('#you')
 				.removeClass().addClass('label label-warning')
 				.html("Insert your display name (e.g., pippo)");
-			$('#username').removeAttr('disabled');
-			$('#register').removeAttr('disabled').click(registerUsername);
+			$('#displayname').removeAttr('disabled');
+			$('#register').removeAttr('disabled').click(registerDisplayName);
 			return;
 		}
-		if(/[^a-zA-Z0-9\s_-]/.test(username)) {
+		if(/[^a-zA-Z0-9\s_-]/.test(displayName)) {
 			$('#you')
 				.removeClass().addClass('label label-warning')
 				.html('Input is not alphanumeric');
-			$('#username').removeAttr('disabled').val("");
-			$('#register').removeAttr('disabled').click(registerUsername);
+			$('#displayname').removeAttr('disabled').val("");
+			$('#register').removeAttr('disabled').click(registerDisplayName);
 			return;
 		}
-		var register = { "request": "join", "token": "", "room": meetmeRoom, "ptype": "publisher", "display": username };
-		myusername = username;
+		var register = { "request": "join", "token": "", "room": meetmeRoom, "ptype": "publisher", "display": displayName };
+		myDisplayName = displayName;
 		mcu.send({"message": register});
 	}
 }
@@ -375,7 +372,7 @@ function newRemoteFeed(id, display) {
 				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered relative hide" id="remotevideo' + remoteFeed.rfindex + '" width="100%" height="'+videoWidth+'" autoplay/>');
 			}
 			$('#videoremote'+remoteFeed.rfindex).append(
-				// Add a 'username' label
+				// Add a 'displayName' label
 				'<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+remoteFeed.rfdisplay+'</span>' +
 				'<span class="label label-primary hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; left: 15%; margin: 15px;"></span>' +
 				'<span class="label label-info hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; right: 15%; margin: 15px;"></span>');
