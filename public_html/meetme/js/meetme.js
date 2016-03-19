@@ -8,10 +8,10 @@ var maxVideoBox = 6;
 var maxBitRate = 96000;
 var debugLevel = "all"
 
-//var labelEnterRoom = "Enter room number (eg: 1234567890)";
-var labelEnterRoom = "Masukkan nomor ruangan (contoh: 1234567890)";
+//var labelEnterRoom = "Enter room number";
+var labelEnterRoom = "Masukkan nomor ruangan";
 
-//var labelDisplayName = "Enter your name (eg: Si Komo)";
+//var labelDisplayName = "Enter your name";
 var labelDisplayName = "Masukkan nama anda";
 
 //var labelNoRemoteVideo = "No remote video available";
