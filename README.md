@@ -4,7 +4,7 @@ Online meeting for Janus WebRTC gateway. This is a modification of janus demo ap
 
 Item       | Data
 ---------- | ----------------------------------------
-Update     | 1603190100
+Version    | 1
 Maintainer | [Anton Raharja](http://antonraharja.com)
 License    | [MIT License](LICENSE.md)
 
