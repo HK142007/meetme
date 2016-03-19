@@ -379,24 +379,6 @@ function Janus(gatewayCallbacks) {
 				// Send to generic callback (?)
 				Janus.debug("No provided notification callback");
 			}
-		} else if(json["janus"] === "media") {
-			// fixme anton - if receiving false then hangup the sender
-			if (json["receiving"] === "false") {
-				var sender = json["sender"];
-				if(sender === undefined || sender === null) {
-					Janus.warn("Missing sender...");
-					return;
-				}
-				var pluginHandle = pluginHandles[sender];
-				if(pluginHandle === undefined || pluginHandle === null) {
-					Janus.warn("This handle is not attached to this session");
-					return;
-				}
-				janus.warn("Not receiving anything from sender:"+sender+". Hangup");
-				pluginHandle.hangup();
-			} else {
-				return;
-			}
 		} else {
 			Janus.warn("Unknown message '" + json["janus"] + "'");
 		}
