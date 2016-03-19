@@ -4,13 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>MeetMe Room</title>
-<link rel="stylesheet" href="https://meetme.id/css/bootstrap.min.css" type="text/css"/>
+<!-- MeetMe Room -->
+<title>Ruang Meeting</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
 <link rel="stylesheet" href="css/meetme.css" type="text/css"/>
-<script type="text/javascript" src="https://meetme.id/js/jquery.min.js" ></script>
-<script type="text/javascript" src="https://meetme.id/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://meetme.id/js/bootbox.min.js"></script>
-<script type="text/javascript" src="https://meetme.id/js/spin.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootbox.min.js"></script>
+<script type="text/javascript" src="js/spin.min.js"></script>
 <script type="text/javascript" src="js/adapter.js" ></script>
 <script type="text/javascript" src="js/janus.js" ></script>
 <script type="text/javascript" src="js/meetme.js"></script>
@@ -21,7 +22,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="container">
-				<h1>MeetMe Room</h1>
+				<!-- MeetMe Room -->
+				<h1>Ruang Meeting</h1>
 			<div>
 		</div>
 	</div>
@@ -31,19 +33,23 @@
 				<div class="row">
 					<div class="col-md-12" id="controls">
 						<div class="hide" id="joinroomnow">
-							<span class="label label-default" id="notif">Join or create a room</span>
+							<!-- Join or create room -->
+							<span class="label label-default" id="notif">Meeting online bebas pakai</span>
 							<br /><br />
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">@</span>
-								<input autocomplete="off" class="form-control" autocomplete="off" type="text" placeholder="Your name" id="displayname" onkeypress="return checkRoomNumber(this, event);"></input>
+								<!-- Your name -->
+								<input autocomplete="off" class="form-control" autocomplete="off" type="text" placeholder="Nama mu" id="displayname" onkeypress="return checkRoomNumber(this, event);"></input>
 							</div>
 							<br />
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon2">@</span>
-								<input autocomplete="off" class="form-control" autocomplete="off" type="text" placeholder="Room number" id="roomnumber" onkeypress="return checkRoomNumber(this, event);"></input>
+								<!-- Room number -->
+								<input autocomplete="off" class="form-control" autocomplete="off" type="text" placeholder="Nomor ruang meeting" id="roomnumber" onkeypress="return checkRoomNumber(this, event);"></input>
 							</div>
 							<br />
-							<button class="btn btn-success" autocomplete="off" id="join">Join</button>
+							<!-- Join -->
+							<button class="btn btn-info" autocomplete="off" id="join">Masuk</button>
 						</div>
 					</div>
 				</div>
@@ -51,7 +57,8 @@
 			<div class="container hide" id="videos">
 				<div class="row">
 					<div class="col-md-12">
-						<span class="label label-default" id="notifwelcome">Welcome</span>
+						<!-- Welcome -->
+						<span class="label label-default" id="notifwelcome">Selamat datang</span>
 					</div>
 					<br />
 				</div>

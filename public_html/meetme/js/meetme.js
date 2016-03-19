@@ -8,6 +8,41 @@ var maxVideoBox = 6;
 var maxBitRate = 96000;
 var debugLevel = "all"
 
+//var labelEnterRoom = "Enter room number (eg: 1234567890)";
+var labelEnterRoom = "Masukkan nomor ruangan (contoh: 1234567890)";
+
+//var labelDisplayName = "Enter your name (eg: Si Komo)";
+var labelDisplayName = "Masukkan nama anda";
+
+//var labelNoRemoteVideo = "No remote video available";
+var labelNoRemoteVideo = "Tidak ada video";
+
+//var labelNoWebcam = "No webcam available";
+var labelNoWebcam = "Tidak ada webcam";
+
+//var labelNoWebRTC = "No WebRTC support available";
+var labelNoWebRTC = "Tidak ada dukungan WebRTC";
+
+//var labelStartPublishing = "Start publishing";
+var labelStartPublishing = "Masuk lagi";
+
+//var labelRoom = "Room";
+var labelRoom = "Ruangan";
+
+//var labelRoomNumber = "Room number:";
+var labelRoomNumber = "Nomor ruangan:";
+
+//var labelInvalidRoomNumber = "Room number is between 1 to 9999999999";
+var labelInvalidRoomNumber = "Nomor ruangan antara 1 sampai 9999999999";
+
+//var labelRoomNumericOnly = "Room number is numeric only";
+var labelRoomNumericOnly = "Ruangan hanya angka saja";
+
+//var labelDisplayNameAlphanumeric = "Name is alphanumeric and spaces only";
+var labelDisplayNameAlphanumeric = "Nama hanya boleh alphanumeric dan spasi saja";
+
+// --- DO NOT TOUCH BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING ---
+
 var janus = null;
 var mcu = null;
 
@@ -24,7 +59,7 @@ $(document).ready(function() {
 		$(this).attr('disabled', true).unbind('click');
 		// Make sure the browser supports WebRTC
 		if(!Janus.isWebrtcSupported()) {
-			bootbox.alert("No WebRTC support... ");
+			bootbox.alert(labelNoWebRTC);
 			return;
 		}
 		// Create session
@@ -134,11 +169,9 @@ $(document).ready(function() {
 										remoteFeed.detach();
 									}
 								} else if(msg["error"] !== undefined && msg["error"] !== null) {
-									if(msg["error_code"] == 427) {
-										bootbox.alert("Room already exists");
-									} else {
-										bootbox.alert(msg["error"]);
-									}
+									bootbox.alert(msg["error"], function () {
+										window.location.reload();
+									});
 								}
 							}
 						}
@@ -165,7 +198,7 @@ $(document).ready(function() {
 							$('#videolocal').append('<button class="btn btn-warning btn-xs" id="unpublish" style="position: absolute; top: 5px; right: 15%; margin: 15px;">S</button>');
 							$('#unpublish').click(unpublishOwnFeed);
 							// Add welcome notif
-							$('#notifwelcome').html('Room number: '+myRoomNumber);
+							$('#notifwelcome').html(labelRoomNumber+' '+myRoomNumber);
 						}
 						// $('#publisher').removeClass('hide').html(myDisplayName).show();
 						attachMediaStream($('#myvideo').get(0), stream);
@@ -177,7 +210,7 @@ $(document).ready(function() {
 							$('#videolocal').append(
 								'<div class="no-video-container">' +
 									'<i class="fa fa-video-camera fa-5 no-video-icon" style="height: 100%;"></i>' +
-									'<span class="no-video-text" style="font-size: 16px;">No webcam available</span>' +
+									'<span class="no-video-text" style="font-size: 16px;">'+labelNoWebcam+'</span>' +
 								'</div>');
 						}
 					},
@@ -186,7 +219,7 @@ $(document).ready(function() {
 					},
 					oncleanup: function() {
 						Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
-						$('#videolocal').html('<p><span class="label label-success" id="displayname">'+myDisplayName+'</span></p><p><button id="publish" class="btn btn-primary">Start publishing</button></p>');
+						$('#videolocal').html('<p><span class="label label-success" id="displayname">'+myDisplayName+'</span></p><p><button id="publish" class="btn btn-primary">'+labelStartPublishing+'</button></p>');
 						$('#publish').click(function() { 
 							publishOwnFeed(true); 
 						});
@@ -234,7 +267,7 @@ function joinRoomNumber() {
 		if(displayName === "") {
 			$('#notif')
 				.removeClass().addClass('label label-danger')
-				.html("Enter your name (eg: si komo)");
+				.html(labelDisplayName);
 			$('#displayname').removeAttr('disabled');
 			$('#roomnumber').removeAttr('disabled');
 			$('#join').removeAttr('disabled').click(joinRoomNumber);
@@ -242,7 +275,7 @@ function joinRoomNumber() {
 		} else if (roomNumber === "") {
 			$('#notif')
 				.removeClass().addClass('label label-danger')
-				.html("Enter room number (eg: 1234567890)");
+				.html(labelEnterRoom);
 			$('#displayname').removeAttr('disabled');
 			$('#roomnumber').removeAttr('disabled');
 			$('#join').removeAttr('disabled').click(joinRoomNumber);
@@ -252,7 +285,7 @@ function joinRoomNumber() {
 		if(/[^A-Za-z0-9\s_-]/.test(displayName)) {
 			$('#notif')
 				.removeClass().addClass('label label-danger')
-				.html("Your name is alphanumeric and spaces only");
+				.html(labelDisplayNameAlphanumeric);
 			$('#displayname').removeAttr('disabled');
 			$('#roomnumber').removeAttr('disabled');
 			$('#join').removeAttr('disabled').click(joinRoomNumber);
@@ -262,7 +295,7 @@ function joinRoomNumber() {
 		if(/[^0-9]/.test(roomNumber)) {
 			$('#notif')
 				.removeClass().addClass('label label-danger')
-				.html("Room number is numeric only");
+				.html(labelRoomNumericOnly);
 			$('#displayname').removeAttr('disabled');
 			$('#roomnumber').removeAttr('disabled');
 			$('#join').removeAttr('disabled').click(joinRoomNumber);
@@ -270,7 +303,17 @@ function joinRoomNumber() {
 		}
 
 		myRoomNumber = parseInt(roomNumber);
-		var create = { "request": "create", "token": "", "room": myRoomNumber, "ptype": "publisher", "description": "Room "+myRoomNumber, "publishers": maxVideoBox, "bitrate": maxBitRate, "is_private": true };
+		if (myRoomNumber < 1 || myRoomNumber > 9999999999) {
+			$('#notif')
+				.removeClass().addClass('label label-danger')
+				.html(labelInvalidRoomNumber);
+			$('#displayname').removeAttr('disabled');
+			$('#roomnumber').removeAttr('disabled');
+			$('#join').removeAttr('disabled').click(joinRoomNumber);
+			return;
+		}
+		
+		var create = { "request": "create", "token": "", "room": myRoomNumber, "ptype": "publisher", "description": labelRoom+" "+myRoomNumber, "publishers": maxVideoBox, "bitrate": maxBitRate, "is_private": true };
 		Janus.debug("Create room request");
 		mcu.send({
 			"message": create, 
@@ -447,7 +490,7 @@ function newRemoteFeed(id, display) {
 				$('#videoremote'+remoteFeed.rfindex).append(
 					'<div class="no-video-container">' +
 						'<i class="fa fa-video-camera fa-5 no-video-icon" style="height: 100%;"></i>' +
-						'<span class="no-video-text" style="font-size: 16px;">No remote video available</span>' +
+						'<span class="no-video-text" style="font-size: 16px;">'+labelNoRemoteVideo+'</span>' +
 					'</div>');
 			}
 			if(webrtcDetectedBrowser == "chrome" || webrtcDetectedBrowser == "firefox") {
