@@ -322,7 +322,7 @@ function joinRoomNumber() {
  					Janus.debug("New room "+myRoomNumber+" has been created");
       				} else if (resp.videoroom === "event") {
       					if (resp.error_code === 427) {
-      						Janus.debug("Requested room "+myRoomNumber+"already exists");
+      						Janus.debug("Requested room "+myRoomNumber+" already exists");
       					}
       				}
       				myDisplayName = displayName;
