@@ -1,6 +1,6 @@
 # meetme
 
-Online meeting for Janus WebRTC gateway. This is a modification of janus demo apps related to videoroom plugin.
+Online meeting for Janus WebRTC gateway.
 
 Item       | Data
 ---------- | ----------------------------------------
@@ -12,8 +12,9 @@ License    | [MIT License](LICENSE.md)
 
 Changes up to today:
 
-- modification of videoroom plugin web app
+- modification of videoroom plugin demo web app
 - add dynamic room creation
+- add labels for easy translation
 
 # Usage
 
