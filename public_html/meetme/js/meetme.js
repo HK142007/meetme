@@ -192,10 +192,10 @@ $(document).ready(function() {
 							// Add a 'displayname' label
 							$('#videolocal').append('<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+myDisplayName+'</span>');
 							// Add a 'mute' button
-							$('#videolocal').append('<button class="btn btn-warning btn-xs" id="mute" style="position: absolute; top: 5px; right: 22%; margin: 15px;">M</button>');
+							$('#videolocal').append('<button class="btn btn-info btn-xs" id="mute" style="position: absolute; top: 5px; right: 22%; margin: 15px;">M</button>');
 							$('#mute').click(toggleMute)
 							// Add an 'unpublish' button
-							$('#videolocal').append('<button class="btn btn-warning btn-xs" id="unpublish" style="position: absolute; top: 5px; right: 15%; margin: 15px;">S</button>');
+							$('#videolocal').append('<button class="btn btn-info btn-xs" id="unpublish" style="position: absolute; top: 5px; right: 15%; margin: 15px;">S</button>');
 							$('#unpublish').click(unpublishOwnFeed);
 							// Add welcome notif
 							$('#notif').html(labelRoomNumber+myRoomNumber);
@@ -219,7 +219,7 @@ $(document).ready(function() {
 					},
 					oncleanup: function() {
 						Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
-						$('#videolocal').html('<p><span class="label label-success" id="displayname">'+myDisplayName+'</span></p><p><button id="publish" class="btn btn-primary">'+labelStartPublishing+'</button></p>');
+						$('#videolocal').html('<p><span class="label label-default" id="displayname">'+myDisplayName+'</span></p><p><button id="publish" class="btn btn-primary">'+labelStartPublishing+'</button></p>');
 						$('#publish').click(function() { 
 							publishOwnFeed(true); 
 						});
@@ -461,8 +461,8 @@ function newRemoteFeed(id, display) {
 			$('#videoremote'+remoteFeed.rfindex).append(
 				// Add a 'displayname' label
 				'<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+remoteFeed.rfdisplay+'</span>' +
-				'<span class="label label-primary hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; left: 15%; margin: 15px;"></span>' +
-				'<span class="label label-info hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; right: 15%; margin: 15px;"></span>');
+				'<span class="label label-default hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; left: 15%; margin: 15px;"></span>' +
+				'<span class="label label-default hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; right: 15%; margin: 15px;"></span>');
 			// Show the video, hide the spinner and show the resolution when we get a playing event
 			$("#remotevideo"+remoteFeed.rfindex).bind("playing", function () {
 				if(remoteFeed.spinner !== undefined && remoteFeed.spinner !== null)
