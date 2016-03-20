@@ -198,7 +198,7 @@ $(document).ready(function() {
 							$('#videolocal').append('<button class="btn btn-warning btn-xs" id="unpublish" style="position: absolute; top: 5px; right: 15%; margin: 15px;">S</button>');
 							$('#unpublish').click(unpublishOwnFeed);
 							// Add welcome notif
-							$('#notifwelcome').html(labelRoomNumber+myRoomNumber);
+							$('#notif').html(labelRoomNumber+myRoomNumber);
 						}
 						// $('#publisher').removeClass('hide').html(myDisplayName).show();
 						attachMediaStream($('#myvideo').get(0), stream);
