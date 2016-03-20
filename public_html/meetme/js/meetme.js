@@ -29,11 +29,11 @@ var labelStartPublishing = "Masuk lagi";
 //var labelRoom = "Room";
 var labelRoom = "Ruangan";
 
-//var labelRoomNumber = "Room number:";
-var labelRoomNumber = "Nomor ruangan:";
+//var labelRoomNumber = "Room #";
+var labelRoomNumber = "Ruangan #";
 
-//var labelInvalidRoomNumber = "Room number is between 1 to 9999999999";
-var labelInvalidRoomNumber = "Nomor ruangan antara 1 sampai 9999999999";
+//var labelInvalidRoomNumber = "Room number is 1-10 digits only";
+var labelInvalidRoomNumber = "Nomor ruangan antara 1-10 digit";
 
 //var labelRoomNumericOnly = "Room number is numeric only";
 var labelRoomNumericOnly = "Ruangan hanya angka saja";
@@ -198,7 +198,7 @@ $(document).ready(function() {
 							$('#videolocal').append('<button class="btn btn-warning btn-xs" id="unpublish" style="position: absolute; top: 5px; right: 15%; margin: 15px;">S</button>');
 							$('#unpublish').click(unpublishOwnFeed);
 							// Add welcome notif
-							$('#notifwelcome').html(labelRoomNumber+' '+myRoomNumber);
+							$('#notifwelcome').html(labelRoomNumber+myRoomNumber);
 						}
 						// $('#publisher').removeClass('hide').html(myDisplayName).show();
 						attachMediaStream($('#myvideo').get(0), stream);
@@ -313,7 +313,7 @@ function joinRoomNumber() {
 			return;
 		}
 		
-		var create = { "request": "create", "token": "", "room": myRoomNumber, "ptype": "publisher", "description": labelRoom+" "+myRoomNumber, "publishers": maxVideoBox, "bitrate": maxBitRate, "is_private": true };
+		var create = { "request": "create", "token": "", "room": myRoomNumber, "ptype": "publisher", "description": labelRoomNumber+myRoomNumber, "publishers": maxVideoBox, "bitrate": maxBitRate, "is_private": true };
 		Janus.debug("Create room request");
 		mcu.send({
 			"message": create, 
