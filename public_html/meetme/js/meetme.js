@@ -1,4 +1,5 @@
-var server = "https://meetme.id/gateway";
+var server = "wss://meetme.id:8989/janus";
+//var server = "https://meetme.id/gateway";
 var iceServers = [
 	{"urls": "stun:meetme.id"},
 	{"urls": "turn:meetme.id", "credential": "public", "username": "public"}
