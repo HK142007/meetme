@@ -1,3 +1,13 @@
+.row.no-pad {
+	margin-right: 4px;
+	margin-left: 0px;
+}
+
+.row.no-pad > [class*='col-'] {
+	padding-right: 4px;
+	padding-left: 0px;
+}
+
 video {
 	-moz-transform: scale(-1, 1);
 	-webkit-transform: scale(-1, 1);
@@ -11,12 +21,12 @@ video {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	
-	border-radius: 4px 4px 4px 4px;
-	-moz-border-radius: 4px 4px 4px 4px;
-	-webkit-border-radius: 4px 4px 4px 4px;
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px 3px 3px 3px;
+	-webkit-border-radius: 3px 3px 3px 3px;
 	border: 0px solid #000000;
 }
 
-#notif, #notifwelcome {
+#notif {
 	font-size: larger;
 }

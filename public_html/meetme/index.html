@@ -2,19 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <!-- MeetMe Room -->
 <title>Ruang Meeting</title>
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-<link rel="stylesheet" href="css/meetme.css" type="text/css"/>
-<script type="text/javascript" src="js/jquery.min.js" ></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootbox.min.js"></script>
-<script type="text/javascript" src="js/spin.min.js"></script>
-<script type="text/javascript" src="js/adapter.js" ></script>
-<script type="text/javascript" src="js/janus.js" ></script>
-<script type="text/javascript" src="js/meetme.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" />
+<link rel="stylesheet" href="css/meetme.css" type="text/css" />
 </head>
 <body>
 
@@ -41,10 +36,10 @@ Here is the full source code: https://github.com/antonraharja/meetme
 
 
 
-<div class="container">
-	<div class="row">
+<div class="container-fluid">
+	<div class="row no-pad">
 		<div class="col-md-12">
-			<div class="container">
+			<div class="container-fluid">
 				<!-- MeetMe Room -->
 				<h1>Ruang Meeting</h1>
 				<!-- Join or create room -->
@@ -53,10 +48,10 @@ Here is the full source code: https://github.com/antonraharja/meetme
 			<div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row no-pad">
 		<div class="col-md-12">
-			<div class="container hide" id="joinroom">
-				<div class="row">
+			<div class="container-fluid hide" id="joinroom">
+				<div class="row no-pad">
 					<div class="col-md-12" id="controls">
 						<div class="hide" id="joinroomnow">
 							<div class="input-group">
@@ -71,42 +66,72 @@ Here is the full source code: https://github.com/antonraharja/meetme
 								<input autocomplete="off" class="form-control" autocomplete="off" type="text" aria-describedby="basic-addon2" placeholder="Nomor ruang meeting" id="roomnumber" onkeypress="return checkRoomNumber(this, event);"></input>
 							</div>
 							<br />
-							<!-- Share the room number to your partners -->
-							<span class="label label-default">Bagikan nomor ruangan nya ke teman mu</span>
-							<br /><br />
 							<!-- Join -->
 							<button class="btn btn-info" autocomplete="off" id="join">Masuk</button>
+							<br /><br />
+							<a href="https://twitter.com/intent/tweet?screen_name=antonrd" class="twitter-mention-button" data-related="antonrd">Tweet to @antonrd</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+							<a href="https://twitter.com/antonrd" class="twitter-follow-button" data-show-count="false">Follow @antonrd</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="container hide" id="videos">
-				<div class="row">
-					<div class="col-md-4">
+			<div class="container-fluid hide" id="videos">
+				<div class="row no-pad">
+					<div class="col-md-3">
 						<div id="videolocal"></div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div id="videoremote1"></div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div id="videoremote2"></div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div id="videoremote3"></div>
 					</div>
-					<div class="col-md-4">
+				</div>
+				<div class="row no-pad">
+					<div class="col-md-3">
 						<div id="videoremote4"></div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div id="videoremote5"></div>
+					</div>
+					<div class="col-md-3">
+						<div id="videoremote6"></div>
+					</div>
+					<div class="col-md-3">
+						<div id="videoremote7"></div>
+					</div>
+				</div>
+				<div class="row no-pad">
+					<div class="col-md-3">
+						<div id="videoremote8"></div>
+					</div>
+					<div class="col-md-3">
+						<div id="videoremote9"></div>
+					</div>
+					<div class="col-md-3">
+						<div id="videoremote10"></div>
+					</div>
+					<div class="col-md-3">
+						<div id="videoremote11"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootbox.min.js"></script>
+<script type="text/javascript" src="js/spin.min.js"></script>
+<script type="text/javascript" src="js/adapter.js" ></script>
+<script type="text/javascript" src="js/janus.js" ></script>
+<script type="text/javascript" src="js/meetme.js"></script>
 
 <!-- kurakura cinta kamu sampai mati.. -->
 

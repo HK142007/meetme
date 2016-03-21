@@ -4,7 +4,7 @@ var iceServers = [
 	{"urls": "turn:meetme.id", "credential": "public", "username": "public"}
 ];
 var videoWidth = 240;
-var maxVideoBox = 6;
+var maxVideoBox = 8;
 var maxBitRate = 96000;
 var debugLevel = "all"
 
@@ -198,7 +198,7 @@ $(document).ready(function() {
 							$('#videolocal').append('<button class="btn btn-info btn-xs" id="unpublish" style="position: absolute; top: 5px; right: 15%; margin: 15px;">S</button>');
 							$('#unpublish').click(unpublishOwnFeed);
 							// Add welcome notif
-							$('#notif').html(labelRoomNumber+myRoomNumber);
+							$('#notif').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
 						}
 						// $('#publisher').removeClass('hide').html(myDisplayName).show();
 						attachMediaStream($('#myvideo').get(0), stream);
