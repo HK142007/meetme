@@ -4,7 +4,7 @@ var iceServers = [
 	{"urls": "turn:meetme.id", "credential": "public", "username": "public"}
 ];
 var videoWidth = 240;
-var maxVideoBox = 8;
+var maxVideoBox = 12;
 var maxBitRate = 96000;
 var debugLevel = "all"
 
