@@ -472,7 +472,8 @@ if (navigator.mozGetUserMedia) {
               codec.name.toLowerCase() !== "pcmu" &&
               codec.name.toLowerCase() !== "h264" &&
               codec.name.toLowerCase() !== "x-h264uc" &&
-              codec.name.toLowerCase() !== "vp8")
+              codec.name.toLowerCase() !== "vp8" &&
+              codec.name.toLowerCase() !== "vp9")
             continue;
           var fmtp = lines.filter(fmtpFilter);
           codec.parameters = fmtp.length ? parseFmtp(fmtp[0]) : {};
