@@ -4,8 +4,6 @@ Online meeting room based on WebRTC powered by Janus WebRTC gateway.
 
 Item       | Data
 ---------- | ----------------------------------------
-Version    | 1
-Update     | 1603210800
 Maintainer | [Anton Raharja](http://antonraharja.com)
 License    | [MIT License](LICENSE.md)
 
