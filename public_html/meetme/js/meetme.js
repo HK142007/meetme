@@ -8,6 +8,8 @@ var videoWidth = 240;
 var maxVideoBox = 12;
 var maxBitRate = 96000;
 var debugLevel = "all"
+var audioCodec = "opus";
+var videoCodec = "vp8";
 
 //var labelEnterRoom = "Enter room number";
 var labelEnterRoom = "Masukkan nomor ruangan";
@@ -314,7 +316,7 @@ function joinRoomNumber() {
 			return;
 		}
 		
-		var create = { "request": "create", "token": "", "room": myRoomNumber, "ptype": "publisher", "description": labelRoomNumber+myRoomNumber, "publishers": maxVideoBox, "bitrate": maxBitRate, "is_private": true };
+		var create = { "request": "create", "token": "", "room": myRoomNumber, "ptype": "publisher", "description": labelRoomNumber+myRoomNumber, "publishers": maxVideoBox, "bitrate": maxBitRate, "audiocodec": audioCodec, "videocodec": videoCodec, "is_private": true };
 		Janus.debug("Create room request");
 		mcu.send({
 			"message": create, 
