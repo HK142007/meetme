@@ -1,10 +1,11 @@
 # meetme
 
-Online meeting for Janus WebRTC gateway.
+Online meeting room based on WebRTC powered by Janus WebRTC gateway.
 
 Item       | Data
 ---------- | ----------------------------------------
 Version    | 1
+Update     | 1603210800
 Maintainer | [Anton Raharja](http://antonraharja.com)
 License    | [MIT License](LICENSE.md)
 
@@ -12,9 +13,10 @@ License    | [MIT License](LICENSE.md)
 
 Changes up to today:
 
-- modification of videoroom plugin demo web app
-- add dynamic room creation
-- add labels for easy translation
+- Modification of videoroom plugin demo web app
+- Add dynamic room creation
+- Add labels for easy translation
+- Early work on enhancing the user interface
 
 # Usage
 
@@ -25,7 +27,7 @@ Enter your name and room number, click the join button and share the room number
 
 Installation steps:
 
-- drop all files in `public_html` to your own web document root or folder
-- make sure that the server has HTTPS enabled
-- modify source codes as you wish
-- should you need NOT to use [meetme.id](https://meetme.id) infrastructure then install [Janus WebRTC Gateway](https://janus.conf.meetecho.com/) your self
+- Drop all files in `public_html` to your own web document root or folder
+- Make sure that the server has HTTPS enabled
+- Modify source codes as you wish
+- Should you need NOT to use [meetme.id](https://meetme.id) infrastructure then install [Janus WebRTC Gateway](https://janus.conf.meetecho.com/) your self
