@@ -1,4 +1,4 @@
-var server = "wss://meetme.id:8989/janus";
+var server = "wss://meetme.id:8989";
 //var server = "https://meetme.id/gateway";
 var iceServers = [
 	{"urls": "stun:meetme.id"},
@@ -6,7 +6,7 @@ var iceServers = [
 ];
 var videoWidth = 240;
 var maxVideoBox = 12;
-var maxBitRate = 96000;
+var maxBitRate = 64000;
 var debugLevel = "all"
 var audioCodec = "opus";
 var videoCodec = "vp8";
