@@ -1,11 +1,13 @@
+body {
+	background-color: #0f0f0f;
+}
+
 .row.no-pad {
-	margin-right: 4px;
-	margin-left: 0px;
+	margin: 0px;
 }
 
 .row.no-pad > [class*='col-'] {
-	padding-right: 4px;
-	padding-left: 0px;
+	padding: 0px;
 }
 
 video {
@@ -17,20 +19,24 @@ video {
 }
 
 .videobox, .videobox-novideo {
-	background-color: #000000;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	
-	border-radius: 3px 3px 3px 3px;
-	-moz-border-radius: 3px 3px 3px 3px;
-	-webkit-border-radius: 3px 3px 3px 3px;
-	border: 0px solid #000000;
+	background-color: #0f0f0f;
+}
+
+.chatbox {
+	background-color: #f0f0f0;
+	height: 100%;
+	width: 267px;
 }
 
 #notif {
 	font-size: larger;
+	margin-top: 15px;
 }
 
 #welcomeinfo {
-	margin-top: 10px;
+	margin-top: 15px;
+}
+
+#videolocal, div[id*='videoremote'] {
+	position: relative;
 }

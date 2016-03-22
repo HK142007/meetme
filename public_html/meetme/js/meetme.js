@@ -3,7 +3,7 @@ var iceServers = [
 	{"urls": "stun:meetme.id"},
 	{"urls": "turn:meetme.id", "credential": "public", "username": "public"}
 ];
-var videoBoxWidth = "100%";
+var videoBoxWidth = 267;
 var videoBoxHeight = 200;
 var maxVideoBox = 12;
 var maxBitRate = 64000;
@@ -19,11 +19,11 @@ var labelDisplayName = "Masukkan nama anda";
 
 //var labelNoRemoteVideo = "No remote video available";
 //var labelNoRemoteVideo = "Tidak ada video";
-var labelNoRemoteVideo = "<img src='../images/novideo.jpg' width='100%' height='180'>";
+var labelNoRemoteVideo = "<img src='../images/novideo.jpg' width='"+videoBoxWidth+"' height='"+videoBoxHeight+"'>";
 
 //var labelNoWebcam = "No webcam available";
 //var labelNoWebcam = "Tidak ada webcam";
-var labelNoWebcam = "<img src='../images/novideo.jpg' width='100%' height='180'>";
+var labelNoWebcam = "<img src='../images/novideo.jpg' width='"+videoBoxWidth+"' height='"+videoBoxHeight+"'>";
 
 //var labelNoWebRTC = "No WebRTC support available";
 var labelNoWebRTC = "Tidak ada dukungan WebRTC";
@@ -195,13 +195,13 @@ $(document).ready(function() {
 						if($('#myvideo').length === 0) {
 							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay muted="muted"/>');
 							// Add a 'displayname' label
-							$('#videolocal').append('<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+myDisplayName+'</span>');
-							// Add a 'mute' button
-							$('#videolocal').append('<button class="btn btn-info btn-xs" id="mute" style="position: absolute; top: 5px; right: 22%; margin: 15px;">M</button>');
-							$('#mute').click(toggleMute)
+							$('#videolocal').append('<span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span>');
 							// Add an 'unpublish' button
-							$('#videolocal').append('<button class="btn btn-info btn-xs" id="unpublish" style="position: absolute; top: 5px; right: 15%; margin: 15px;">S</button>');
+							$('#videolocal').append('<button class="btn btn-info btn-xs" id="unpublish" style="position: absolute; top: 15px; right: 15px;">S</button>');
 							$('#unpublish').click(unpublishOwnFeed);
+							// Add a 'mute' button
+							$('#videolocal').append('<button class="btn btn-info btn-xs" id="mute" style="position: absolute; top: 40px; right: 15px;">M</button>');
+							$('#mute').click(toggleMute)
 							// Add welcome notif
 							$('#notif').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
 						}
@@ -455,9 +455,9 @@ function newRemoteFeed(id, display) {
 			}
 			$('#videoremote'+remoteFeed.rfindex).append(
 				// Add a 'displayname' label
-				'<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+remoteFeed.rfdisplay+'</span>' +
-				'<span class="label label-default hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 5px; left: 15%; margin: 15px;"></span>' +
-				'<span class="label label-default hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 5px; right: 15%; margin: 15px;"></span>');
+				'<span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+remoteFeed.rfdisplay+'</span>' +
+				'<span class="label label-default hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 15px; left: 15px;"></span>' +
+				'<span class="label label-default hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 15px; right: 15px;"></span>');
 			$("#remotevideo"+remoteFeed.rfindex).bind("playing", function () {
 				$('#waitingvideo'+remoteFeed.rfindex).remove();
 				$('#remotevideo'+remoteFeed.rfindex).removeClass('hide');
