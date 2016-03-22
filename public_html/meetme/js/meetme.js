@@ -202,6 +202,8 @@ $(document).ready(function() {
 							// Add a 'mute' button
 							$('#videolocal').append('<button class="btn btn-info btn-xs" id="mute" style="position: absolute; top: 40px; right: 15px;">M</button>');
 							$('#mute').click(toggleMute)
+							// fixme anton - starts muted
+							toggleMute();
 							// Add welcome notif
 							$('#notif').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
 						}
