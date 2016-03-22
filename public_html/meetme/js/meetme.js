@@ -1,15 +1,15 @@
 var server = "wss://meetme.id/gateway";
-//var server = "https://meetme.id/gateway";
 var iceServers = [
 	{"urls": "stun:meetme.id"},
 	{"urls": "turn:meetme.id", "credential": "public", "username": "public"}
 ];
-var videoWidth = 240;
+var videoWidth = "100%";
+var videoHeight = 200;
 var maxVideoBox = 12;
 var maxBitRate = 64000;
 var debugLevel = "all"
 var audioCodec = "opus";
-var videoCodec = "vp8";
+var videoCodec = "vp9";
 
 //var labelEnterRoom = "Enter room number";
 var labelEnterRoom = "Masukkan nomor ruangan";
@@ -191,7 +191,7 @@ $(document).ready(function() {
 						$('#joinroom').hide();
 						$('#videos').removeClass('hide').show();
 						if($('#myvideo').length === 0) {
-							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="100%" height="'+videoWidth+'" autoplay muted="muted"/>');
+							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="'+videoWidth+'" height="'+videoHeight+'" autoplay muted="muted"/>');
 							// Add a 'displayname' label
 							$('#videolocal').append('<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+myDisplayName+'</span>');
 							// Add a 'mute' button
@@ -458,8 +458,8 @@ function newRemoteFeed(id, display) {
 			Janus.debug("Remote feed #" + remoteFeed.rfindex);
 			if($('#remotevideo'+remoteFeed.rfindex).length === 0) {
 				// No remote video yet
-				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered" id="waitingvideo' + remoteFeed.rfindex + '" width="100%" height="'+videoWidth+'" />');
-				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered relative hide" id="remotevideo' + remoteFeed.rfindex + '" width="100%" height="'+videoWidth+'" autoplay/>');
+				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered" id="waitingvideo' + remoteFeed.rfindex + '" width="'+videoWidth+'" height="'+videoHeight+'" />');
+				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered relative hide" id="remotevideo' + remoteFeed.rfindex + '" width="'+videoWidth+'" height="'+videoHeight+'" autoplay/>');
 			}
 			$('#videoremote'+remoteFeed.rfindex).append(
 				// Add a 'displayname' label
