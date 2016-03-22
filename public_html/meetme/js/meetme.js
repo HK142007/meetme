@@ -212,11 +212,7 @@ $(document).ready(function() {
 						if(videoTracks === null || videoTracks === undefined || videoTracks.length === 0) {
 							// No webcam
 							$('#myvideo').hide();
-							$('#videolocal').append(
-								'<div class="no-video-container">' +
-									'<i class="fa fa-video-camera fa-5 no-video-icon" style="height: 100%;"></i>' +
-									'<span class="no-video-text" style="font-size: 16px;">'+labelNoWebcam+'</span>' +
-								'</div>');
+							$('#videolocal').append('<div class="videobox-novideo">'+labelNoWebcam+'</div>');
 						}
 					},
 					onremotestream: function(stream) {
@@ -466,8 +462,8 @@ function newRemoteFeed(id, display) {
 			$('#videoremote'+remoteFeed.rfindex).append(
 				// Add a 'displayname' label
 				'<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+remoteFeed.rfdisplay+'</span>' +
-				'<span class="label label-default hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; left: 15%; margin: 15px;"></span>' +
-				'<span class="label label-default hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 30px; right: 15%; margin: 15px;"></span>');
+				'<span class="label label-default hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 5px; left: 15%; margin: 15px;"></span>' +
+				'<span class="label label-default hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 5px; right: 15%; margin: 15px;"></span>');
 			// Show the video, hide the spinner and show the resolution when we get a playing event
 			$("#remotevideo"+remoteFeed.rfindex).bind("playing", function () {
 				if(remoteFeed.spinner !== undefined && remoteFeed.spinner !== null)
@@ -486,25 +482,21 @@ function newRemoteFeed(id, display) {
 						$('#curres'+remoteFeed.rfindex).removeClass('hide').text(width+'x'+height).show();
 					}, 2000);
 				}
+				if(webrtcDetectedBrowser == "chrome" || webrtcDetectedBrowser == "firefox") {
+					$('#curbitrate'+remoteFeed.rfindex).removeClass('hide').show();
+					bitrateTimer[remoteFeed.rfindex] = setInterval(function() {
+						// Display updated bitrate, if supported
+						var bitrate = remoteFeed.getBitrate();
+						$('#curbitrate'+remoteFeed.rfindex).text(bitrate);
+					}, 1000);
+				}
 			});
 			attachMediaStream($('#remotevideo'+remoteFeed.rfindex).get(0), stream);
 			var videoTracks = stream.getVideoTracks();
 			if(videoTracks === null || videoTracks === undefined || videoTracks.length === 0 || videoTracks[0].muted) {
 				// No remote video
 				$('#remotevideo'+remoteFeed.rfindex).hide();
-				$('#videoremote'+remoteFeed.rfindex).append(
-					'<div class="no-video-container">' +
-						'<i class="fa fa-video-camera fa-5 no-video-icon" style="height: 100%;"></i>' +
-						'<span class="no-video-text" style="font-size: 16px;">'+labelNoRemoteVideo+'</span>' +
-					'</div>');
-			}
-			if(webrtcDetectedBrowser == "chrome" || webrtcDetectedBrowser == "firefox") {
-				$('#curbitrate'+remoteFeed.rfindex).removeClass('hide').show();
-				bitrateTimer[remoteFeed.rfindex] = setInterval(function() {
-					// Display updated bitrate, if supported
-					var bitrate = remoteFeed.getBitrate();
-					$('#curbitrate'+remoteFeed.rfindex).text(bitrate);
-				}, 1000);
+				$('#videoremote'+remoteFeed.rfindex).append('<div class="videobox-novideo">'+labelNoRemoteVideo+'</div>');
 			}
 		},
 		oncleanup: function() {
@@ -515,8 +507,9 @@ function newRemoteFeed(id, display) {
 			$('#waitingvideo'+remoteFeed.rfindex).remove();
 			$('#curbitrate'+remoteFeed.rfindex).remove();
 			$('#curres'+remoteFeed.rfindex).remove();
-			if(bitrateTimer[remoteFeed.rfindex] !== null && bitrateTimer[remoteFeed.rfindex] !== null) 
+			if(bitrateTimer[remoteFeed.rfindex] !== null && bitrateTimer[remoteFeed.rfindex] !== null) {
 				clearInterval(bitrateTimer[remoteFeed.rfindex]);
+			}
 			bitrateTimer[remoteFeed.rfindex] = null;
 		}
 	})

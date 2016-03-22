@@ -16,7 +16,7 @@ video {
 	transform: scale(-1, 1);
 }
 
-.videobox {
+.videobox, .videobox-novideo {
 	background-color: #0f1f2f;
 	padding-top: 10px;
 	padding-bottom: 10px;
