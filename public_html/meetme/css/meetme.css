@@ -28,6 +28,17 @@ video {
 	width: 267px;
 }
 
+#restartbox {
+	width: 267px;
+	height: 200px;
+	background-image: url('../images/novideo.jpg');
+	background-size: 267px 200px;
+}
+
+#restartbox p {
+	margin-left: 15px;
+}
+
 #notif {
 	font-size: larger;
 	margin-top: 15px;

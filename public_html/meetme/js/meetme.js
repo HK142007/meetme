@@ -29,7 +29,7 @@ var labelNoWebcam = "<img src='../images/novideo.jpg' width='"+videoBoxWidth+"' 
 var labelNoWebRTC = "Tidak ada dukungan WebRTC";
 
 //var labelStartPublishing = "Start publishing";
-var labelStartPublishing = "Masuk lagi";
+var labelStartPublishing = "Masuk";
 
 //var labelRoom = "Room";
 var labelRoom = "Ruangan";
@@ -222,7 +222,7 @@ $(document).ready(function() {
 					},
 					oncleanup: function() {
 						Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
-						$('#videolocal').html('<p><span class="label label-default" id="displayname">'+myDisplayName+'</span></p><p><button id="publish" class="btn btn-primary">'+labelStartPublishing+'</button></p>');
+						$('#videolocal').html('<div id="restartbox"><span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span><br /><button class="btn btn-info btn-xs" id="publish" style="position: absolute; top: 15px; right: 15px;">'+labelStartPublishing+'</button</div>');
 						$('#publish').click(function() { 
 							publishOwnFeed(true); 
 						});
