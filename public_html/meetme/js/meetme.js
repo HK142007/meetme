@@ -413,12 +413,6 @@ function newRemoteFeed(id, display) {
 					}
 					remoteFeed.rfid = msg["id"];
 					remoteFeed.rfdisplay = msg["display"];
-					if(remoteFeed.spinner === undefined || remoteFeed.spinner === null) {
-						var target = document.getElementById('videoremote'+remoteFeed.rfindex);
-						remoteFeed.spinner = new Spinner({top:100}).spin(target);
-					} else {
-						remoteFeed.spinner.spin();
-					}
 					Janus.log("Successfully attached to feed " + remoteFeed.rfid + " (" + remoteFeed.rfdisplay + ") in room " + msg["room"]);
 					$('#remote'+remoteFeed.rfindex).removeClass('hide').html(remoteFeed.rfdisplay).show();
 				} else if(msg["error"] !== undefined && msg["error"] !== null) {
@@ -464,11 +458,7 @@ function newRemoteFeed(id, display) {
 				'<span class="label label-success" id="displayname" style="position: absolute; top: 5px; left: 15%; margin: 15px;">'+remoteFeed.rfdisplay+'</span>' +
 				'<span class="label label-default hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 5px; left: 15%; margin: 15px;"></span>' +
 				'<span class="label label-default hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 5px; right: 15%; margin: 15px;"></span>');
-			// Show the video, hide the spinner and show the resolution when we get a playing event
 			$("#remotevideo"+remoteFeed.rfindex).bind("playing", function () {
-				if(remoteFeed.spinner !== undefined && remoteFeed.spinner !== null)
-					remoteFeed.spinner.stop();
-				remoteFeed.spinner = null;
 				$('#waitingvideo'+remoteFeed.rfindex).remove();
 				$('#remotevideo'+remoteFeed.rfindex).removeClass('hide');
 				var width = this.videoWidth;
@@ -501,9 +491,6 @@ function newRemoteFeed(id, display) {
 		},
 		oncleanup: function() {
 			Janus.log(" ::: Got a cleanup notification (remote feed " + id + ") :::");
-			if(remoteFeed.spinner !== undefined && remoteFeed.spinner !== null)
-				remoteFeed.spinner.stop();
-			remoteFeed.spinner = null;
 			$('#waitingvideo'+remoteFeed.rfindex).remove();
 			$('#curbitrate'+remoteFeed.rfindex).remove();
 			$('#curres'+remoteFeed.rfindex).remove();
