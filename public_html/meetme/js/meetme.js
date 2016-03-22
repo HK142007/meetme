@@ -19,11 +19,11 @@ var labelDisplayName = "Masukkan nama anda";
 
 //var labelNoRemoteVideo = "No remote video available";
 //var labelNoRemoteVideo = "Tidak ada video";
-var labelNoRemoteVideo = "<img src='../images/novideo.jpg' width='"+videoBoxWidth+"' height='"+videoBoxHeight+"'>";
+var labelNoRemoteVideo = "<img src='../images/novideo.jpg' width='100%' height='180'>";
 
 //var labelNoWebcam = "No webcam available";
 //var labelNoWebcam = "Tidak ada webcam";
-var labelNoWebcam = "<img src='../images/novideo.jpg' width='"+videoBoxWidth+"' height='"+videoBoxHeight+"'>";
+var labelNoWebcam = "<img src='../images/novideo.jpg' width='100%' height='180'>";
 
 //var labelNoWebRTC = "No WebRTC support available";
 var labelNoWebRTC = "Tidak ada dukungan WebRTC";
