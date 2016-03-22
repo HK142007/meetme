@@ -9,7 +9,7 @@ var maxVideoBox = 12;
 var maxBitRate = 64000;
 var debugLevel = "all"
 var audioCodec = "opus";
-var videoCodec = "vp9";
+var videoCodec = "vp8";
 
 //var labelEnterRoom = "Enter room number";
 var labelEnterRoom = "Masukkan nomor ruangan";
@@ -341,9 +341,8 @@ function publishOwnFeed(useAudio) {
 	// Publish our stream
 	$('#publish').attr('disabled', true).unbind('click');
 	mcu.createOffer({
-		media: { audioRecv: false, videoRecv: false, audioSend: useAudio, videoSend: true, video: "lowres" },	// Publishers are sendonly
+		media: { audioRecv: false, videoRecv: false, audioSend: useAudio, videoSend: true, video: "lowres", data: true },	// Publishers are sendonly
 		trickle: true,
-		data: true,
 		success: function(jsep) {
 			Janus.debug("Got publisher SDP!");
 			Janus.debug(jsep);
@@ -429,9 +428,8 @@ function newRemoteFeed(id, display) {
 				// Answer and attach
 				remoteFeed.createAnswer({
 					jsep: jsep,
-					media: { audioSend: false, videoSend: false, video: "lowres" },	// We want recvonly audio/video
+					media: { audioSend: false, videoSend: false, video: "lowres", data: true },	// We want recvonly audio/video
 					trickle: true,
-					data: true,
 					success: function(jsep) {
 						Janus.debug("Got SDP!");
 						Janus.debug(jsep);
