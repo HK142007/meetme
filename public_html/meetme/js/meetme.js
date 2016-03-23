@@ -54,6 +54,12 @@ var labelMuteOn = "<i class='glyphicon glyphicon-volume-up'></i>";
 // labelMuteOff means mute is actually ON and publisher will NOT send the audio
 var labelMuteOff = "<i class='glyphicon glyphicon-volume-off'></i>";
 
+// labelPauseOn means mute is OFF, publisher will send the video
+var labelPauseOn = "<i class='glyphicon glyphicon-facetime-video'></i>";
+
+// labelPauseOff means mute is actually ON and publisher will NOT send the video
+var labelPauseOff = "<i class='glyphicon glyphicon-pause'></i>";
+
 // --- DO NOT TOUCH BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING ---
 
 var janus = null;
@@ -210,6 +216,9 @@ $(document).ready(function() {
 							// Add a 'mute' button
 							$('#videolocal').append('<button class="btn btn-info btn-xs" id="mute" style="position: absolute; top: 40px; right: 15px;">'+labelMuteOn+'</button>');
 							$('#mute').click(toggleMute)
+							// Add a 'pause' button
+							$('#videolocal').append('<button class="btn btn-info btn-xs" id="pause" style="position: absolute; top: 65px; right: 15px;">'+labelPauseOn+'</button>');
+							$('#pause').click(togglePause)
 							// fixme anton - starts muted
 							toggleMute();
 							// Add welcome notif
@@ -371,7 +380,7 @@ function publishOwnFeed(useAudio) {
 
 function toggleMute() {
 	var muted = mcu.isAudioMuted();
-	Janus.log((muted ? "Unmuting" : "Muting") + " local stream...");
+	Janus.log((muted ? "Unmuting" : "Muting") + " audio local stream...");
 	if(muted) {
 		mcu.unmuteAudio();
 	} else {
@@ -383,6 +392,23 @@ function toggleMute() {
 		$('#mute').removeClass('btn-info').addClass('btn-danger').html(labelMuteOff);
 	} else {
 		$('#mute').removeClass('btn-danger').addClass('btn-info').html(labelMuteOn);
+	}
+}
+
+function togglePause() {
+	var muted = mcu.isVideoMuted();
+	Janus.log((muted ? "Unmuting" : "Muting") + " video local stream...");
+	if(muted) {
+		mcu.unmuteVideo();
+	} else {
+		mcu.muteVideo();
+	}
+	muted = mcu.isVideoMuted();
+
+	if (muted) {
+		$('#pause').removeClass('btn-info').addClass('btn-danger').html(labelPauseOff);
+	} else {
+		$('#pause').removeClass('btn-danger').addClass('btn-info').html(labelPauseOn);
 	}
 }
 
