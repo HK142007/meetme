@@ -27,5 +27,9 @@ Installation steps:
 
 - Drop all files in `public_html` to your own web document root or folder
 - Make sure that the server has HTTPS enabled
-- Modify source codes as you wish
-- Should you need NOT to use [meetme.id](https://meetme.id) infrastructure then install [Janus WebRTC Gateway](https://janus.conf.meetecho.com/) your self
+- Modify source codes, mainly `index.html`, `meetme.css` and `meetme.js`, as you wish
+
+Please note:
+
+- You do not need to always use [meetme.id](https://meetme.id) infrastructure, you can install [Janus WebRTC Gateway](https://janus.conf.meetecho.com/) on your server and use it instead
+- You also don't need to use STUN/TURN if your Janus server is not in the Internet and not serving clients over the Internet, comment `iceServers` option on `meetme.js`
