@@ -242,10 +242,12 @@ $(document).ready(function() {
 					},
 					oncleanup: function() {
 						Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
-						$('#videolocal').html('<div id="restartbox"><span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span><br /><button class="btn btn-info btn-xs" id="publish" style="position: absolute; top: 15px; right: 15px;">'+labelStartPublishing+'</button</div>');
-						$('#publish').click(function() { 
-							publishOwnFeed(true); 
-						});
+						// fixme anton - just reload the window
+						window.location.reload();
+						//$('#videolocal').html('<div id="restartbox"><span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span><br /><button class="btn btn-info btn-xs" id="publish" style="position: absolute; top: 15px; right: 15px;">'+labelStartPublishing+'</button</div>');
+						//$('#publish').click(function() {
+						//	publishOwnFeed(true);
+						//});
 					}
 				});
 			},
@@ -381,6 +383,19 @@ function publishOwnFeed(useAudio) {
 	});
 }
 
+function unpublishOwnFeed() {
+	// Unpublish our stream
+	bootbox.confirm(labelConfirmExit, function(result) {
+		if (result) {
+			$('#unpublish').attr('disabled', true).unbind('click');
+			var unpublish = { "request": "unpublish", "token": "" };
+			mcu.send({"message": unpublish});
+			// fixme anton - reload window after cleanup
+			//window.location.reload();
+		}
+	});
+}
+
 function toggleMute() {
 	var muted = mcu.isAudioMuted();
 	Janus.log((muted ? "Unmuting" : "Muting") + " audio local stream...");
@@ -413,18 +428,6 @@ function togglePause() {
 	} else {
 		$('#pause').removeClass('btn-danger').addClass('btn-info').html(labelPauseOn);
 	}
-}
-
-function unpublishOwnFeed() {
-	// Unpublish our stream
-	bootbox.confirm(labelConfirmExit, function(result) {
-		if (result) {
-			//$('#unpublish').attr('disabled', true).unbind('click');
-			//var unpublish = { "request": "unpublish", "token": "" };
-			//mcu.send({"message": unpublish});
-			window.location.reload();
-		}
-	});
 }
 
 function newRemoteFeed(id, display) {
