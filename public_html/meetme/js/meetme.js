@@ -205,7 +205,7 @@ $(document).ready(function() {
 							// fixme anton - starts muted
 							toggleMute();
 							// Add welcome notif
-							$('#notif').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
+							$('#notifbox').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
 						}
 						// $('#publisher').removeClass('hide').html(myDisplayName).show();
 						attachMediaStream($('#myvideo').get(0), stream);
@@ -268,7 +268,7 @@ function joinRoomNumber() {
 		var roomNumber = $('#roomnumber').val();
 
 		if(displayName === "") {
-			$('#notif')
+			$('#notifbox')
 				.removeClass().addClass('label label-danger')
 				.html(labelDisplayName);
 			$('#displayname').removeAttr('disabled');
@@ -276,7 +276,7 @@ function joinRoomNumber() {
 			$('#join').removeAttr('disabled').click(joinRoomNumber);
 			return;
 		} else if (roomNumber === "") {
-			$('#notif')
+			$('#notifbox')
 				.removeClass().addClass('label label-danger')
 				.html(labelEnterRoom);
 			$('#displayname').removeAttr('disabled');
@@ -286,7 +286,7 @@ function joinRoomNumber() {
 		}
 
 		if(/[^A-Za-z0-9\s_-]/.test(displayName)) {
-			$('#notif')
+			$('#notifbox')
 				.removeClass().addClass('label label-danger')
 				.html(labelDisplayNameAlphanumeric);
 			$('#displayname').removeAttr('disabled');
@@ -296,7 +296,7 @@ function joinRoomNumber() {
 		}
 
 		if(/[^0-9]/.test(roomNumber)) {
-			$('#notif')
+			$('#notifbox')
 				.removeClass().addClass('label label-danger')
 				.html(labelRoomNumericOnly);
 			$('#displayname').removeAttr('disabled');
@@ -307,7 +307,7 @@ function joinRoomNumber() {
 
 		myRoomNumber = parseInt(roomNumber);
 		if (myRoomNumber < 1 || myRoomNumber > 9999999999) {
-			$('#notif')
+			$('#notifbox')
 				.removeClass().addClass('label label-danger')
 				.html(labelInvalidRoomNumber);
 			$('#displayname').removeAttr('disabled');
