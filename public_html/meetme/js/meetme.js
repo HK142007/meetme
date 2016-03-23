@@ -9,7 +9,7 @@ var maxVideoBox = 12;
 var maxBitRate = 64000;
 var debugLevel = "all"
 var audioCodec = "opus";
-var videoCodec = "vp9";
+var videoCodec = "vp8";
 
 //var labelEnterRoom = "Enter room number";
 var labelEnterRoom = "Masukkan nomor ruangan";
