@@ -378,7 +378,12 @@ function toggleMute() {
 		mcu.muteAudio();
 	}
 	muted = mcu.isAudioMuted();
-	$('#mute').html(muted ? labelMuteOff : labelMuteOn);
+	
+	if (muted) {
+		$('#mute').removeClass('btn-info').addClass('btn-danger').html(labelMuteOff);
+	} else {
+		$('#mute').removeClass('btn-danger').addClass('btn-info').html(labelMuteOn);
+	}
 }
 
 function unpublishOwnFeed() {
