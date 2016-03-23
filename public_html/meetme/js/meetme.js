@@ -46,6 +46,12 @@ var labelRoomNumericOnly = "Ruangan hanya angka saja";
 //var labelDisplayNameAlphanumeric = "Name is alphanumeric and spaces only";
 var labelDisplayNameAlphanumeric = "Nama hanya boleh alphanumeric dan spasi saja";
 
+// labelMuteOn means mute is OFF, publisher will send the audio
+var labelMuteOn = "<i class='glyphicon glyphicon-volume-up'></i>";
+
+// labelMuteOff means mute is actually ON and publisher will NOT send the audio
+var labelMuteOff = "<i class='glyphicon glyphicon-volume-off'></i>";
+
 // --- DO NOT TOUCH BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING ---
 
 var janus = null;
@@ -200,7 +206,7 @@ $(document).ready(function() {
 							$('#videolocal').append('<button class="btn btn-info btn-xs" id="unpublish" style="position: absolute; top: 15px; right: 15px;">S</button>');
 							$('#unpublish').click(unpublishOwnFeed);
 							// Add a 'mute' button
-							$('#videolocal').append('<button class="btn btn-info btn-xs" id="mute" style="position: absolute; top: 40px; right: 15px;">M</button>');
+							$('#videolocal').append('<button class="btn btn-info btn-xs" id="mute" style="position: absolute; top: 40px; right: 15px;">'+labelMuteOn+'</button>');
 							$('#mute').click(toggleMute)
 							// fixme anton - starts muted
 							toggleMute();
@@ -370,7 +376,7 @@ function toggleMute() {
 		mcu.muteAudio();
 	}
 	muted = mcu.isAudioMuted();
-	$('#mute').html(muted ? "Unmute" : "M");
+	$('#mute').html(muted ? labelMuteOff : labelMuteOn);
 }
 
 function unpublishOwnFeed() {
