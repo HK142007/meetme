@@ -60,6 +60,9 @@ var labelPauseOn = "<i class='glyphicon glyphicon-facetime-video'></i>";
 // labelPauseOff means mute is actually ON and publisher will NOT send the video
 var labelPauseOff = "<i class='glyphicon glyphicon-pause'></i>";
 
+//var labelConfirmExit = "Are you sure you want to exit ?";
+var labelConfirmExit = "Yakin ingin keluar dari ruang meeting ?";
+
 // --- DO NOT TOUCH BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING ---
 
 var janus = null;
@@ -414,9 +417,14 @@ function togglePause() {
 
 function unpublishOwnFeed() {
 	// Unpublish our stream
-	$('#unpublish').attr('disabled', true).unbind('click');
-	var unpublish = { "request": "unpublish", "token": "" };
-	mcu.send({"message": unpublish});
+	bootbox.confirm(labelConfirmExit, function(result) {
+		if (result) {
+			//$('#unpublish').attr('disabled', true).unbind('click');
+			//var unpublish = { "request": "unpublish", "token": "" };
+			//mcu.send({"message": unpublish});
+			window.location.reload();
+		}
+	});
 }
 
 function newRemoteFeed(id, display) {
