@@ -31,6 +31,8 @@ var labelNoWebRTC = "Tidak ada dukungan WebRTC";
 //var labelStartPublishing = "Start publishing";
 var labelStartPublishing = "Masuk";
 
+var labelStopPublishing = "<i class='glyphicon glyphicon-off'></i>";
+
 //var labelRoom = "Room";
 var labelRoom = "Ruangan";
 
@@ -203,7 +205,7 @@ $(document).ready(function() {
 							// Add a 'displayname' label
 							$('#videolocal').append('<span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span>');
 							// Add an 'unpublish' button
-							$('#videolocal').append('<button class="btn btn-info btn-xs" id="unpublish" style="position: absolute; top: 15px; right: 15px;">S</button>');
+							$('#videolocal').append('<button class="btn btn-info btn-xs" id="unpublish" style="position: absolute; top: 15px; right: 15px;">'+labelStopPublishing+'</button>');
 							$('#unpublish').click(unpublishOwnFeed);
 							// Add a 'mute' button
 							$('#videolocal').append('<button class="btn btn-info btn-xs" id="mute" style="position: absolute; top: 40px; right: 15px;">'+labelMuteOn+'</button>');
