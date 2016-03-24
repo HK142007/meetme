@@ -3,8 +3,9 @@ var iceServers = [
 	{"urls": "stun:stun.meetme.id:443"},
 	{"urls": "turn:turn.meetme.id:443?transport=tcp", "credential": "meetme", "username": "meetme"}
 ];
-var videoBoxWidth = 267;
-var videoBoxHeight = 200;
+var videoBoxWidth = 100;
+var videoBoxHeight = 130;
+var videoBoxLargeHeight = 550;
 var maxVideoBox = 12;
 var maxBitRate = 64000;
 var debugLevel = "all"
@@ -210,7 +211,7 @@ $(document).ready(function() {
 						$('#joinroom').hide();
 						$('#videos').removeClass('hide').show();
 						if($('#myvideo').length === 0) {
-							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay muted="muted"/>');
+							$('#videolocal').append('<video class="videobox rounded centered col-sm-12" id="myvideo" height="'+videoBoxLargeHeight+'" autoplay muted="muted"/>');
 							// Add a 'displayname' label
 							$('#videolocal').append('<span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span>');
 							// Add an 'unpublish' button
@@ -263,6 +264,22 @@ $(document).ready(function() {
 		})
 	}})
 })
+
+function setLargeVideo(id){
+	$("#videolocal video").attr('height', videoBoxHeight);
+	for(var i=1;i <= (maxVideoBox-1);i++){
+		$("#videoremote"+i+"  video").attr('height', videoBoxHeight);
+	}
+	$("#"+id+" video").attr('height', videoBoxLargeHeight);
+	
+	var largeVideo = $("#video-col-large").html();
+	var smallVideo = $("#"+id).parent().html();
+	var smallVideoId = $("#"+id).parent().attr('id');
+	
+	$("#video-col-large").html(smallVideo);
+	$("#"+smallVideoId).html(largeVideo);
+	
+}
 
 function checkRoomNumber(field, event) {
 	var theCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
@@ -500,8 +517,8 @@ function newRemoteFeed(id, display) {
 			Janus.debug("Remote feed #" + remoteFeed.rfindex);
 			if($('#remotevideo'+remoteFeed.rfindex).length === 0) {
 				// No remote video yet
-				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered" id="waitingvideo' + remoteFeed.rfindex + '" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" />');
-				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered relative hide" id="remotevideo' + remoteFeed.rfindex + '" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay/>');
+				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered  col-sm-12" id="waitingvideo' + remoteFeed.rfindex + '" height="'+videoBoxHeight+'" />');
+				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered relative hide  col-sm-12" id="remotevideo' + remoteFeed.rfindex +'" height="'+videoBoxHeight+'" autoplay/>');
 			}
 			$('#videoremote'+remoteFeed.rfindex).append(
 				// Add a 'displayname' label

@@ -84,18 +84,49 @@ Here is the full source code: https://github.com/antonraharja/meetme
 			<div class="container-fluid hide" id="videos">
 				<div class="row no-pad">
 					<div class="col-md-9">
-						<div class="pull-left" id="videolocal"></div>
-						<div class="pull-left" id="videoremote1"></div>
-						<div class="pull-left" id="videoremote2"></div>
-						<div class="pull-left" id="videoremote3"></div>
-						<div class="pull-left" id="videoremote4"></div>
-						<div class="pull-left" id="videoremote5"></div>
-						<div class="pull-left" id="videoremote6"></div>
-						<div class="pull-left" id="videoremote7"></div>
-						<div class="pull-left" id="videoremote8"></div>
-						<div class="pull-left" id="videoremote9"></div>
-						<div class="pull-left" id="videoremote10"></div>
-						<div class="pull-left" id="videoremote11"></div>
+						<div class="col-md-8" >
+							<div id="video-col-large"  style="max-height:550px;">
+								<div class="row local-video" onclick="setLargeVideo('videolocal')" id="videolocal"></div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="row" style="max-height:550px;overflow:auto;background-color:grey">
+									<div id="video-col-1">
+										<div class="row" onclick="setLargeVideo('videoremote1')" id="videoremote1"></div>
+									</div>
+									<div id="video-col-2">
+										<div class="row" onclick="setLargeVideo('videoremote2')" id="videoremote2"></div>
+									</div>
+									<div id="video-col-3">
+										<div class="row" onclick="setLargeVideo('videoremote3')" id="videoremote3"></div>
+									</div>
+									<div id="video-col-4">
+										<div class="row" onclick="setLargeVideo('videoremote4')" id="videoremote4"></div>
+									</div>
+									<div id="video-col-5">
+										<div class="row" onclick="setLargeVideo('videoremote5')" id="videoremote5"></div>
+									</div>
+									<div id="video-col-6">
+										<div class="row"  onclick="setLargeVideo('videoremote6')" id="videoremote6"></div>
+									</div>
+									<div id="video-col-7">
+										<div class="row"  onclick="setLargeVideo('videoremote7')" id="videoremote7"></div>
+									</div>
+									<div id="video-col-8">
+										<div class="row"  onclick="setLargeVideo('videoremote8')" id="videoremote8"></div>
+									</div>
+									<div id="video-col-9">
+										<div class="row" onclick="setLargeVideo('videoremote9')" id="videoremote9"></div>
+									</div>
+									<div id="video-col-10">
+										<div class="row"  onclick="setLargeVideo('videoremote10')" id="videoremote10"></div>
+									</div>
+									<div id="video-col-11">
+										<div class="row"  onclick="setLargeVideo('videoremote11')" id="videoremote11"></div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="col-md-3">
 						<div id="chatbox"></div>

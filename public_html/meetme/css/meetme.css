@@ -50,4 +50,8 @@ video {
 
 #videolocal, div[id*='videoremote'] {
 	position: relative;
+	margin-top:0 !important;
+	margin-bottom:1em!important;
+	margin-left:0!important;
+	margin-right:0!important;
 }
