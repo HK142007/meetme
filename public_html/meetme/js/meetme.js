@@ -8,10 +8,10 @@ var videoBoxHeight = 120;
 var videoBoxLargeWidth = 640;
 var videoBoxLargeHeight = 480;
 var maxVideoBox = 12;
-var maxBitRate = 64000;
+var maxBitRate = 56000;
 var debugLevel = "all"
 var audioCodec = "opus";
-var videoCodec = "vp8";
+var videoCodec = "vp9";
 
 //var labelEnterRoom = "Enter room number";
 var labelEnterRoom = "Masukkan nomor ruangan";
