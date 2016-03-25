@@ -16,16 +16,22 @@ video {
 	-o-transform: scale(-1, 1);
 	-ms-transform: scale(-1, 1);
 	transform: scale(-1, 1);
+	max-width: 640px;
+	max-height: 480px;
+	background-color: #bdbdbd;
+	margin: 0px !important;
+	padding: 0px !important;
 }
 
 .videobox, .videobox-novideo {
-	background-color: #bdbdbd;
+	margin: 0px !important;
+	padding: 0px !important;
 }
 
 .chatbox {
 	background-color: #cfdbdc;
-	max-height: 550px;
-	width: 267px;
+	/* max-width: 400px;
+	width: 400px; */
 }
 
 #mute, #pause, #unpublish {
@@ -33,10 +39,13 @@ video {
 }
 
 #restartbox {
-	width: 267px;
-	height: 200px;
+	/* width: 267px;
+	height: 200px; */
+	width: 160px;
+	height: 120px;
 	background-image: url('../images/novideo.jpg');
-	background-size: 267px 200px;
+	/* background-size: 267px 200px; */
+	background-size: 160px 120px;
 }
 
 #restartbox p {
@@ -54,22 +63,27 @@ video {
 
 #videolocal, div[id*='videoremote'] {
 	position: relative;
-	margin: 0 !important;
-	padding: 0 !important;
+	margin: 0px !important;
+	padding: 0px !important;
 }
 
 #videomember {
 	position: relative;
-	margin: 0 !important;
-	padding: 0 !important;
-	max-height: 480px;
+	margin: 0px !important;
+	padding: 0px !important;
+	max-height: 550px;
 	overflow: auto;
 }
 
 #videofocus {
 	position: relative;
-	margin: 0 !important;
-	padding: 0 !important;
 	max-width: 640px;
 	max-height: 480px;
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+#tableft, #tabright {
+	/* */
+	max-width: 640px;
 }

@@ -5,10 +5,11 @@ var iceServers = [
 ];
 var videoBoxWidth = 160;
 var videoBoxHeight = 120;
-var videoBoxLargeWidth = 640;
-var videoBoxLargeHeight = 480;
-var maxVideoBox = 12;
-var maxBitRate = 56000;
+var videoBoxLargeWidth = "100%";
+var videoBoxLargeHeight = "auto";
+var maxVideoBox = 13;
+var maxBitRate = 64000;
+var defaultResolution = "lowres";	// lowres, stdres, hires
 var debugLevel = "all"
 var audioCodec = "opus";
 var videoCodec = "vp9";
@@ -216,6 +217,7 @@ $(document).ready(function() {
 						Janus.debug(JSON.stringify(stream));
 						$('#videolocal').empty();
 						$('#joinroom').hide();
+						$('#welcomebox').hide();
 						$('#videos').removeClass('hide').show();
 						if($('#myvideo').length === 0) {
 							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay muted="muted"/>');
@@ -399,7 +401,7 @@ function publishOwnFeed(useAudio) {
 	// Publish our stream
 	$('#publish').attr('disabled', true).unbind('click');
 	mcu.createOffer({
-		media: { audioRecv: false, videoRecv: false, audioSend: useAudio, videoSend: true, video: "lowres", data: true },	// Publishers are sendonly
+		media: { audioRecv: false, videoRecv: false, audioSend: useAudio, videoSend: true, video: defaultResolution, data: true },	// Publishers are sendonly
 		trickle: true,
 		success: function(jsep) {
 			Janus.debug("Got publisher SDP!");
@@ -514,7 +516,7 @@ function newRemoteFeed(id, display) {
 				// Answer and attach
 				remoteFeed.createAnswer({
 					jsep: jsep,
-					media: { audioSend: false, videoSend: false, video: "lowres", data: true },	// We want recvonly audio/video
+					media: { audioSend: false, videoSend: false, video: defaultResolution, data: true },	// We want recvonly audio/video
 					trickle: true,
 					success: function(jsep) {
 						Janus.debug("Got SDP!");

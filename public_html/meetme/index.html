@@ -28,7 +28,6 @@
 <script type="text/javascript" src="js/bootbox.min.js"></script>
 <script type="text/javascript" src="js/adapter.min.js" ></script>
 <script type="text/javascript" src="js/janus.js" ></script>
-<script type="text/javascript" src="js/meetme.js"></script>
 </head>
 <body>
 
@@ -88,33 +87,29 @@ Here is the full source code: https://github.com/antonraharja/meetme
 			</div>
 			<div class="container-fluid hide" id="videos">
 				<div class="row no-pad">
-						<div class="col-md-4">
-							<div class="pull-left" id="videolocal" onclick="setLargeVideo('videolocal')"></div>
-							<div class="pull-left" id="videoremote1" onclick="setLargeVideo('videoremote1')"></div>
-							<div class="pull-left" id="videoremote2" onclick="setLargeVideo('videoremote2')"></div>
-							<div class="pull-left" id="videoremote3" onclick="setLargeVideo('videoremote3')"></div>
-							<div class="pull-left" id="videoremote4" onclick="setLargeVideo('videoremote4')"></div>
-							<div class="pull-left" id="videoremote5" onclick="setLargeVideo('videoremote5')"></div>
-							<div class="pull-left" id="videoremote6" onclick="setLargeVideo('videoremote6')"></div>
-							<div class="pull-left" id="videoremote7" onclick="setLargeVideo('videoremote7')"></div>
-							<div class="pull-left" id="videoremote8" onclick="setLargeVideo('videoremote8')"></div>
-							<div class="pull-left" id="videoremote9" onclick="setLargeVideo('videoremote9')"></div>
-							<div class="pull-left" id="videoremote10" onclick="setLargeVideo('videoremote10')"></div>
-							<div class="pull-left" id="videoremote11" onclick="setLargeVideo('videoremote11')"></div>
-						</div>
-						<div class="col-md-6">
-							<div id="videofocus"></div>
-						</div>
-						<div class="col-md-2">
-							<div id="chatbox">
-								&nbsp;
-							</div>
-						</div>
+					<div class="col-md-6" id="tabright">
+						<div class="row no-pad" id="videofocus"></div>
+						<div class="row no-pad" id="chatbox"></div>
+					</div>
+					<div class="col-md-6" id="tableft">
+						<div class="pull-left" id="videolocal" onclick="setLargeVideo('videolocal')"></div>
+						<div class="pull-left" id="videoremote1" onclick="setLargeVideo('videoremote1')"></div>
+						<div class="pull-left" id="videoremote2" onclick="setLargeVideo('videoremote2')"></div>
+						<div class="pull-left" id="videoremote3" onclick="setLargeVideo('videoremote3')"></div>
+						<div class="pull-left" id="videoremote4" onclick="setLargeVideo('videoremote4')"></div>
+						<div class="pull-left" id="videoremote5" onclick="setLargeVideo('videoremote5')"></div>
+						<div class="pull-left" id="videoremote6" onclick="setLargeVideo('videoremote6')"></div>
+						<div class="pull-left" id="videoremote7" onclick="setLargeVideo('videoremote7')"></div>
+						<div class="pull-left" id="videoremote8" onclick="setLargeVideo('videoremote8')"></div>
+						<div class="pull-left" id="videoremote9" onclick="setLargeVideo('videoremote9')"></div>
+						<div class="pull-left" id="videoremote10" onclick="setLargeVideo('videoremote10')"></div>
+						<div class="pull-left" id="videoremote11" onclick="setLargeVideo('videoremote11')"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row no-pad">
 		<div class="col-md-12">
 			<div class="container-fluid" id="welcomebox">
 				<div class="panel-group" id="accordion">
@@ -208,6 +203,8 @@ Here is the full source code: https://github.com/antonraharja/meetme
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript" src="js/meetme.js"></script>
 
 <!-- tweet to @antonrd -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
