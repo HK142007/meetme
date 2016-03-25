@@ -3,9 +3,10 @@ var iceServers = [
 	{"urls": "stun:stun.meetme.id:443"},
 	{"urls": "turn:turn.meetme.id:443?transport=tcp", "credential": "meetme", "username": "meetme"}
 ];
-var videoBoxWidth = 100;
-var videoBoxHeight = 130;
-var videoBoxLargeHeight = 550;
+var videoBoxWidth = 160;
+var videoBoxHeight = 120;
+var videoBoxLargeWidth = 640;
+var videoBoxLargeHeight = 480;
 var maxVideoBox = 12;
 var maxBitRate = 64000;
 var debugLevel = "all"
@@ -25,6 +26,10 @@ var labelNoRemoteVideo = "<img src='../images/novideo.jpg' width='"+videoBoxWidt
 //var labelNoWebcam = "No webcam available";
 //var labelNoWebcam = "Tidak ada webcam";
 var labelNoWebcam = "<img src='../images/novideo.jpg' width='"+videoBoxWidth+"' height='"+videoBoxHeight+"'>";
+
+//var lebelSpeaking = "Currently speaking";
+//var lebelSpeaking = "Sedang berbicara";
+var labelSpeaking = "<img src='../images/speaking.png' width='"+videoBoxWidth+"' height='"+videoBoxHeight+"'>";
 
 //var labelNoWebRTC = "No WebRTC support available";
 var labelNoWebRTC = "Tidak ada dukungan WebRTC";
@@ -75,6 +80,8 @@ var myID = null;
 
 var feeds = [];
 var bitrateTimer = [];
+
+var isSpeakingId = null;
 
 $(document).ready(function() {
 	// Initialize the library (all console debuggers enabled)
@@ -211,22 +218,21 @@ $(document).ready(function() {
 						$('#joinroom').hide();
 						$('#videos').removeClass('hide').show();
 						if($('#myvideo').length === 0) {
-							$('#videolocal').append('<video class="videobox rounded centered col-sm-12" id="myvideo" height="'+videoBoxLargeHeight+'" autoplay muted="muted"/>');
+							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay muted="muted"/>');
 							// Add a 'displayname' label
-							$('#videolocal').append('<span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span>');
+							$('#videolocal').append('<span class="label label-info" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span>');
 							// Add an 'unpublish' button
-							$('#videolocal').append('<button class="btn btn-info btn-xs" id="unpublish" style="position: absolute; top: 15px; right: 15px;">'+labelStopPublishing+'</button>');
-							$('#unpublish').click(unpublishOwnFeed);
+							$('#unpublish').removeClass('hide').html(labelStopPublishing).click(unpublishOwnFeed);
 							// Add a 'mute' button
-							$('#videolocal').append('<button class="btn btn-info btn-xs" id="mute" style="position: absolute; top: 40px; right: 15px;">'+labelMuteOn+'</button>');
-							$('#mute').click(toggleMute)
+							$('#mute').removeClass('hide').append(labelMuteOn).click(toggleMute)
 							// Add a 'pause' button
-							$('#videolocal').append('<button class="btn btn-info btn-xs" id="pause" style="position: absolute; top: 65px; right: 15px;">'+labelPauseOn+'</button>');
-							$('#pause').click(togglePause)
+							$('#pause').removeClass('hide').append(labelPauseOn).click(togglePause)
 							// fixme anton - starts muted
 							toggleMute();
 							// Add welcome notif
 							$('#notifbox').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
+							// set publisher video as large video
+							setLargeVideo('videolocal');
 						}
 						// $('#publisher').removeClass('hide').html(myDisplayName).show();
 						attachMediaStream($('#myvideo').get(0), stream);
@@ -265,20 +271,33 @@ $(document).ready(function() {
 	}})
 })
 
-function setLargeVideo(id){
-	$("#videolocal video").attr('height', videoBoxHeight);
-	for(var i=1;i <= (maxVideoBox-1);i++){
-		$("#videoremote"+i+"  video").attr('height', videoBoxHeight);
+function setLargeVideo(clickedId){
+	if (clickedId == isSpeakingId) {
+		return false;
 	}
-	$("#"+id+" video").attr('height', videoBoxLargeHeight);
 	
-	var largeVideo = $("#video-col-large").html();
-	var smallVideo = $("#"+id).parent().html();
-	var smallVideoId = $("#"+id).parent().attr('id');
+	var speakingVideo = $('#videofocus').html();
+	var clickedVideo = $('#'+clickedId).html();
 	
-	$("#video-col-large").html(smallVideo);
-	$("#"+smallVideoId).html(largeVideo);
+	$('#videofocus').html(clickedVideo);
+	$('#'+clickedId).html(labelSpeaking);
 	
+	if (!(isSpeakingId == "undefined" || isSpeakingId == null)) {
+		$('#'+isSpeakingId).html(speakingVideo);
+	}
+	
+	isSpeakingId = clickedId;
+	
+	$('#videolocal video').attr('width', videoBoxWidth);
+	$('#videolocal video').attr('height', videoBoxHeight);
+	for(var i=1;i <= (maxVideoBox-1);i++){
+		$('#videoremote'+i+' video').attr('width', videoBoxWidth);
+		$('#videoremote'+i+' video').attr('height', videoBoxHeight);
+	}
+	$('#'+clickedId+' img').attr('width', videoBoxWidth);
+	$('#'+clickedId+' img').attr('height', videoBoxHeight);
+	$('#videofocus video').attr('width', videoBoxLargeWidth);
+	$('#videofocus video').attr('height', videoBoxLargeHeight);
 }
 
 function checkRoomNumber(field, event) {
@@ -517,8 +536,8 @@ function newRemoteFeed(id, display) {
 			Janus.debug("Remote feed #" + remoteFeed.rfindex);
 			if($('#remotevideo'+remoteFeed.rfindex).length === 0) {
 				// No remote video yet
-				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered  col-sm-12" id="waitingvideo' + remoteFeed.rfindex + '" height="'+videoBoxHeight+'" />');
-				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered relative hide  col-sm-12" id="remotevideo' + remoteFeed.rfindex +'" height="'+videoBoxHeight+'" autoplay/>');
+				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered" id="waitingvideo' + remoteFeed.rfindex + '" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" />');
+				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered" id="remotevideo' + remoteFeed.rfindex +'" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay/>');
 			}
 			$('#videoremote'+remoteFeed.rfindex).append(
 				// Add a 'displayname' label
