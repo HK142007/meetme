@@ -90,3 +90,12 @@ video {
 	max-width: 640px;
 	max-height: 480px;
 }
+
+@media (max-width: 768px) {
+        .container-fluid {
+                margin-right: auto;
+                margin-left: auto;
+                padding-left: 10px;
+                padding-right: 10px;
+        }
+}
