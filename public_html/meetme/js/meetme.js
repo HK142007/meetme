@@ -224,7 +224,7 @@ $(document).ready(function() {
 						Janus.debug(JSON.stringify(stream));
 						$('#videolocal').empty();
 						$('#joinroom').hide();
-						$('#welcomebox').hide();
+						$('#meetmebottom').hide();
 						$('#videos').removeClass('hide').show();
 						if($('#myvideo').length === 0) {
 							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay muted="muted"/>');

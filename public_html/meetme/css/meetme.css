@@ -50,8 +50,16 @@ video {
 	margin-top: 15px;
 }
 
-#welcomebox {
+#meetmebottom {
 	margin-top: 15px;
+}
+
+#videofocus {
+	position: relative;
+	margin: 0px !important;
+	padding: 0px !important;
+	max-width: 640px;
+	max-height: 480px;
 }
 
 #videolocal, div[id*='videoremote'] {
@@ -69,12 +77,8 @@ video {
 	max-height: 480px;
 }
 
-#videofocus {
-	position: relative;
-	margin: 0px !important;
-	padding: 0px !important;
-	max-width: 640px;
-	max-height: 480px;
+#meetmeheader {
+	/* */
 }
 
 #tabright {
@@ -89,13 +93,4 @@ video {
 	padding: 0px !important;
 	max-width: 640px;
 	max-height: 480px;
-}
-
-@media (max-width: 768px) {
-        .container-fluid {
-                margin-right: auto;
-                margin-left: auto;
-                padding-left: 10px;
-                padding-right: 10px;
-        }
 }

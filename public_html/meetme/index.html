@@ -45,163 +45,146 @@ Here is the full source code: https://github.com/antonraharja/meetme
 
 
 <div class="container-fluid">
-	<div class="row no-pad">
-		<div class="col-md-12">
-			<div class="container-fluid">
-				<br />
-				<div class="row no-pad">
-					<!-- Join or create room -->
-					<span class="label label-default" id="notifbox">Ruang meeting online</span>
-					<button class="btn btn-info btn-xs hide pull-right" id="unpublish" data-toggle="tooltip" data-placement="bottom" title="Keluar meeting room"></button>
-					<button class="btn btn-info btn-xs hide pull-right" id="pause" data-toggle="tooltip" data-placement="bottom" title="Stop kirim video"></button>
-					<button class="btn btn-info btn-xs hide pull-right" id="mute" data-toggle="tooltip" data-placement="bottom" title="Stop kirim suara"></button>
-				</div>
-				<br /><br />
-			<div>
+	<div class="row no-pad" id="meetmeheader">
+		<br />
+		<div class="row no-pad">
+			<!-- Join or create room -->
+			<span class="label label-default" id="notifbox">Ruang meeting online</span>
+			<button class="btn btn-info btn-xs hide pull-right" id="unpublish" data-toggle="tooltip" data-placement="bottom" title="Keluar meeting room"></button>
+			<button class="btn btn-info btn-xs hide pull-right" id="pause" data-toggle="tooltip" data-placement="bottom" title="Stop kirim video"></button>
+			<button class="btn btn-info btn-xs hide pull-right" id="mute" data-toggle="tooltip" data-placement="bottom" title="Stop kirim suara"></button>
+		</div>
+		<br />
+	<div>
+	<div class="row no-pad" id ="joinroom">
+		<div class="hide" id="joinroomnow">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><icon class="glyphicon glyphicon-user" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Masukkan nama anda (huruf, angka dan spasi saja)" /></span>
+				<!-- Your name -->
+				<input autocomplete="off" class="form-control" autocomplete="off" type="text" aria-describedby="basic-addon1" placeholder="Nama anda" id="displayname" onkeypress="return checkRoomNumber(this, event);"></input>
+			</div>
+			<br />
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon2"><icon class="glyphicon glyphicon-home" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Masukkan nomor ruangan (angka antara 1-9999999999)" /></span>
+				<!-- Room number -->
+				<input autocomplete="off" class="form-control" autocomplete="off" type="text" aria-describedby="basic-addon2" placeholder="Nomor ruangan" id="roomnumber" onkeypress="return checkRoomNumber(this, event);"></input>
+			</div>
+			<br />
+			<!-- Join -->
+			<button class="btn btn-info" autocomplete="off" id="join">Masuk</button>
+			<br /><br />
 		</div>
 	</div>
-	<div class="row no-pad">
-		<div class="col-md-12">
-			<div class="container-fluid hide" id="joinroom">
-				<div class="row no-pad">
-					<div class="col-md-12" id="controls">
-						<div class="hide" id="joinroomnow">
-							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon1"><icon class="glyphicon glyphicon-user" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Masukkan nama anda (huruf, angka dan spasi saja)" /></span>
-								<!-- Your name -->
-								<input autocomplete="off" class="form-control" autocomplete="off" type="text" aria-describedby="basic-addon1" placeholder="Nama anda" id="displayname" onkeypress="return checkRoomNumber(this, event);"></input>
-							</div>
-							<br />
-							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon2"><icon class="glyphicon glyphicon-home" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Masukkan nomor ruangan (angka antara 1-9999999999)" /></span>
-								<!-- Room number -->
-								<input autocomplete="off" class="form-control" autocomplete="off" type="text" aria-describedby="basic-addon2" placeholder="Nomor ruangan" id="roomnumber" onkeypress="return checkRoomNumber(this, event);"></input>
-							</div>
-							<br />
-							<!-- Join -->
-							<button class="btn btn-info" autocomplete="off" id="join">Masuk</button>
-							<br /><br />
-						</div>
+	<div class="row no-pad" id="videos">
+		<div class="col-md-6" id="tabright">
+			<div class="row no-pad" id="videofocus"></div>
+			<div class="row no-pad" id="chatbox"></div>
+		</div>
+		<div class="col-md-6" id="tableft">
+			<div class="pull-left" id="videolocal" onclick="setLargeVideo('videolocal')"></div>
+			<div class="pull-left" id="videoremote1" onclick="setLargeVideo('videoremote1')"></div>
+			<div class="pull-left" id="videoremote2" onclick="setLargeVideo('videoremote2')"></div>
+			<div class="pull-left" id="videoremote3" onclick="setLargeVideo('videoremote3')"></div>
+			<div class="pull-left" id="videoremote4" onclick="setLargeVideo('videoremote4')"></div>
+			<div class="pull-left" id="videoremote5" onclick="setLargeVideo('videoremote5')"></div>
+			<div class="pull-left" id="videoremote6" onclick="setLargeVideo('videoremote6')"></div>
+			<div class="pull-left" id="videoremote7" onclick="setLargeVideo('videoremote7')"></div>
+			<div class="pull-left" id="videoremote8" onclick="setLargeVideo('videoremote8')"></div>
+			<div class="pull-left" id="videoremote9" onclick="setLargeVideo('videoremote9')"></div>
+			<div class="pull-left" id="videoremote10" onclick="setLargeVideo('videoremote10')"></div>
+			<div class="pull-left" id="videoremote11" onclick="setLargeVideo('videoremote11')"></div>
+			<div class="pull-left" id="videoremote11" onclick="setLargeVideo('videoremote11')"></div>
+			<div class="pull-left" id="videoremote12" onclick="setLargeVideo('videoremote12')"></div>
+			<div class="pull-left" id="videoremote13" onclick="setLargeVideo('videoremote13')"></div>
+			<div class="pull-left" id="videoremote14" onclick="setLargeVideo('videoremote14')"></div>
+			<div class="pull-left" id="videoremote15" onclick="setLargeVideo('videoremote15')"></div>
+			<div class="pull-left" id="videoremote16" onclick="setLargeVideo('videoremote16')"></div>
+		</div>
+	</div>
+	<div class="row no-pad" id="meetmebottom">
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse0">Cara menggunakan</a>
+					</h4>
+				</div>
+				<div id="collapse0" class="panel-collapse collapse">
+					<div class="panel-body">
+						<p class="lead">Berikut adalah petunjuk singkat bagaimana menggunakan layanan:</p>
+						<ol>
+							<li>Masukkan nama anda di <i>input field</i> <strong>Nama anda</strong> diatas</li>
+							<ul>
+								<li>Singkat saja dan hanya gunakan huruf saja, boleh dengan spasi</li>
+							</ul>
+							<li>Masukkan nomor ruang meeting di <i>input field</i> <strong>Nomor ruangan</strong> diatas</li>
+							<ul>
+								<li>Nomor ruangan adalah angka antara 1 sampai 9999999999</li>
+								<li>Apabila ruangan kosong maka akan dibuatkan otomatis untuk anda</li>
+								<li>Apabila sudah ada orang lain maka anda bergabung dalam ruangan tersebut</li>
+							</ul>
+							<li>Klik tombol <strong>Masuk</strong> untuk membuat atau bergabung dalam ruang meeting online</li>
+						</ol>
+						<p class="lead">Catatan penting:</p>
+						<ul>
+							<li>Gunakan Chrome, Firefox atau Opera yang terbaru, Safari membutuhkan plugin Temasys, IE dan Edge tidak berjalan baik</li>
+							<li>Layanan berjalan dengan baik di Android namun tidak berjalan di iOS dan mungkin juga di Windows Phone</li>
+							<li>Video webcam anda adalah yang namanya berwarna biru</li>
+							<li>Saat anda masuk ruang meeting suara anda di-<i>mute</i>, klik tombol berbentuk <i>speaker-off</i> warna merah di kanan atas layar untuk berbicara</li>
+							<li>Bandwidth yang dibutuhkan per video stream adalah sekitar 64kbps sampai 128kbps sudah termasuk video, voice dan data</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="container-fluid hide" id="videos">
-				<div class="row no-pad">
-					<div class="col-md-6" id="tabright">
-						<div class="row no-pad" id="videofocus"></div>
-						<div class="row no-pad" id="chatbox"></div>
-					</div>
-					<div class="col-md-6" id="tableft">
-						<div class="pull-left" id="videolocal" onclick="setLargeVideo('videolocal')"></div>
-						<div class="pull-left" id="videoremote1" onclick="setLargeVideo('videoremote1')"></div>
-						<div class="pull-left" id="videoremote2" onclick="setLargeVideo('videoremote2')"></div>
-						<div class="pull-left" id="videoremote3" onclick="setLargeVideo('videoremote3')"></div>
-						<div class="pull-left" id="videoremote4" onclick="setLargeVideo('videoremote4')"></div>
-						<div class="pull-left" id="videoremote5" onclick="setLargeVideo('videoremote5')"></div>
-						<div class="pull-left" id="videoremote6" onclick="setLargeVideo('videoremote6')"></div>
-						<div class="pull-left" id="videoremote7" onclick="setLargeVideo('videoremote7')"></div>
-						<div class="pull-left" id="videoremote8" onclick="setLargeVideo('videoremote8')"></div>
-						<div class="pull-left" id="videoremote9" onclick="setLargeVideo('videoremote9')"></div>
-						<div class="pull-left" id="videoremote10" onclick="setLargeVideo('videoremote10')"></div>
-						<div class="pull-left" id="videoremote11" onclick="setLargeVideo('videoremote11')"></div>
-						<div class="pull-left" id="videoremote12" onclick="setLargeVideo('videoremote12')"></div>
-						<div class="pull-left" id="videoremote13" onclick="setLargeVideo('videoremote13')"></div>
-						<div class="pull-left" id="videoremote14" onclick="setLargeVideo('videoremote14')"></div>
-						<div class="pull-left" id="videoremote15" onclick="setLargeVideo('videoremote15')"></div>
-						<div class="pull-left" id="videoremote16" onclick="setLargeVideo('videoremote16')"></div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Syarat dan ketentuan berlaku</a>
+					</h4>
+				</div>
+				<div id="collapse1" class="panel-collapse collapse">
+					<div class="panel-body">
+						<p class="lead">Perhatian, dengan masuk di salah satu ruang meeting online disini maka:</p>
+						<ul>
+							<li>Anda setuju untuk berhati-hati karena tidak ada mekanisme registrasi atau validasi pengguna layanan disini</li>
+							<li>Anda setuju untuk memperhatikan dengan siapa anda berbicara</li>
+							<li>Anda setuju untuk memastikan anda benar kenal dengan rekan diskusi anda di ruang meeting ini</li>
+							<li>Anda setuju untuk <strong>tidak</strong> memberikan informasi pribadi atau sensitif lainnya disini</li>
+							<li>Anda setuju untuk <strong>tidak</strong> menggunakan layanan ini untuk mendukung dan/atau melaksanakan kegiatan yang melanggar hukum di Indonesia</li>
+							<li>Anda setuju bahwa pengelola dan/atau penyelenggara layanan ini tidak dapat ikut bertanggung-jawab atas kegiatan yang anda lakukan</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row no-pad">
-		<div class="col-md-12">
-			<div class="container-fluid" id="welcomebox">
-				<div class="panel-group" id="accordion">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapse0">Cara menggunakan</a>
-							</h4>
-						</div>
-						<div id="collapse0" class="panel-collapse collapse">
-							<div class="panel-body">
-								<p class="lead">Berikut adalah petunjuk singkat bagaimana menggunakan layanan:</p>
-								<ol>
-									<li>Masukkan nama anda di <i>input field</i> <strong>Nama anda</strong> diatas</li>
-									<ul>
-										<li>Singkat saja dan hanya gunakan huruf saja, boleh dengan spasi</li>
-									</ul>
-									<li>Masukkan nomor ruang meeting di <i>input field</i> <strong>Nomor ruangan</strong> diatas</li>
-									<ul>
-										<li>Nomor ruangan adalah angka antara 1 sampai 9999999999</li>
-										<li>Apabila ruangan kosong maka akan dibuatkan otomatis untuk anda</li>
-										<li>Apabila sudah ada orang lain maka anda bergabung dalam ruangan tersebut</li>
-									</ul>
-									<li>Klik tombol <strong>Masuk</strong> untuk membuat atau bergabung dalam ruang meeting online</li>
-								</ol>
-								<p class="lead">Catatan penting:</p>
-								<ul>
-									<li>Gunakan Chrome, Firefox atau Opera yang terbaru, Safari membutuhkan plugin Temasys, IE dan Edge tidak berjalan baik</li>
-									<li>Layanan berjalan dengan baik di Android namun tidak berjalan di iOS dan mungkin juga di Windows Phone</li>
-									<li>Video webcam anda adalah yang namanya berwarna biru</li>
-									<li>Saat anda masuk ruang meeting suara anda di-<i>mute</i>, klik tombol berbentuk <i>speaker-off</i> warna merah di kanan atas layar untuk berbicara</li>
-									<li>Bandwidth yang dibutuhkan per video stream adalah sekitar 64kbps sampai 128kbps sudah termasuk video, voice dan data</li>
-								</ul>
-							</div>
-						</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Tentang pengelolaan layanan</a>
+					</h4>
+				</div>
+				<div id="collapse2" class="panel-collapse collapse">
+					<div class="panel-body">
+						<p class="lead">Pengelolaan layanan:</p>
+						<ul>
+							<li>Ini adalah layanan gratis dengan tujuan untuk mempelajari teknologi komunikasi berbasis IP</li>
+							<li>Layanan ini dikelola oleh perorangan dan dijalankan dengan SLA <i>best effort</i></li>
+							<li>Infrastruktur yang ada kemampuannya terbatas karena berbagi dengan layanan lain yaitu <a href="https://teleponrakyat.id" target="_blank">Telepon Rakyat</a>, mohon gunakan layanan dengan bijak</li>
+							<li>Lokasi server berada di <a href="http://www.idc.co.id/contact.html" target="_blank">IDC 3D Duren Tiga Jakarta</a>, bandwidth server lebar di dalam negri namun terbatas untuk luar negri</li>
+						</ul>
 					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Syarat dan ketentuan berlaku</a>
-							</h4>
-						</div>
-						<div id="collapse1" class="panel-collapse collapse">
-							<div class="panel-body">
-								<p class="lead">Perhatian, dengan masuk di salah satu ruang meeting online disini maka:</p>
-								<ul>
-									<li>Anda setuju untuk berhati-hati karena tidak ada mekanisme registrasi atau validasi pengguna layanan disini</li>
-									<li>Anda setuju untuk memperhatikan dengan siapa anda berbicara</li>
-									<li>Anda setuju untuk memastikan anda benar kenal dengan rekan diskusi anda di ruang meeting ini</li>
-									<li>Anda setuju untuk <strong>tidak</strong> memberikan informasi pribadi atau sensitif lainnya disini</li>
-									<li>Anda setuju untuk <strong>tidak</strong> menggunakan layanan ini untuk mendukung dan/atau melaksanakan kegiatan yang melanggar hukum di Indonesia</li>
-									<li>Anda setuju bahwa pengelola dan/atau penyelenggara layanan ini tidak dapat ikut bertanggung-jawab atas kegiatan yang anda lakukan</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Tentang pengelolaan layanan</a>
-							</h4>
-						</div>
-						<div id="collapse2" class="panel-collapse collapse">
-							<div class="panel-body">
-								<p class="lead">Pengelolaan layanan:</p>
-								<ul>
-									<li>Ini adalah layanan gratis dengan tujuan untuk mempelajari teknologi komunikasi berbasis IP</li>
-									<li>Layanan ini dikelola oleh perorangan dan dijalankan dengan SLA <i>best effort</i></li>
-									<li>Infrastruktur yang ada kemampuannya terbatas karena berbagi dengan layanan lain yaitu <a href="https://teleponrakyat.id" target="_blank">Telepon Rakyat</a>, mohon gunakan layanan dengan bijak</li>
-									<li>Lokasi server berada di <a href="http://www.idc.co.id/contact.html" target="_blank">IDC 3D Duren Tiga Jakarta</a>, bandwidth server lebar di dalam negri namun terbatas untuk luar negri</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Kontak</a>
-							</h4>
-						</div>
-						<div id="collapse3" class="panel-collapse collapse">
-							<div class="panel-body">
-								<p class="lead">Anda menemui masalah ?</p>
-								<a href="https://twitter.com/intent/tweet?screen_name=antonrd" class="twitter-mention-button" data-related="antonrd">Tweet to @antonrd</a>
-								<a href="https://twitter.com/intent/tweet?screen_name=onnowpurbo" class="twitter-mention-button" data-related="onnowpurbo">Tweet to @onnowpurbo</a>
-							</div>
-						</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Kontak</a>
+					</h4>
+				</div>
+				<div id="collapse3" class="panel-collapse collapse">
+					<div class="panel-body">
+						<p class="lead">Anda menemui masalah ?</p>
+						<a href="https://twitter.com/intent/tweet?screen_name=antonrd" class="twitter-mention-button" data-related="antonrd">Tweet to @antonrd</a>
+						<a href="https://twitter.com/intent/tweet?screen_name=onnowpurbo" class="twitter-mention-button" data-related="onnowpurbo">Tweet to @onnowpurbo</a>
 					</div>
 				</div>
 			</div>
