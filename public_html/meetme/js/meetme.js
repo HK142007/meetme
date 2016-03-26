@@ -13,6 +13,7 @@ var defaultResolution = "lowres";	// lowres, stdres, hires
 var debugLevel = "all"
 var audioCodec = "opus";
 var videoCodec = "vp9";
+var windowTitle = "meetme.id";
 
 //var labelEnterRoom = "Enter room number";
 var labelEnterRoom = "Masukkan nomor ruangan";
@@ -84,7 +85,13 @@ var bitrateTimer = [];
 
 var isSpeakingId = null;
 
+var membercount = 0;
+
 $(document).ready(function() {
+
+	// fixme anton - first thing first, set window title
+	window.document.title = windowTitle;
+
 	// Initialize the library (all console debuggers enabled)
 	Janus.init({debug: debugLevel, callback: function() {
 		$(this).attr('disabled', true).unbind('click');
@@ -245,6 +252,8 @@ $(document).ready(function() {
 							$('#myvideo').hide();
 							$('#videolocal').append('<div class="videobox-novideo">'+labelNoWebcam+'</div>');
 						}
+						membercount++;
+						flashTitle(membercount);
 					},
 					onremotestream: function(stream) {
 						// The publisher stream is sendonly, we don't expect anything here
@@ -257,6 +266,8 @@ $(document).ready(function() {
 						//$('#publish').click(function() {
 						//	publishOwnFeed(true);
 						//});
+						membercount--;
+						flashTitle(membercount);
 					}
 				});
 			},
@@ -468,6 +479,11 @@ function togglePause() {
 	}
 }
 
+function flashTitle(count) {
+	window.document.title = "("+count+") "+windowTitle;
+	$.titleAlert(windowTitle, {interval:700, duration:7000, requireBlur:false});
+}
+
 function newRemoteFeed(id, display) {
 	// A new feed has been published, create a new plugin handle and attach to it as a listener
 	var remoteFeed = null;
@@ -576,6 +592,8 @@ function newRemoteFeed(id, display) {
 				$('#remotevideo'+remoteFeed.rfindex).hide();
 				$('#videoremote'+remoteFeed.rfindex).append('<div class="videobox-novideo">'+labelNoRemoteVideo+'</div>');
 			}
+			membercount++;
+			flashTitle(membercount);
 		},
 		oncleanup: function() {
 			Janus.log(" ::: Got a cleanup notification (remote feed " + id + ") :::");
@@ -586,6 +604,8 @@ function newRemoteFeed(id, display) {
 				clearInterval(bitrateTimer[remoteFeed.rfindex]);
 			}
 			bitrateTimer[remoteFeed.rfindex] = null;
+			membercount--;
+			flashTitle(membercount);
 		}
 	})
 }
