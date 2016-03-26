@@ -262,12 +262,12 @@ $(document).ready(function() {
 						Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
 						// fixme anton - just reload the window
 						window.location.reload();
+						//membercount--;
+						//flashTitle(membercount);
 						//$('#videolocal').html('<div id="restartbox"><span class="label label-success" id="displayname" style="position: absolute; top: 7px; left: 7px;">'+myDisplayName+'</span><br /><button class="btn btn-info btn-xs" id="publish" style="position: absolute; top: 7px; right: 7px;">'+labelStartPublishing+'</button</div>');
 						//$('#publish').click(function() {
 						//	publishOwnFeed(true);
 						//});
-						membercount--;
-						flashTitle(membercount);
 					}
 				});
 			},
@@ -604,6 +604,13 @@ function newRemoteFeed(id, display) {
 				clearInterval(bitrateTimer[remoteFeed.rfindex]);
 			}
 			bitrateTimer[remoteFeed.rfindex] = null;
+
+			// fixme anton - if this is the currently speaking one then set videolocal
+			if (isSpeakingId == 'videoremote'+remoteFeed.rfindex) {
+				$('#videofocus').empty();
+				setLargeVideo('videolocal');
+			}
+
 			membercount--;
 			flashTitle(membercount);
 		}
