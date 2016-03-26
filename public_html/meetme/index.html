@@ -51,9 +51,9 @@ Here is the full source code: https://github.com/antonraharja/meetme
 				<div class="row no-pad">
 					<!-- Join or create room -->
 					<span class="label label-default" id="notifbox">Ruang meeting online</span>
-					<button class="btn btn-info btn-xs hide pull-right" id="unpublish"></button>
-					<button class="btn btn-info btn-xs hide pull-right" id="pause"></button>
-					<button class="btn btn-info btn-xs hide pull-right" id="mute"></button>
+					<button class="btn btn-info btn-xs hide pull-right" id="unpublish" data-toggle="tooltip" data-placement="bottom" title="Keluar meeting room"></button>
+					<button class="btn btn-info btn-xs hide pull-right" id="pause" data-toggle="tooltip" data-placement="bottom" title="Stop kirim video"></button>
+					<button class="btn btn-info btn-xs hide pull-right" id="mute" data-toggle="tooltip" data-placement="bottom" title="Stop kirim suara"></button>
 				</div>
 				<br /><br />
 			<div>
@@ -66,13 +66,13 @@ Here is the full source code: https://github.com/antonraharja/meetme
 					<div class="col-md-12" id="controls">
 						<div class="hide" id="joinroomnow">
 							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon1"><icon class="glyphicon glyphicon-user" aria-hidden="true" /></span>
+								<span class="input-group-addon" id="basic-addon1"><icon class="glyphicon glyphicon-user" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Masukkan nama anda (huruf, angka dan spasi saja)" /></span>
 								<!-- Your name -->
 								<input autocomplete="off" class="form-control" autocomplete="off" type="text" aria-describedby="basic-addon1" placeholder="Nama anda" id="displayname" onkeypress="return checkRoomNumber(this, event);"></input>
 							</div>
 							<br />
 							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon2"><icon class="glyphicon glyphicon-home" aria-hidden="true" /></span>
+								<span class="input-group-addon" id="basic-addon2"><icon class="glyphicon glyphicon-home" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Masukkan nomor ruangan (angka antara 1-9999999999)" /></span>
 								<!-- Room number -->
 								<input autocomplete="off" class="form-control" autocomplete="off" type="text" aria-describedby="basic-addon2" placeholder="Nomor ruangan" id="roomnumber" onkeypress="return checkRoomNumber(this, event);"></input>
 							</div>
@@ -204,6 +204,12 @@ Here is the full source code: https://github.com/antonraharja/meetme
 </div>
 
 <script type="text/javascript" src="js/meetme.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 
 <!-- tweet to @antonrd -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
