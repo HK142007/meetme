@@ -1,6 +1,6 @@
 # meetme
 
-Online meeting room based on WebRTC powered by Janus WebRTC gateway.
+WebRTC online meeting room. Powered by Janus WebRTC gateway.
 
 Item       | Data
 ---------- | ----------------------------------------
@@ -14,6 +14,7 @@ Changes up to today:
 - Modification of videoroom plugin demo web app
 - Add dynamic room creation
 - Add labels for easy translation
+- Add a large video box and small video boxes
 - Early work on enhancing the user interface
 
 # Usage
