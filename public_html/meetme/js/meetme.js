@@ -12,10 +12,20 @@ var isSpeakingId = null;
 
 var membercount = 0;
 
+var shortcut = null;
+
 $(document).ready(function() {
 
 	// fixme anton - first thing first, set window title
 	window.document.title = windowTitle;
+
+	// shortcut
+	shortcut = $.url(1);
+	if (shortcut.length > 0) {
+		$('#joinroomnow #roomnumber').val(shortcut);
+		$('#joinroomnow #displayname').val(defaultDisplayName);
+		//$('#joinroomnow #join').trigger('click');
+	}
 
 	// Initialize the library (all console debuggers enabled)
 	Janus.init({debug: debugLevel, callback: function() {

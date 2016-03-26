@@ -14,3 +14,4 @@ var debugLevel = "all"
 var audioCodec = "opus";
 var videoCodec = "vp9";
 var windowTitle = "meetme.id";
+var defaultDisplayName = "member";
