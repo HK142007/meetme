@@ -3,8 +3,8 @@ var iceServers = [
 	{"urls": "stun:stun.meetme.id:443"},
 	{"urls": "turn:turn.meetme.id:443?transport=tcp", "credential": "meetme", "username": "meetme"}
 ];
-var videoBoxWidth = 146;
-var videoBoxHeight = 110;
+var videoBoxWidth = 160;
+var videoBoxHeight = 120;
 var videoBoxLargeWidth = "100%";
 var videoBoxLargeHeight = "auto";
 var maxVideoBox = 17;
@@ -222,7 +222,7 @@ $(document).ready(function() {
 						if($('#myvideo').length === 0) {
 							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay muted="muted"/>');
 							// Add a 'displayname' label
-							$('#videolocal').append('<span class="label label-info" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span>');
+							$('#videolocal').append('<span class="label label-info" id="displayname" style="position: absolute; top: 7px; left: 7px;">'+myDisplayName+'</span>');
 							// Add an 'unpublish' button
 							$('#unpublish').removeClass('hide').html(labelStopPublishing).click(unpublishOwnFeed);
 							// Add a 'mute' button
@@ -253,7 +253,7 @@ $(document).ready(function() {
 						Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
 						// fixme anton - just reload the window
 						window.location.reload();
-						//$('#videolocal').html('<div id="restartbox"><span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+myDisplayName+'</span><br /><button class="btn btn-info btn-xs" id="publish" style="position: absolute; top: 15px; right: 15px;">'+labelStartPublishing+'</button</div>');
+						//$('#videolocal').html('<div id="restartbox"><span class="label label-success" id="displayname" style="position: absolute; top: 7px; left: 7px;">'+myDisplayName+'</span><br /><button class="btn btn-info btn-xs" id="publish" style="position: absolute; top: 7px; right: 7px;">'+labelStartPublishing+'</button</div>');
 						//$('#publish').click(function() {
 						//	publishOwnFeed(true);
 						//});
@@ -543,9 +543,9 @@ function newRemoteFeed(id, display) {
 			}
 			$('#videoremote'+remoteFeed.rfindex).append(
 				// Add a 'displayname' label
-				'<span class="label label-success" id="displayname" style="position: absolute; top: 15px; left: 15px;">'+remoteFeed.rfdisplay+'</span>' +
-				'<span class="label label-default hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 15px; left: 15px;"></span>' +
-				'<span class="label label-default hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 15px; right: 15px;"></span>');
+				'<span class="label label-success" id="displayname" style="position: absolute; top: 7px; left: 7px;">'+remoteFeed.rfdisplay+'</span>' +
+				'<span class="label label-default hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 7px; left: 7px;"></span>' +
+				'<span class="label label-default hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 7px; right: 7px;"></span>');
 			$("#remotevideo"+remoteFeed.rfindex).bind("playing", function () {
 				$('#waitingvideo'+remoteFeed.rfindex).remove();
 				$('#remotevideo'+remoteFeed.rfindex).removeClass('hide');

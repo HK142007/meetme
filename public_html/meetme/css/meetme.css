@@ -1,5 +1,5 @@
 body {
-	background-color: #212121;
+	background-color: #3B3C3D;
 }
 
 .row.no-pad {
@@ -16,22 +16,18 @@ video {
 	-o-transform: scale(-1, 1);
 	-ms-transform: scale(-1, 1);
 	transform: scale(-1, 1);
-	max-width: 640px;
-	max-height: 480px;
-	background-color: #bdbdbd;
-	margin: 0px !important;
-	padding: 0px !important;
+	background-color: #4D545E;
 }
 
 .videobox, .videobox-novideo {
 	margin: 0px !important;
 	padding: 0px !important;
+	max-width: 640px;
+	max-height: 480px;
 }
 
 .chatbox {
-	background-color: #cfdbdc;
-	/* max-width: 400px;
-	width: 400px; */
+	background-color: #CFDBDC;
 }
 
 #mute, #pause, #unpublish {
@@ -39,12 +35,9 @@ video {
 }
 
 #restartbox {
-	/* width: 267px;
-	height: 200px; */
 	width: 160px;
 	height: 120px;
 	background-image: url('../images/novideo.jpg');
-	/* background-size: 267px 200px; */
 	background-size: 160px 120px;
 }
 
@@ -69,21 +62,31 @@ video {
 
 #videomember {
 	position: relative;
+	overflow: auto;
 	margin: 0px !important;
 	padding: 0px !important;
-	max-height: 550px;
-	overflow: auto;
+	max-width: 640px;
+	max-height: 480px;
 }
 
 #videofocus {
 	position: relative;
-	max-width: 640px;
-	max-height: 480px;
 	margin: 0px !important;
 	padding: 0px !important;
+	max-width: 640px;
+	max-height: 480px;
 }
 
-#tableft, #tabright {
-	/* */
+#tabright {
+	margin: 0px !important;
+	padding: 0px !important;
 	max-width: 640px;
+	max-height: 480px;
+}
+
+#tableft {
+	margin: 0px !important;
+	padding: 0px !important;
+	max-width: 640px;
+	max-height: 480px;
 }
