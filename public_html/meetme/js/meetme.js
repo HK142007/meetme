@@ -23,7 +23,6 @@ $(document).ready(function() {
 	shortcut = $.url(1);
 	if (shortcut.length > 0) {
 		$('#joinroomnow #roomnumber').val(shortcut);
-		$('#joinroomnow #displayname').val(defaultDisplayName);
 		//$('#joinroomnow #join').trigger('click');
 	}
 
