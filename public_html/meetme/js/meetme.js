@@ -49,6 +49,7 @@ $(document).ready(function() {
 						Janus.log("  -- This is a publisher/manager");
 						$('#joinroom').removeClass('hide').show();
 						$('#joinroomnow').removeClass('hide').show();
+						$('#guidebox').removeClass('hide').show();
 						$('#join').click(joinRoomNumber);
 						$('#displayname').focus();
 					},
@@ -159,7 +160,7 @@ $(document).ready(function() {
 						Janus.debug(JSON.stringify(stream));
 						$('#videolocal').empty();
 						$('#joinroom').hide();
-						$('#meetmebottom').hide();
+						$('#guidebox').hide();
 						$('#videos').removeClass('hide').show();
 						if($('#myvideo').length === 0) {
 							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay muted="muted"/>');

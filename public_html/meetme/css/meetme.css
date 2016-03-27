@@ -50,7 +50,7 @@ video {
 	margin-top: 15px;
 }
 
-#meetmebottom {
+#guidebox {
 	margin-top: 15px;
 }
 
@@ -81,16 +81,23 @@ video {
 	/* */
 }
 
-#tabright {
+#tableft {
 	margin: 0px !important;
 	padding: 0px !important;
 	max-width: 640px;
 	max-height: 480px;
 }
 
-#tableft {
+#tabcenter {
 	margin: 0px !important;
 	padding: 0px !important;
-	max-width: 640px;
+	max-width: 480px;
+	max-height: 480px;
+}
+
+#tabright {
+	margin: 0px !important;
+	padding: 0px !important;
+	max-width: 220px;
 	max-height: 480px;
 }
