@@ -172,6 +172,7 @@ $(document).ready(function() {
 						$('#joinroom').hide();
 						$('#guidebox').hide();
 						$('#videos').removeClass('hide').show();
+						$('#chatbox').removeClass('hide').show();
 						if($('#myvideo').length === 0) {
 							$('#videolocal').append('<video class="videobox rounded centered" id="myvideo" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay muted="muted"/>');
 							// Add a 'displayname' label
@@ -565,4 +566,27 @@ function newRemoteFeed(id, display) {
 			flashTitle(membercount);
 		}
 	})
+}
+
+function checkChatSend(field, event) {
+	var theCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if(theCode == 13) {
+		chatSend();
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function chatSend() {
+	var chatMsg = $('#chatboxinput').val();
+	if (chatMsg.length > 0) {
+		var dt = new Date();
+		var chatTime = dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDate()+" "+dt.getHours()+":"+dt.getMinutes()+":"+dt.getSeconds();
+		var chatSender = "@"+myDisplayName;
+		var chatFullMsg = chatTime+"<br />"+chatSender+": "+chatMsg+"<br /><br />";
+		$('#chatboxinput').val('');
+		$('#chatboxcontent').append(chatFullMsg);
+		$('#chatboxcontent').animate({scrollTop: $('#chatboxcontent').get(0).scrollHeight}, 2000);
+	}
 }
