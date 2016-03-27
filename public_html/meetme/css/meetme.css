@@ -95,7 +95,7 @@ video {
 	background-color: #CFDBDC;
 	padding: 4px;
 	max-width: 640px;
-	max-height: 440px;
+	max-height: 120px;
 	min-height: 120px;
 }
 
@@ -139,6 +139,7 @@ video {
 		padding: 4px;
 		min-width: 640px;
 		min-height: 120px;
+		max-height: 120px;
 	}
 
 	#chatboxinput {
