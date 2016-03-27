@@ -53,3 +53,6 @@ var labelPauseOff = "<i class='glyphicon glyphicon-pause'></i>";
 
 //var labelConfirmExit = "Are you sure you want to exit ?";
 var labelConfirmExit = "Yakin ingin keluar dari ruang meeting ?";
+
+//var labelRefreshWarning = "You are about to refresh this page, you will be forced to exit the meeting room";
+var labelRefreshWarning = "Anda akan melakukan refresh halaman ini, apabila dilanjutkan maka anda akan keluar dari ruang meeting";

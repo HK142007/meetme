@@ -18,7 +18,14 @@ $(document).ready(function() {
 
 	// fixme anton - first thing first, set window title
 	window.document.title = windowTitle;
-
+	
+	// fixme anton - confirm refresh
+	$(window).on('beforeunload', function(){
+		if (membercount > 0) {
+			return labelRefreshWarning;
+		}
+	});
+	
 	// shortcut
 	shortcut = $.url(1);
 	if (shortcut.length > 0) {
