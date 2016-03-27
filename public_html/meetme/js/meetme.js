@@ -19,13 +19,6 @@ $(document).ready(function() {
 	// fixme anton - first thing first, set window title
 	window.document.title = windowTitle;
 	
-	// fixme anton - confirm refresh
-	$(window).on('beforeunload', function(){
-		if (membercount > 0) {
-			return labelRefreshWarning;
-		}
-	});
-	
 	// shortcut
 	shortcut = $.url(1);
 	if (shortcut.length > 0) {
@@ -42,6 +35,15 @@ $(document).ready(function() {
 			bootbox.alert(labelNoWebRTC);
 			return;
 		}
+
+		// fixme anton - confirm refresh
+		window.onbeforeunload = function() {
+			if (membercount > 0) {
+				Janus.log("Prevent refresh");
+				return labelRefreshWarning;
+			}
+		}
+
 		// Create session
 		janus = new Janus({
 			server: server,
@@ -94,6 +96,7 @@ $(document).ready(function() {
 								// The room has been destroyed
 								Janus.warn("The room has been destroyed!");
 								bootbox.alert(error, function() {
+									membercount = 0;
 									window.location.reload();
 								});
 							} else if(event === "event") {
@@ -151,6 +154,7 @@ $(document).ready(function() {
 									}
 								} else if(msg["error"] !== undefined && msg["error"] !== null) {
 									bootbox.alert(msg["error"], function () {
+										membercount = 0;
 										window.location.reload();
 									});
 								}
@@ -204,6 +208,7 @@ $(document).ready(function() {
 					oncleanup: function() {
 						Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
 						// fixme anton - just reload the window
+						membercount = 0;
 						window.location.reload();
 						//membercount--;
 						//flashTitle(membercount);
@@ -217,10 +222,12 @@ $(document).ready(function() {
 			error: function(error) {
 				Janus.error(error);
 				bootbox.alert(error, function() {
+					membercount = 0;
 					window.location.reload();
 				});
 			},
 			destroyed: function() {
+				membercount = 0;
 				window.location.reload();
 			}
 		})
@@ -383,6 +390,7 @@ function unpublishOwnFeed() {
 			var unpublish = { "request": "unpublish", "token": "" };
 			mcu.send({"message": unpublish});
 			// fixme anton - reload window after cleanup
+			//membercount = 0;
 			//window.location.reload();
 		}
 	});
