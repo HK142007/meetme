@@ -29,6 +29,7 @@ $(document).ready(function() {
 	// Initialize the library (all console debuggers enabled)
 	Janus.init({debug: debugLevel, callback: function() {
 		$(this).attr('disabled', true).unbind('click');
+
 		// Make sure the browser supports WebRTC
 		if(!Janus.isWebrtcSupported()) {
 			bootbox.alert(labelNoWebRTC);
@@ -38,8 +39,19 @@ $(document).ready(function() {
 		// fixme anton - confirm refresh
 		window.onbeforeunload = function() {
 			if (membercount > 0) {
-				Janus.log("Prevent refresh");
+				Janus.log("Confirmed unload");
 				return labelRefreshWarning;
+			}
+		}
+
+		// fixme anton - original janus onbeforeunload
+		window.onunload = function() {
+			Janus.log("Closing window");
+			for(var s in Janus.sessions) {
+				if(Janus.sessions[s] !== null && Janus.sessions[s] !== undefined && Janus.sessions[s].destroyOnUnload) {
+					Janus.log("Destroying session " + s);
+					Janus.sessions[s].destroy();
+				}
 			}
 		}
 

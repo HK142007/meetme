@@ -189,7 +189,7 @@ Here is the full source code: https://github.com/antonraharja/meetme
 					<div class="col-md-6" id="tableft">
 						<div class="row" id="videofocus"></div>
 					</div>
-					<div class="col-md-4" id="tabcenter">
+					<div class="col-md-6" id="tabright">
 						<div class="pull-left" id="videolocal" onclick="setLargeVideo('videolocal')"></div>
 						<div class="pull-left" id="videoremote1" onclick="setLargeVideo('videoremote1')"></div>
 						<div class="pull-left" id="videoremote2" onclick="setLargeVideo('videoremote2')"></div>
@@ -209,14 +209,18 @@ Here is the full source code: https://github.com/antonraharja/meetme
 						<div class="pull-left" id="videoremote15" onclick="setLargeVideo('videoremote15')"></div>
 						<div class="pull-left" id="videoremote16" onclick="setLargeVideo('videoremote16')"></div>
 					</div>
-					<div class="col-md-2" id="tabright">
-						<div class="row">
-							<div class="form-group hide" id="chatbox">
-								<div id="chatboxcontent"></div>
-								<!-- Your message -->
-								<input autocomplete="off" type="text" placeholder="Pesan anda" id="chatboxinput" onkeypress="return checkChatSend(this, event);"></input>
-							</div>
-						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="row">
+			<div class="panel-group">
+				<div class="panel-body">
+					<div class="form-group hide" id="chatbox">
+						<div id="chatboxcontent"></div>
+						<!-- Your message -->
+						<input autocomplete="off" type="text" placeholder="Pesan anda" id="chatboxinput" onkeypress="return checkChatSend(this, event);"></input>
 					</div>
 				</div>
 			</div>
