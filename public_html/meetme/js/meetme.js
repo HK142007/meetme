@@ -289,18 +289,6 @@ function checkRoomNumber(field, event) {
 	}
 }
 
-function sendMessage(){
-	var text = $('#chatboxinput').val();
-	var messageData = '{"from" : "'+ myDisplayName +'","text" : "' + text +'"}';
-
-    mcu.data({
-		text: messageData,
-		error: function(reason) { bootbox.alert(reason); },
-		success: function() { },
-	});
-	
-}
-
 function joinRoomNumber() {
 	if($('#displayname').length === 0) {
 		$('#join').click(joinRoomNumber);
