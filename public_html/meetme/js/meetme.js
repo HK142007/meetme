@@ -214,6 +214,10 @@ $(document).ready(function() {
 						membercount++;
 						flashTitle(membercount);
 					},
+					ondataopen: function(data) {
+						Janus.log("The DataChannel is available!");
+						$("#statusDataChannel").html("Ready");
+					},
 					onremotestream: function(stream) {
 						// The publisher stream is sendonly, we don't expect anything here
 					},
@@ -283,6 +287,18 @@ function checkRoomNumber(field, event) {
 	} else {
 		return true;
 	}
+}
+
+function sendMessage(){
+	var text = $('#chatboxinput').val();
+	var messageData = '{"from" : "'+ myDisplayName +'","text" : "' + text +'"}';
+
+    mcu.data({
+		text: messageData,
+		error: function(reason) { bootbox.alert(reason); },
+		success: function() { },
+	});
+	
 }
 
 function joinRoomNumber() {
@@ -513,6 +529,9 @@ function newRemoteFeed(id, display) {
 		onlocalstream: function(stream) {
 			// The subscriber stream is recvonly, we don't expect anything here
 		},
+		ondata: function(data) {
+			appendNewChat(data);
+		},
 		onremotestream: function(stream) {
 			Janus.debug("Remote feed #" + remoteFeed.rfindex);
 			if($('#remotevideo'+remoteFeed.rfindex).length === 0) {
@@ -597,8 +616,24 @@ function chatSend() {
 		var chatTime = dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDate()+" "+dt.getHours()+":"+dt.getMinutes()+":"+dt.getSeconds();
 		var chatSender = "@"+myDisplayName;
 		var chatFullMsg = chatTime+"<br />"+chatSender+": "+chatMsg+"<br /><br />";
+		
 		$('#chatboxinput').val('');
-		$('#chatboxcontent').append(chatFullMsg);
-		$('#chatboxcontent').animate({scrollTop: $('#chatboxcontent').get(0).scrollHeight}, 2000);
+		appendNewChat(chatFullMsg);
+		sendMessage(chatFullMsg);
 	}
+}
+
+function sendMessage(data){
+
+    mcu.data({
+		text: data,
+		error: function(reason) { bootbox.alert(reason); },
+		success: function() { },
+	});
+	
+}
+
+function appendNewChat(data){
+		$('#chatboxcontent').append(data);
+		$('#chatboxcontent').animate({scrollTop: $('#chatboxcontent').get(0).scrollHeight}, 2000);
 }
