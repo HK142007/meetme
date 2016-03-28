@@ -218,9 +218,12 @@ Here is the full source code: https://github.com/antonraharja/meetme
 			<div class="panel-group">
 				<div class="panel-body">
 					<div class="form-group hide" id="chatbox">
-						<div id="chatboxcontent"></div>
+						<div id="chatboxcontent">
+						
+						</div>
 						<!-- Your message -->
 						<input autocomplete="off" type="text" placeholder="Pesan anda" id="chatboxinput" onkeypress="return checkChatSend(this, event);"></input>
+						<p style="color:white">Data Channel Status : <span id="statusDataChannel">Not Ready</span></p>
 					</div>
 				</div>
 			</div>
