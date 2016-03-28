@@ -18,6 +18,7 @@ $(document).ready(function() {
 
 	// fixme anton - first thing first, set window title
 	window.document.title = windowTitle;
+	$('#notifbox').html(windowTitle);
 	
 	// shortcut
 	shortcut = $.url(1);
@@ -604,7 +605,7 @@ function chatSend() {
 	if (chatMsg.length > 0) {
 		var dt = new Date();
 		var chatTime = dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDate()+" "+dt.getHours()+":"+dt.getMinutes()+":"+dt.getSeconds();
-		var chatSender = "@"+myDisplayName;
+		var chatSender = myDisplayName;
 		var chatFullMsg = "<p>" + chatMsg + "</p><time>" + chatSender + " • " + chatTime + "</time>";
 		
 		$('#chatboxinput').val('');
