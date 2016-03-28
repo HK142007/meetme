@@ -217,6 +217,8 @@ $(document).ready(function() {
 					ondataopen: function(data) {
 						Janus.log("The DataChannel is available!");
 						$("#statusDataChannel").html("Ready");
+						
+						$('#chat-box').show();
 					},
 					onremotestream: function(stream) {
 						// The publisher stream is sendonly, we don't expect anything here
@@ -287,6 +289,18 @@ function checkRoomNumber(field, event) {
 	} else {
 		return true;
 	}
+}
+
+function sendMessage(){
+	var text = $('#chatboxinput').val();
+	var messageData = '{"from" : "'+ myDisplayName +'","text" : "' + text +'"}';
+
+    mcu.data({
+		text: messageData,
+		error: function(reason) { bootbox.alert(reason); },
+		success: function() { },
+	});
+	
 }
 
 function joinRoomNumber() {
@@ -518,7 +532,7 @@ function newRemoteFeed(id, display) {
 			// The subscriber stream is recvonly, we don't expect anything here
 		},
 		ondata: function(data) {
-			appendNewChat(data);
+			appendNewChat(data, "IN");
 		},
 		onremotestream: function(stream) {
 			Janus.debug("Remote feed #" + remoteFeed.rfindex);
@@ -603,10 +617,9 @@ function chatSend() {
 		var dt = new Date();
 		var chatTime = dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDate()+" "+dt.getHours()+":"+dt.getMinutes()+":"+dt.getSeconds();
 		var chatSender = "@"+myDisplayName;
-		var chatFullMsg = chatTime+"<br />"+chatSender+": "+chatMsg+"<br /><br />";
+		var chatFullMsg = "<p>" + chatMsg + "</p><time>" + chatSender + " • " + chatTime + "</time>";
 		
 		$('#chatboxinput').val('');
-		appendNewChat(chatFullMsg);
 		sendMessage(chatFullMsg);
 	}
 }
@@ -616,12 +629,22 @@ function sendMessage(data){
     mcu.data({
 		text: data,
 		error: function(reason) { bootbox.alert(reason); },
-		success: function() { },
+		success: function() { 
+			appendNewChat(data, "OUT");
+		},
 	});
 	
 }
 
-function appendNewChat(data){
-		$('#chatboxcontent').append(data);
+function appendNewChat(data, status){
+		var newChat = "";
+		 
+		if(status == "IN"){
+			newChat = "<div class='incoming-messages'>" + data + "</div>";
+		}else{
+			newChat = "<div class='outgoing-messages'>" + data + "</div>";
+		}
+	
+		$('#chatboxcontent').append(newChat);
 		$('#chatboxcontent').animate({scrollTop: $('#chatboxcontent').get(0).scrollHeight}, 2000);
 }
