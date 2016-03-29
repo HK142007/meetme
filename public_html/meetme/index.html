@@ -216,8 +216,8 @@ Here is the full source code: https://github.com/antonraharja/meetme
 </div>
 
 <div class="chat-box" id="chat-box">
-    <input type="checkbox" />
-    <label data-expanded="Close Chatbox" data-collapsed="Open Chatbox"><span id="statusDataChannel" style="float:right">Not Ready</span></label>
+    <input type="checkbox" id="checkboxChat" onchange="removeMessageAlert()" />
+    <label data-expanded="Close Chatbox" id="label-chatbox" data-collapsed="Open Chatbox"><span id="statusDataChannel" style="float:right">Not Ready</span></label>
     <div class="chat-box-content">
 		<div id="chatboxcontent">
 		</div>

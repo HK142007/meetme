@@ -566,6 +566,7 @@ function newRemoteFeed(id, display) {
 				$('#videoremote'+remoteFeed.rfindex).append('<div class="videobox-novideo">'+labelNoRemoteVideo+'</div>');
 			}
 			membercount++;
+			appendNewChat(remoteFeed.rfdisplay + labelUserJoinChat, "NOTIFICATION");
 			flashTitle(membercount);
 		},
 		oncleanup: function() {
@@ -585,6 +586,7 @@ function newRemoteFeed(id, display) {
 			}
 
 			membercount--;
+			appendNewChat(remoteFeed.rfdisplay + labelUserLeaveChat, "NOTIFICATION");
 			flashTitle(membercount);
 		}
 	})
@@ -630,10 +632,26 @@ function appendNewChat(data, status){
 		 
 		if(status == "IN"){
 			newChat = "<div class='incoming-messages'>" + data + "</div>";
-		}else{
+		}else if(status == "OUT"){
 			newChat = "<div class='outgoing-messages'>" + data + "</div>";
-		}
+		}else{
+			newChat = "<span class='notification-messages'><i>" + data + "</i></span>"
+		}	
 	
 		$('#chatboxcontent').append(newChat);
 		$('#chatboxcontent').animate({scrollTop: $('#chatboxcontent').get(0).scrollHeight}, 2000);
+		
+		if(!$('.chat-box-content').is(':visible')){
+			newMessageAlert();
+		}
+}
+
+function newMessageAlert(){
+	$('#statusDataChannel').html(labelChatNotificationHeader);
+}
+
+function removeMessageAlert(){
+	if($("#checkboxChat").is(":checked")){
+		$('#statusDataChannel').html("Ready");
+	}
 }

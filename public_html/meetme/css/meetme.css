@@ -122,7 +122,7 @@ video {
 #chatboxcontent > div {
 	background: #F0F0F0;
 	margin: 5px;
-	width: 90%;
+	width: 85%;
 	padding: 5px 10px 5px 10px;
 }
 
@@ -142,6 +142,12 @@ video {
 	float: right;
 }
 
+.notification-messages{
+	margin: 10px;
+	float: right;
+	color: snow;
+	width: 85%;
+}
 
 .chat-box {
   font:normal normal 11px/1.4 Tahoma,Verdana,Sans-Serif;
@@ -174,6 +180,29 @@ video {
   cursor:pointer;
   opacity:0;
   filter:alpha(opacity=0);
+}
+
+blink, .blink {
+  -webkit-animation: blink 1s step-end infinite;
+  -moz-animation: blink 1s step-end infinite;
+  -o-animation: blink 1s step-end infinite;
+  animation: blink 1s step-end infinite;
+}
+
+@-webkit-keyframes blink {
+  67% { opacity: 0 }
+}
+
+@-moz-keyframes blink {
+  67% { opacity: 0 }
+}
+
+@-o-keyframes blink {
+  67% { opacity: 0 }
+}
+
+@keyframes blink {
+  67% { opacity: 0 }
 }
 
 .chat-box > label {
