@@ -56,3 +56,9 @@ var labelConfirmExit = "Yakin ingin keluar dari ruang meeting ?";
 
 //var labelRefreshWarning = "You are about to refresh this page, you will be forced to exit the meeting room";
 var labelRefreshWarning = "Anda akan melakukan refresh/close halaman ini, apabila dilanjutkan maka anda akan keluar dari ruang meeting";
+
+var labelUserJoinChat = " telah bergabung";
+
+var labelUserLeaveChat = " telah keluar";
+
+var labelChatNotificationHeader = "<blink>Pesan baru telah diterima</blink>"
