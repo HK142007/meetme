@@ -616,34 +616,32 @@ function chatSend() {
 }
 
 function sendMessage(data){
-
-    mcu.data({
+	mcu.data({
 		text: data,
 		error: function(reason) { bootbox.alert(reason); },
 		success: function() { 
 			appendNewChat(data, "OUT");
 		},
-	});
-	
+	});	
 }
 
 function appendNewChat(data, status){
-		var newChat = "";
+	var newChat = "";
 		 
-		if(status == "IN"){
-			newChat = "<div class='incoming-messages'>" + data + "</div>";
-		}else if(status == "OUT"){
-			newChat = "<div class='outgoing-messages'>" + data + "</div>";
-		}else{
-			newChat = "<span class='notification-messages'><i>" + data + "</i></span>"
-		}	
+	if (status == "IN") {
+		newChat = "<div class='incoming-messages'>" + data + "</div>";
+	} else if (status == "OUT") {
+		newChat = "<div class='outgoing-messages'>" + data + "</div>";
+	} else {
+		newChat = "<span class='notification-messages'><i>" + data + "</i></span>"
+	}	
 	
-		$('#chatboxcontent').append(newChat);
-		$('#chatboxcontent').animate({scrollTop: $('#chatboxcontent').get(0).scrollHeight}, 2000);
-		
-		if(!$('.chat-box-content').is(':visible')){
-			newMessageAlert();
-		}
+	$('#chatboxcontent').append(newChat);
+	$('#chatboxcontent').animate({scrollTop: $('#chatboxcontent').get(0).scrollHeight}, 2000);
+	
+	if(!$('.chat-box-content').is(':visible')) {
+		newMessageAlert();
+	}
 }
 
 function newMessageAlert(){
@@ -651,7 +649,7 @@ function newMessageAlert(){
 }
 
 function removeMessageAlert(){
-	if($("#checkboxChat").is(":checked")){
-		$('#statusDataChannel').html("Ready");
+	if($("#checkboxChat").is(":checked")) {
+		$('#statusDataChannel').html(labelChatReady);
 	}
 }
