@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 	// fixme anton - first thing first, set window title
 	window.document.title = windowTitle;
-	$('#notifbox').html(windowTitle);
+	$('#servicename').html(windowTitle);
 	
 	// shortcut
 	shortcut = $.url(1);
@@ -182,6 +182,7 @@ $(document).ready(function() {
 						Janus.debug(" ::: Got a local stream :::");
 						Janus.debug(JSON.stringify(stream));
 						$('#videolocal').empty();
+						$('#meetmenav').hide();
 						$('#joinroom').hide();
 						$('#guidebox').hide();
 						$('#videos').removeClass('hide').show();
@@ -199,7 +200,7 @@ $(document).ready(function() {
 							// fixme anton - starts muted
 							toggleMute();
 							// Add welcome notif
-							$('#notifbox').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
+							$('#roomdesc').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
 							// set publisher video as large video
 							setLargeVideo('videolocal');
 						}

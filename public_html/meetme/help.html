@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="Ruang meeting online bebas pakai">
+<meta name="keywords" content="online meeting,videochat,videocall,webrtc,voip">
+<meta name="author" content="Anton Raharja">
+<!-- MeetMe Room -->
+<title>meetme.id</title>
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="icon" type="image/png" href="images/video-icon-152-184619.png" />
+<link rel="apple-touch-icon" href="images/video-icon-152-184619.png">
+<link rel="apple-touch-icon-precomposed" href="images/video-icon-152-184619.png">
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="msapplication-TileImage" content="images/video-icon-144-184619.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/video-icon-152-184619.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/video-icon-144-184619.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/video-icon-120-184619.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/video-icon-114-184619.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/video-icon-72-184619.png">
+<link rel="apple-touch-icon-precomposed" href="images/video-icon-57-184619.png">
+<link rel="icon" href="images/video-icon-32-184619.png" sizes="32x32">
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="css/meetme.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-static-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html" id="servicename">meetme.id</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<!-- Help -->
+				<li><a href="help.html">Bantuan</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container-fluid">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="panel-group">
+				<div class="panel-body">
+					<!-- Join or create room -->
+					<span class="label label-default" id="notifbox"></span>
+					<button class="btn btn-info btn-xs hide pull-right" id="unpublish" data-toggle="tooltip" data-placement="bottom" title="Keluar meeting room"></button>
+					<button class="btn btn-info btn-xs hide pull-right" id="pause" data-toggle="tooltip" data-placement="bottom" title="Stop kirim video"></button>
+					<button class="btn btn-info btn-xs hide pull-right" id="mute" data-toggle="tooltip" data-placement="bottom" title="Stop kirim suara"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapse0">Cara menggunakan</a>
+							</h4>
+						</div>
+						<div id="collapse0" class="panel-collapse collapse">
+							<div class="panel-body">
+								<p class="lead">Berikut adalah petunjuk singkat bagaimana menggunakan layanan:</p>
+								<ol>
+									<li>Masukkan nama anda di <i>input field</i> <strong>Nama anda</strong> diatas</li>
+									<ul>
+										<li>Singkat saja dan hanya gunakan huruf saja, boleh dengan spasi</li>
+									</ul>
+									<li>Masukkan nomor ruang meeting di <i>input field</i> <strong>Nomor ruangan</strong> diatas</li>
+									<ul>
+										<li>Nomor ruangan adalah angka antara 1 sampai 9999999999</li>
+										<li>Apabila ruangan kosong maka akan dibuatkan otomatis untuk anda</li>
+										<li>Apabila sudah ada orang lain maka anda bergabung dalam ruangan tersebut</li>
+									</ul>
+									<li>Klik tombol <strong>Masuk</strong> untuk membuat atau bergabung dalam ruang meeting online</li>
+								</ol>
+								<p class="lead">Catatan penting:</p>
+								<ul>
+									<li>Gunakan Chrome, Firefox atau Opera yang terbaru, Safari membutuhkan plugin Temasys, IE dan Edge tidak berjalan baik</li>
+									<li>Layanan berjalan dengan baik di Android namun tidak berjalan di iOS dan mungkin juga di Windows Phone</li>
+									<li>Video webcam anda adalah yang namanya berwarna biru</li>
+									<li>Saat anda masuk ruang meeting suara anda di-<i>mute</i>, klik tombol berbentuk <i>speaker-off</i> warna merah di kanan atas layar untuk berbicara</li>
+									<li>Bandwidth yang dibutuhkan per video stream adalah sekitar 64kbps sampai 128kbps sudah termasuk video, voice dan data</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Syarat dan ketentuan berlaku</a>
+							</h4>
+						</div>
+						<div id="collapse1" class="panel-collapse collapse">
+							<div class="panel-body">
+								<p class="lead">Perhatian, dengan masuk di salah satu ruang meeting online disini maka:</p>
+								<ul>
+									<li>Anda setuju untuk berhati-hati karena tidak ada mekanisme registrasi atau validasi pengguna layanan disini</li>
+									<li>Anda setuju untuk memperhatikan dengan siapa anda berbicara</li>
+									<li>Anda setuju untuk memastikan anda benar kenal dengan rekan diskusi anda di ruang meeting ini</li>
+									<li>Anda setuju untuk <strong>tidak</strong> memberikan informasi pribadi atau sensitif lainnya disini</li>
+									<li>Anda setuju untuk <strong>tidak</strong> menggunakan layanan ini untuk mendukung dan/atau melaksanakan kegiatan yang melanggar hukum di Indonesia</li>
+									<li>Anda setuju bahwa pengelola dan/atau penyelenggara layanan ini tidak dapat ikut bertanggung-jawab atas kegiatan yang anda lakukan</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Tentang pengelolaan layanan</a>
+							</h4>
+						</div>
+						<div id="collapse2" class="panel-collapse collapse">
+							<div class="panel-body">
+								<p class="lead">Pengelolaan layanan:</p>
+								<ul>
+									<li>Ini adalah layanan gratis dengan tujuan untuk mempelajari teknologi komunikasi berbasis IP</li>
+									<li>Layanan ini dikelola oleh perorangan dan dijalankan dengan SLA <i>best effort</i></li>
+									<li>Infrastruktur yang ada kemampuannya terbatas karena berbagi dengan layanan lain yaitu <a href="https://teleponrakyat.id" target="_blank">Telepon Rakyat</a>, mohon gunakan layanan dengan bijak</li>
+									<li>Lokasi server berada di <a href="http://www.idc.co.id/contact.html" target="_blank">IDC 3D Duren Tiga Jakarta</a>, bandwidth server lebar di dalam negri namun terbatas untuk luar negri</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Kontak</a>
+							</h4>
+						</div>
+						<div id="collapse3" class="panel-collapse collapse">
+							<div class="panel-body">
+								<p class="lead">Anda menemui masalah ?</p>
+								<a href="https://twitter.com/intent/tweet?screen_name=antonrd" class="twitter-mention-button" data-related="antonrd">Tweet to @antonrd</a>
+								<a href="https://twitter.com/intent/tweet?screen_name=onnowpurbo" class="twitter-mention-button" data-related="onnowpurbo">Tweet to @onnowpurbo</a>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- tweet to @antonrd -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- tweet to @onnowpurbo -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- kurakura cinta kamu sampai mati.. -->
+
+</body>
+</html>
