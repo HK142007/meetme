@@ -615,7 +615,7 @@ function chatSend() {
 	}
 }
 
-function sendMessage(data){
+function sendMessage(data) {
 	mcu.data({
 		text: data,
 		error: function(reason) { bootbox.alert(reason); },
@@ -625,7 +625,7 @@ function sendMessage(data){
 	});	
 }
 
-function appendNewChat(data, status){
+function appendNewChat(data, status) {
 	var newChat = "";
 		 
 	if (status == "IN") {
@@ -644,11 +644,11 @@ function appendNewChat(data, status){
 	}
 }
 
-function newMessageAlert(){
+function newMessageAlert() {
 	$('#statusDataChannel').html(labelChatNotificationHeader);
 }
 
-function removeMessageAlert(){
+function removeMessageAlert() {
 	if($("#checkboxChat").is(":checked")) {
 		$('#statusDataChannel').html(labelChatReady);
 	}

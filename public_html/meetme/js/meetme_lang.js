@@ -64,7 +64,7 @@ var labelUserJoinChat = " telah bergabung";
 var labelUserLeaveChat = " telah keluar";
 
 //var labelChatRead = "Ready";
-var labelChatRead = "Ready";
+var labelChatReady = "Ready";
 
 //var labelChatNotificationHeader = "<blink>New message</blink>";
 var labelChatNotificationHeader = "<blink>Ada pesan baru</blink>";
