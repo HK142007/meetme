@@ -219,3 +219,33 @@ blink, .blink {
 		height: 600px;
 	}
 }
+
+@media screen and (min-width: 360px) {
+	.container {
+		width: 350px;
+	}
+	
+	.chat-box {
+		width: 320px;
+	}
+
+	#chatboxcontent {
+		height: 300px;
+	}
+	
+	#videofocus {
+		width: 300px;
+	}
+	
+	#videolocal, div[id*='videoremote'] {
+		width: 150px;
+	}
+
+	#videolocal img, div[id*='videoremote'] img {
+		width: 150px;
+	}
+
+	#videolocal video, div[id*='videoremote'] video {
+		width: 150px;
+	}
+}
