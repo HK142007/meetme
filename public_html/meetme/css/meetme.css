@@ -9,6 +9,8 @@ video {
 	-ms-transform: scale(-1, 1);
 	transform: scale(-1, 1);
 	background-color: #4D545E;
+	width: 100%
+	height: auto;
 }
 
 .videobox, .videobox-novideo {
@@ -56,31 +58,19 @@ video {
 	padding: 0px !important;
 }
 
-#videomember {
-	position: relative;
-	overflow: auto;
-	margin: 0px !important;
-	padding: 0px !important;
-	max-width: 640px;
-	max-height: 480px;
-}
-
 #meetmeheader {
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	max-width: 1310px;
 }
 
-#tableft {
-	margin: 0px !important;
+#videoboxes {
+	position: relative;
+	overflow: auto;
+	margin: 0 auto;
 	padding: 0px !important;
-	max-width: 640px;
-	max-height: 480px;
-}
-
-#tabright {
-	margin: 0px !important;
-	padding: 0px !important;
-	max-width: 640px;
-	max-height: 480px;
+	max-width: 1310px;
 }
 
 #chatboxinput {
@@ -208,7 +198,7 @@ blink, .blink {
 
 @media screen and (min-width: 1366px) {
 	.container {
-		width: 1320px;
+		width: auto;
 	}
 	
 	.chat-box {
@@ -218,34 +208,185 @@ blink, .blink {
 	#chatboxcontent {
 		height: 600px;
 	}
-}
 
-@media screen and (max-width: 360px) {
-	.container {
-		width: 350px;
+	#meetmeheader {
+		width: 1310px;
 	}
 	
-	.chat-box {
-		width: 320px;
+	#videoboxes {
+		width: 1310px;
+		height: 500px;
 	}
 
-	#chatboxcontent {
-		height: 300px;
-	}
-	
 	#videofocus {
-		width: 300px;
+		width: 640px;
 	}
 	
 	#videolocal, div[id*='videoremote'] {
-		width: 150px;
+		width: 160px;
 	}
 
 	#videolocal img, div[id*='videoremote'] img {
-		width: 150px;
+		width: 160px;
 	}
 
 	#videolocal video, div[id*='videoremote'] video {
-		width: 150px;
+		width: 160px;
+	}
+}
+
+/* iPad portrait */
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+	.container {
+		width: auto;
+	}
+	
+	.chat-box {
+		width: 400px;
+	}
+
+	#chatboxcontent {
+		max-height: 500px;
+	}
+	
+	#meetmeheader {
+		width: 640px;
+	}
+	
+	#videoboxes {
+		width: 640px;
+	}
+
+	#videofocus {
+		width: 640px;
+	}
+	
+	#videolocal, div[id*='videoremote'] {
+		width: 160px;
+	}
+
+	#videolocal img, div[id*='videoremote'] img {
+		width: 160px;
+	}
+
+	#videolocal video, div[id*='videoremote'] video {
+		width: 160px;
+	}
+}
+
+/* iPad landscape */
+@media screen and (max-width: 1024px) and (max-height: 768px) {
+	.container {
+		width: auto;
+	}
+	
+	.chat-box {
+		width: 400px;
+	}
+
+	#chatboxcontent {
+		height: 600px;
+	}
+	
+	#meetmeheader {
+		width: 960px;
+	}
+	
+	#videoboxes {
+		width: 960px;
+	}
+
+	#videofocus {
+		width: 640px;
+	}
+	
+	#videolocal, div[id*='videoremote'] {
+		width: 160px;
+	}
+
+	#videolocal img, div[id*='videoremote'] img {
+		width: 160px;
+	}
+
+	#videolocal video, div[id*='videoremote'] video {
+		width: 160px;
+	}
+}
+
+/* galaxy s5 portrait */
+@media screen and (max-width: 360px) and (max-height: 640px) {
+	.container {
+		width: auto;
+	}
+	
+	.chat-box {
+		width: 280px;
+	}
+
+	#chatboxcontent {
+		max-height: 400px
+	}
+	
+	#meetmeheader {
+		width: 320px;
+	}
+	
+	#videoboxes {
+		width: 320px;
+	}
+
+	#videofocus {
+		width: 320px;
+	}
+	
+	#videolocal, div[id*='videoremote'] {
+		width: 160px;
+	}
+
+	#videolocal img, div[id*='videoremote'] img {
+		width: 160px;
+	}
+
+	#videolocal video, div[id*='videoremote'] video {
+		width: 160px;
+	}
+}
+
+/* nexus 5 landscape */
+@media screen and (max-width: 640px) and (max-height: 360px) {
+	.container {
+		width: auto;
+	}
+	
+	.chat-box {
+		width: 280px;
+	}
+
+	#chatboxcontent {
+		height: 200px;
+	}
+	
+	#meetmeheader {
+		width: 500px;
+	}
+	
+	#videoboxes {
+		width: 500px;
+	}
+
+	#videofocus {
+		width: 160px;
+	}
+	
+	#videolocal, div[id*='videoremote'] {
+		width: 160px;
+	}
+
+	#videolocal img, div[id*='videoremote'] img {
+		width: 160px;
+	}
+
+	#videolocal video, div[id*='videoremote'] video {
+		width: 160px;
 	}
 }

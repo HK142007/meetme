@@ -100,44 +100,35 @@
 	</div>
 	<div class="col-md-12" id="videos">
 		<div class="row">
-			<div class="panel-group">
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-md-12">
-							<!-- Join or create room -->
-							<span class="label label-default" id="roomdesc"></span>
-							<button class="btn btn-info btn-xs hide pull-right" id="unpublish" data-toggle="tooltip" data-placement="bottom" title="Keluar meeting room"></button>
-							<button class="btn btn-info btn-xs hide pull-right" id="pause" data-toggle="tooltip" data-placement="bottom" title="Stop kirim video"></button>
-							<button class="btn btn-info btn-xs hide pull-right" id="mute" data-toggle="tooltip" data-placement="bottom" title="Stop kirim suara"></button>
-						</div>
-					</div>
-				</div>
+			<div id="meetmeheader">
+				<!-- Join or create room -->
+				<span class="label label-default" id="roomdesc"></span>
+				<button class="btn btn-info btn-xs hide pull-right" id="unpublish" data-toggle="tooltip" data-placement="bottom" title="Keluar meeting room"></button>
+				<button class="btn btn-info btn-xs hide pull-right" id="pause" data-toggle="tooltip" data-placement="bottom" title="Stop kirim video"></button>
+				<button class="btn btn-info btn-xs hide pull-right" id="mute" data-toggle="tooltip" data-placement="bottom" title="Stop kirim suara"></button>
 			</div>
-			<div class="panel-group">
-				<div class="panel-body">
-					<div class="col-md-6" id="tableft">
-						<div class="row" id="videofocus"></div>
-					</div>
-					<div class="col-md-6" id="tabright">
-						<div class="pull-left" id="videolocal" onclick="setLargeVideo('videolocal')"></div>
-						<div class="pull-left" id="videoremote1" onclick="setLargeVideo('videoremote1')"></div>
-						<div class="pull-left" id="videoremote2" onclick="setLargeVideo('videoremote2')"></div>
-						<div class="pull-left" id="videoremote3" onclick="setLargeVideo('videoremote3')"></div>
-						<div class="pull-left" id="videoremote4" onclick="setLargeVideo('videoremote4')"></div>
-						<div class="pull-left" id="videoremote5" onclick="setLargeVideo('videoremote5')"></div>
-						<div class="pull-left" id="videoremote6" onclick="setLargeVideo('videoremote6')"></div>
-						<div class="pull-left" id="videoremote7" onclick="setLargeVideo('videoremote7')"></div>
-						<div class="pull-left" id="videoremote8" onclick="setLargeVideo('videoremote8')"></div>
-						<div class="pull-left" id="videoremote9" onclick="setLargeVideo('videoremote9')"></div>
-						<div class="pull-left" id="videoremote10" onclick="setLargeVideo('videoremote10')"></div>
-						<div class="pull-left" id="videoremote11" onclick="setLargeVideo('videoremote11')"></div>
-						<div class="pull-left" id="videoremote11" onclick="setLargeVideo('videoremote11')"></div>
-						<div class="pull-left" id="videoremote12" onclick="setLargeVideo('videoremote12')"></div>
-						<div class="pull-left" id="videoremote13" onclick="setLargeVideo('videoremote13')"></div>
-						<div class="pull-left" id="videoremote14" onclick="setLargeVideo('videoremote14')"></div>
-						<div class="pull-left" id="videoremote15" onclick="setLargeVideo('videoremote15')"></div>
-						<div class="pull-left" id="videoremote16" onclick="setLargeVideo('videoremote16')"></div>
-					</div>
+		</div>
+		<div class="row">
+			<div id="videoboxes">
+				<div class="pull-left" id="videofocus"></div>
+					<div class="pull-left" id="videolocal" onclick="setLargeVideo('videolocal')"></div>
+					<div class="pull-left" id="videoremote1" onclick="setLargeVideo('videoremote1')"></div>
+					<div class="pull-left" id="videoremote2" onclick="setLargeVideo('videoremote2')"></div>
+					<div class="pull-left" id="videoremote3" onclick="setLargeVideo('videoremote3')"></div>
+					<div class="pull-left" id="videoremote4" onclick="setLargeVideo('videoremote4')"></div>
+					<div class="pull-left" id="videoremote5" onclick="setLargeVideo('videoremote5')"></div>
+					<div class="pull-left" id="videoremote6" onclick="setLargeVideo('videoremote6')"></div>
+					<div class="pull-left" id="videoremote7" onclick="setLargeVideo('videoremote7')"></div>
+					<div class="pull-left" id="videoremote8" onclick="setLargeVideo('videoremote8')"></div>
+					<div class="pull-left" id="videoremote9" onclick="setLargeVideo('videoremote9')"></div>
+					<div class="pull-left" id="videoremote10" onclick="setLargeVideo('videoremote10')"></div>
+					<div class="pull-left" id="videoremote11" onclick="setLargeVideo('videoremote11')"></div>
+					<div class="pull-left" id="videoremote11" onclick="setLargeVideo('videoremote11')"></div>
+					<div class="pull-left" id="videoremote12" onclick="setLargeVideo('videoremote12')"></div>
+					<div class="pull-left" id="videoremote13" onclick="setLargeVideo('videoremote13')"></div>
+					<div class="pull-left" id="videoremote14" onclick="setLargeVideo('videoremote14')"></div>
+					<div class="pull-left" id="videoremote15" onclick="setLargeVideo('videoremote15')"></div>
+					<div class="pull-left" id="videoremote16" onclick="setLargeVideo('videoremote16')"></div>
 				</div>
 			</div>
 		</div>

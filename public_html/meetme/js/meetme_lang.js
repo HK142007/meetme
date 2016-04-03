@@ -28,7 +28,7 @@ var labelStopPublishing = "<i class='glyphicon glyphicon-off'></i>";
 var labelRoom = "Ruangan";
 
 //var labelRoomNumber = "Room #";
-var labelRoomNumber = "Ruangan #";
+var labelRoomNumber = "#";
 
 //var labelInvalidRoomNumber = "Room number is 1-10 digits only";
 var labelInvalidRoomNumber = "Nomor ruangan antara 1-10 digit";
