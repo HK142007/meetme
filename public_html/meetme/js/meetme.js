@@ -528,7 +528,6 @@ function newRemoteFeed(id, display) {
 			Janus.debug("Remote feed #" + remoteFeed.rfindex);
 			if($('#remotevideo'+remoteFeed.rfindex).length === 0) {
 				// No remote video yet
-				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered" id="waitingvideo' + remoteFeed.rfindex + '" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" />');
 				$('#videoremote'+remoteFeed.rfindex).append('<video class="videobox rounded centered" id="remotevideo' + remoteFeed.rfindex +'" width="'+videoBoxWidth+'" height="'+videoBoxHeight+'" autoplay/>');
 			}
 			$('#videoremote'+remoteFeed.rfindex).append(
@@ -537,7 +536,6 @@ function newRemoteFeed(id, display) {
 				'<span class="label label-default hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 7px; left: 7px;"></span>' +
 				'<span class="label label-default hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 7px; right: 7px;"></span>');
 			$("#remotevideo"+remoteFeed.rfindex).bind("playing", function () {
-				$('#waitingvideo'+remoteFeed.rfindex).remove();
 				$('#remotevideo'+remoteFeed.rfindex).removeClass('hide');
 				var width = this.videoWidth;
 				var height = this.videoHeight;
@@ -572,7 +570,6 @@ function newRemoteFeed(id, display) {
 		},
 		oncleanup: function() {
 			Janus.log(" ::: Got a cleanup notification (remote feed " + id + ") :::");
-			$('#waitingvideo'+remoteFeed.rfindex).remove();
 			$('#curbitrate'+remoteFeed.rfindex).remove();
 			$('#curres'+remoteFeed.rfindex).remove();
 			if(bitrateTimer[remoteFeed.rfindex] !== null && bitrateTimer[remoteFeed.rfindex] !== null) {
