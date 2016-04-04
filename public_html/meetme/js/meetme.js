@@ -214,7 +214,8 @@ $(document).ready(function() {
 							$('#videolocal').append('<div class="videobox-novideo">'+labelNoWebcam+'</div>');
 						}
 						membercount++;
-						flashTitle(membercount);
+						// fixme anton - dont flash on localstream it will obstruct flashes on remotestream
+						//flashTitle(membercount);
 					},
 					ondataopen: function(data) {
 						Janus.log("The DataChannel is available!");
@@ -564,8 +565,10 @@ function newRemoteFeed(id, display) {
 				$('#remotevideo'+remoteFeed.rfindex).hide();
 				$('#videoremote'+remoteFeed.rfindex).append('<div class="videobox-novideo">'+labelNoRemoteVideo+'</div>');
 			}
-			membercount++;
+
 			appendNewChat(remoteFeed.rfdisplay + labelUserJoinChat, "NOTIFICATION");
+			
+			membercount++;
 			flashTitle(membercount);
 		},
 		oncleanup: function() {
@@ -583,8 +586,9 @@ function newRemoteFeed(id, display) {
 				setLargeVideo('videolocal');
 			}
 
-			membercount--;
 			appendNewChat(remoteFeed.rfdisplay + labelUserLeaveChat, "NOTIFICATION");
+			
+			membercount--;
 			flashTitle(membercount);
 		}
 	})
