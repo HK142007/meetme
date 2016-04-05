@@ -215,6 +215,7 @@ blink, .blink {
 	
 	#videoboxes {
 		width: 1280px;
+		height: 500px;
 	}
 
 	#videofocus {
@@ -254,6 +255,7 @@ blink, .blink {
 	
 	#videoboxes {
 		width: 1120px;
+		height: 500px;
 	}
 
 	#videofocus {
