@@ -215,23 +215,25 @@ blink, .blink {
 	
 	#videoboxes {
 		width: 1280px;
-		height: 500px;
+		height: 495px;
 	}
 
 	#videofocus {
 		width: 640px;
 	}
 	
+	#videofocus img, #videofocus video {
+		width: 640px;
+		height: 480px;
+	}
+	
 	#videolocal, div[id*='videoremote'] {
 		width: 160px;
 	}
-
-	#videolocal img, div[id*='videoremote'] img {
+	
+	#videolocal img, #videolocal video, div[id*='videoremote'] img, div[id*='videoremote'] video {
 		width: 160px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 160px;
+		height: 120px;
 	}
 }
 
@@ -255,23 +257,25 @@ blink, .blink {
 	
 	#videoboxes {
 		width: 1120px;
-		height: 500px;
+		height: 615px;
 	}
 
 	#videofocus {
 		width: 640px;
 	}
 	
+	#videofocus img, #videofocus video {
+		width: 640px;
+		height: 480px;
+	}
+	
 	#videolocal, div[id*='videoremote'] {
 		width: 160px;
 	}
-
-	#videolocal img, div[id*='videoremote'] img {
+	
+	#videolocal img, #videolocal video, div[id*='videoremote'] img, div[id*='videoremote'] video {
 		width: 160px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 160px;
+		height: 120px;
 	}
 }
 
@@ -295,22 +299,25 @@ blink, .blink {
 	
 	#videoboxes {
 		width: 960px;
+		height: 615px;
 	}
 
 	#videofocus {
 		width: 640px;
 	}
 	
+	#videofocus img, #videofocus video {
+		width: 640px;
+		height: 480px;
+	}
+	
 	#videolocal, div[id*='videoremote'] {
 		width: 160px;
 	}
-
-	#videolocal img, div[id*='videoremote'] img {
+	
+	#videolocal img, #videolocal video, div[id*='videoremote'] img, div[id*='videoremote'] video {
 		width: 160px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 160px;
+		height: 120px;
 	}
 }
 
@@ -334,22 +341,25 @@ blink, .blink {
 	
 	#videoboxes {
 		width: 640px;
+		height: 615px;
 	}
 
 	#videofocus {
 		width: 640px;
 	}
 	
+	#videofocus img, #videofocus video {
+		width: 640px;
+		height: 480px;
+	}
+	
 	#videolocal, div[id*='videoremote'] {
 		width: 160px;
 	}
-
-	#videolocal img, div[id*='videoremote'] img {
+	
+	#videolocal img, #videolocal video, div[id*='videoremote'] img, div[id*='videoremote'] video {
 		width: 160px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 160px;
+		height: 120px;
 	}
 }
 
@@ -360,35 +370,37 @@ blink, .blink {
 	}
 	
 	.chat-box {
-		width: 280px;
+		width: 240px;
 	}
 
 	#chatboxcontent {
-		height: 200px;
+		height: 240px;
 	}
 	
 	#meetmeheader {
-		width: 500px;
+		width: 520px;
 	}
 	
 	#videoboxes {
-		width: 500px;
+		width: 520px;
 	}
 
 	#videofocus {
-		width: 160px;
+		width: 520px;
+	}
+	
+	#videofocus img, #videofocus video {
+		width: 520px;
+		height: 390px;
 	}
 	
 	#videolocal, div[id*='videoremote'] {
-		width: 160px;
+		width: 130px;
 	}
-
-	#videolocal img, div[id*='videoremote'] img {
-		width: 160px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 160px;
+	
+	#videolocal img, #videolocal video, div[id*='videoremote'] img, div[id*='videoremote'] video {
+		width: 130px;
+		height: 97px;
 	}
 }
 
@@ -403,7 +415,7 @@ blink, .blink {
 	}
 
 	#chatboxcontent {
-		max-height: 280px
+		max-height: 240px
 	}
 	
 	#meetmeheader {
@@ -418,16 +430,18 @@ blink, .blink {
 		width: 390px;
 	}
 	
+	#videofocus img, #videofocus video {
+		width: 390px;
+		height: 292px;
+	}
+	
 	#videolocal, div[id*='videoremote'] {
 		width: 130px;
 	}
-
-	#videolocal img, div[id*='videoremote'] img {
+	
+	#videolocal img, #videolocal video, div[id*='videoremote'] img, div[id*='videoremote'] video {
 		width: 130px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 130px;
+		height: 97px;
 	}
 }
 
@@ -442,7 +456,7 @@ blink, .blink {
 	}
 
 	#chatboxcontent {
-		max-height: 280px
+		max-height: 240px
 	}
 	
 	#meetmeheader {
@@ -457,94 +471,18 @@ blink, .blink {
 		width: 320px;
 	}
 	
-	#videolocal, div[id*='videoremote'] {
-		width: 160px;
-	}
-
-	#videolocal img, div[id*='videoremote'] img {
-		width: 160px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 160px;
-	}
-}
-
-/* width 375px */
-@media screen and (max-width: 375px) {
-	.container {
-		width: auto;
-	}
-	
-	.chat-box {
-		width: 240px;
-	}
-
-	#chatboxcontent {
-		max-height: 280px
-	}
-	
-	#meetmeheader {
+	#videofocus img, #videofocus video {
 		width: 320px;
-	}
-	
-	#videoboxes {
-		width: 320px;
-	}
-
-	#videofocus {
-		width: 320px;
+		height: 240px;
 	}
 	
 	#videolocal, div[id*='videoremote'] {
 		width: 160px;
 	}
-
-	#videolocal img, div[id*='videoremote'] img {
-		width: 160px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 160px;
-	}
-}
-
-/* width 360px */
-@media screen and (max-width: 360px) {
-	.container {
-		width: auto;
-	}
 	
-	.chat-box {
-		width: 280px;
-	}
-
-	#chatboxcontent {
-		max-height: 400px
-	}
-	
-	#meetmeheader {
-		width: 320px;
-	}
-	
-	#videoboxes {
-		width: 320px;
-	}
-
-	#videofocus {
-		width: 320px;
-	}
-	
-	#videolocal, div[id*='videoremote'] {
+	#videolocal img, #videolocal video, div[id*='videoremote'] img, div[id*='videoremote'] video {
 		width: 160px;
-	}
-
-	#videolocal img, div[id*='videoremote'] img {
-		width: 160px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 160px;
+		height: 120px;
 	}
 }
 
@@ -560,7 +498,7 @@ blink, .blink {
 	}
 
 	#chatboxcontent {
-		max-height: 280px
+		max-height: 240px;
 	}
 	
 	#meetmeheader {
@@ -575,15 +513,17 @@ blink, .blink {
 		width: 260px;
 	}
 	
+	#videofocus img, #videofocus video {
+		width: 260px;
+		height: 195px;
+	}
+	
 	#videolocal, div[id*='videoremote'] {
 		width: 130px;
 	}
-
-	#videolocal img, div[id*='videoremote'] img {
+	
+	#videolocal img, #videolocal video, div[id*='videoremote'] img, div[id*='videoremote'] video {
 		width: 130px;
-	}
-
-	#videolocal video, div[id*='videoremote'] video {
-		width: 130px;
+		height: 97px;
 	}
 }
