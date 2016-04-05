@@ -12,5 +12,5 @@ var maxBitRate = 64000;
 var defaultResolution = "lowres";	// lowres, stdres, hires
 var debugLevel = "all"
 var audioCodec = "opus";
-var videoCodec = "vp9";
+var videoCodec = "vp8";
 var windowTitle = "meetme.id";
