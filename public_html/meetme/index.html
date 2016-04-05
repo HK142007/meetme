@@ -59,7 +59,7 @@
 	<div class="col-md-12 hide" id="joinroom">
 		<div class="row">
 			<div class="col-md-4"></div>
-			<div class="col-md-4 hide" id="joinroomnow">
+			<div class="col-md-4" id="joinroomnow">
 				<div class="panel-group">
 					<div class="panel-body">
 						<div class="row">
@@ -98,7 +98,7 @@
 			<div class="col-md-4"></div>
 		</div>
 	</div>
-	<div class="col-md-12" id="videos">
+	<div class="col-md-12 hide" id="videos">
 		<div class="row">
 			<div id="meetmeheader">
 				<!-- Join or create room -->
@@ -133,12 +133,11 @@
 	</div>
 </div>
 
-<div class="chat-box" id="chat-box">
+<div class="chat-box hide" id="chat-box">
     <input type="checkbox" id="checkboxChat" onchange="removeMessageAlert()" />
     <label data-expanded="Close Chatbox" id="label-chatbox" data-collapsed="Open Chatbox"><span id="statusDataChannel" style="float:right">Not Ready</span></label>
     <div class="chat-box-content">
-		<div id="chatboxcontent">
-		</div>
+		<div id="chatboxcontent"></div>
 		<!-- Your message -->
 		<input autocomplete="off" type="text" class="form-control" placeholder="Pesan anda" id="chatboxinput" onkeypress="return checkChatSend(this, event);"></input>
 	</div>
