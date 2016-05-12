@@ -4,7 +4,7 @@ WebRTC online meeting room. Powered by Janus WebRTC gateway.
 
 Item       | Data
 ---------- | ----------------------------------------
-Version    | 1
+Version    | 2
 Maintainer | [Anton Raharja](http://antonraharja.com)
 License    | [MIT License](LICENSE.md)
 
@@ -17,6 +17,7 @@ Changes up to today:
 - Add labels for easy translation
 - Add a large video box and small video boxes
 - Add a chat box for chatting between room members
+- Add side tab URL, the example is to show whiteboard
 - Early work on enhancing the user interface
 
 # Usage

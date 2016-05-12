@@ -14,3 +14,4 @@ var debugLevel = "all"
 var audioCodec = "opus";
 var videoCodec = "vp8";
 var windowTitle = "meetme.id";
+var sideTabURL = "https://meetme.id/wb/meetmeboard";

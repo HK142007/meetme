@@ -2,6 +2,11 @@ body {
 	background-color: #3B3C3D;
 }
 
+.nopadding {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
 video {
 	-moz-transform: scale(-1, 1);
 	-webkit-transform: scale(-1, 1);
@@ -61,9 +66,17 @@ video {
 	max-width: 1310px;
 }
 
-#videoboxes {
+#videoboxes1 {
 	position: relative;
-	overflow: auto;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0px !important;
+	max-width: 1310px;
+}
+
+#videoboxes2 {
+	position: relative;
+	overflow: hidden;
 	margin: 0 auto;
 	padding: 0px !important;
 	max-width: 1310px;
@@ -209,9 +222,14 @@ blink, .blink {
 		width: 1280px;
 	}
 	
-	#videoboxes {
+	#videoboxes1 {
 		width: 1280px;
-		height: 495px;
+		/* height: 495px; */
+	}
+
+	#videoboxes2 {
+		width: 1280px;
+		/* height: 240px; */
 	}
 
 	#videofocus {
@@ -251,9 +269,14 @@ blink, .blink {
 		width: 1120px;
 	}
 	
-	#videoboxes {
+	#videoboxes1 {
 		width: 1120px;
-		height: 615px;
+		/* height: 615px; */
+	}
+
+	#videoboxes2 {
+		width: 1120px;
+		/* height: 120px; */
 	}
 
 	#videofocus {
@@ -293,18 +316,23 @@ blink, .blink {
 		width: 960px;
 	}
 	
-	#videoboxes {
+	#videoboxes1 {
 		width: 960px;
-		height: 615px;
+		/* height: 615px; */
+	}
+
+	#videoboxes2 {
+		width: 960px;
+		/* height: 120px; */
 	}
 
 	#videofocus {
-		width: 640px;
+		width: 480px;
 	}
 	
 	#videofocus img, #videofocus video {
-		width: 640px;
-		height: 480px;
+		width: 480px;
+		height: 360px;
 	}
 	
 	#videolocal, div[id*='videoremote'] {
@@ -335,9 +363,14 @@ blink, .blink {
 		width: 640px;
 	}
 	
-	#videoboxes {
+	#videoboxes1 {
 		width: 640px;
-		height: 615px;
+		/* height: 615px; */
+	}
+
+	#videoboxes2 {
+		width: 640px;
+		/* height: 120px; */
 	}
 
 	#videofocus {
@@ -377,7 +410,11 @@ blink, .blink {
 		width: 520px;
 	}
 	
-	#videoboxes {
+	#videoboxes1 {
+		width: 520px;
+	}
+
+	#videoboxes2 {
 		width: 520px;
 	}
 
@@ -418,7 +455,11 @@ blink, .blink {
 		width: 390px;
 	}
 	
-	#videoboxes {
+	#videoboxes1 {
+		width: 390px;
+	}
+
+	#videoboxes2 {
 		width: 390px;
 	}
 
@@ -459,7 +500,11 @@ blink, .blink {
 		width: 320px;
 	}
 	
-	#videoboxes {
+	#videoboxes1 {
+		width: 320px;
+	}
+
+	#videoboxes2 {
 		width: 320px;
 	}
 
@@ -501,7 +546,11 @@ blink, .blink {
 		width: 260px;
 	}
 	
-	#videoboxes {
+	#videoboxes1 {
+		width: 260px;
+	}
+
+	#videoboxes2 {
 		width: 260px;
 	}
 
