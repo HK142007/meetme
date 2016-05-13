@@ -108,7 +108,7 @@ $(document).ready(function() {
 								Janus.warn("The room has been destroyed!");
 								bootbox.alert(error, function() {
 									membercount = 0;
-									//no window.location.reload();
+									window.location.reload();
 								});
 							} else if(event === "event") {
 								// Any new feed to attach to?
@@ -166,7 +166,7 @@ $(document).ready(function() {
 								} else if(msg["error"] !== undefined && msg["error"] !== null) {
 									bootbox.alert(msg["error"], function () {
 										membercount = 0;
-										//no window.location.reload();
+										window.location.reload();
 									});
 								}
 							}
@@ -230,7 +230,7 @@ $(document).ready(function() {
 						Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
 						// fixme anton - just reload the window
 						membercount = 0;
-						window.location.reload();
+						//no window.location.reload();
 						//membercount--;
 						//flashTitle(membercount);
 						//$('#videolocal').html('<div id="restartbox"><span class="label label-success" id="displayname" style="position: absolute; top: 7px; left: 7px;">'+myDisplayName+'</span><br /><button class="btn btn-info btn-xs" id="publish" style="position: absolute; top: 7px; right: 7px;">'+labelStartPublishing+'</button</div>');
