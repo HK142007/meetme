@@ -108,7 +108,7 @@ $(document).ready(function() {
 								Janus.warn("The room has been destroyed!");
 								bootbox.alert(error, function() {
 									membercount = 0;
-									window.location.reload();
+									//no window.location.reload();
 								});
 							} else if(event === "event") {
 								// Any new feed to attach to?
@@ -166,7 +166,7 @@ $(document).ready(function() {
 								} else if(msg["error"] !== undefined && msg["error"] !== null) {
 									bootbox.alert(msg["error"], function () {
 										membercount = 0;
-										window.location.reload();
+										//no window.location.reload();
 									});
 								}
 							}
