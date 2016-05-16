@@ -1,4 +1,11 @@
+html,
 body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
 	background-color: #3B3C3D;
 }
 
@@ -45,7 +52,7 @@ video {
 	margin-top: 15px;
 }
 
-#videofocus {
+#videofocus, #videoboxes-sidetab {
 	position: relative;
 	margin: 0px !important;
 	padding: 0px !important;
@@ -211,11 +218,11 @@ blink, .blink {
 	}
 	
 	.chat-box {
-		width: 350px;
+		width: 300px;
 	}
 
 	#chatboxcontent {
-		height: 500px;
+		height: 300px;
 	}
 
 	#meetmeheader {
@@ -232,8 +239,9 @@ blink, .blink {
 		/* height: 240px; */
 	}
 
-	#videofocus {
+	#videofocus, #videoboxes-sidetab {
 		width: 640px;
+		height: 480px;
 	}
 	
 	#videofocus img, #videofocus video {
@@ -258,11 +266,11 @@ blink, .blink {
 	}
 	
 	.chat-box {
-		width: 350px;
+		width: 300px;
 	}
 
 	#chatboxcontent {
-		height: 500px;
+		height: 300px;
 	}
 
 	#meetmeheader {
@@ -279,13 +287,14 @@ blink, .blink {
 		/* height: 120px; */
 	}
 
-	#videofocus {
-		width: 640px;
+	#videofocus, #videoboxes-sidetab {
+		width: 480px;
+		height: 360px;
 	}
 	
 	#videofocus img, #videofocus video {
-		width: 640px;
-		height: 480px;
+		width: 480px;
+		height: 360px;
 	}
 	
 	#videolocal, div[id*='videoremote'] {
@@ -305,11 +314,11 @@ blink, .blink {
 	}
 	
 	.chat-box {
-		width: 350px;
+		width: 300px;
 	}
 
 	#chatboxcontent {
-		height: 500px;
+		height: 300px;
 	}
 	
 	#meetmeheader {
@@ -326,8 +335,9 @@ blink, .blink {
 		/* height: 120px; */
 	}
 
-	#videofocus {
+	#videofocus, #videoboxes-sidetab {
 		width: 480px;
+		height: 360px;
 	}
 	
 	#videofocus img, #videofocus video {
@@ -352,11 +362,11 @@ blink, .blink {
 	}
 	
 	.chat-box {
-		width: 350px;
+		width: 300px;
 	}
 
 	#chatboxcontent {
-		height: 400px;
+		height: 300px;
 	}
 	
 	#meetmeheader {
@@ -373,8 +383,9 @@ blink, .blink {
 		/* height: 120px; */
 	}
 
-	#videofocus {
+	#videofocus, #videoboxes-sidetab {
 		width: 640px;
+		height: 480px;
 	}
 	
 	#videofocus img, #videofocus video {
@@ -418,8 +429,9 @@ blink, .blink {
 		width: 520px;
 	}
 
-	#videofocus {
+	#videofocus, #videoboxes-sidetab {
 		width: 520px;
+		height: 390px;
 	}
 	
 	#videofocus img, #videofocus video {
@@ -448,7 +460,7 @@ blink, .blink {
 	}
 
 	#chatboxcontent {
-		height: 240px
+		height: 240px;
 	}
 	
 	#meetmeheader {
@@ -463,8 +475,9 @@ blink, .blink {
 		width: 390px;
 	}
 
-	#videofocus {
+	#videofocus, #videoboxes-sidetab {
 		width: 390px;
+		height: 292px;
 	}
 	
 	#videofocus img, #videofocus video {
@@ -493,7 +506,7 @@ blink, .blink {
 	}
 
 	#chatboxcontent {
-		height: 240px
+		height: 240px;
 	}
 	
 	#meetmeheader {
@@ -508,8 +521,9 @@ blink, .blink {
 		width: 320px;
 	}
 
-	#videofocus {
+	#videofocus, #videoboxes-sidetab {
 		width: 320px;
+		height: 240px;
 	}
 	
 	#videofocus img, #videofocus video {
@@ -554,8 +568,9 @@ blink, .blink {
 		width: 260px;
 	}
 
-	#videofocus {
+	#videofocus, #videoboxes-sidetab {
 		width: 260px;
+		height: 195px;
 	}
 	
 	#videofocus img, #videofocus video {
