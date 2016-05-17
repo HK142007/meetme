@@ -199,8 +199,8 @@ $(document).ready(function() {
 							toggleMute();
 							// Add welcome notif
 							$('#roomdesc').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
-							// Add sidetabs
-							$('#videoboxes-sidetab').append('<iframe class="embed-responsive-item" src="'+sideTabURL+myRoomNumber+'"></iframe>');
+							// Add plugs
+							$('#meetmebox-plug').append('<iframe class="embed-responsive-item" src="'+plugURL+myRoomNumber+'"></iframe>');
 							// set publisher video as large video
 							setLargeVideo('videolocal');
 						}
