@@ -1,0 +1,6 @@
+#plug-whiteboard-tab, #plug-screenshare-tab {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0px !important;
+}

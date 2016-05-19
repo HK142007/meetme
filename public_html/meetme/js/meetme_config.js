@@ -1,7 +1,7 @@
 var server = "wss://meetme.id/gateway";
 var iceServers = [
 	{urls: "stun:stun.meetme.id:443"},
-	{urls: "turn:turn.meetme.id:443?transport=tcp", credential: "meetme", username: "meetme"}
+	{urls: "turn:turn.meetme.id:443?transport=tcp", credential: "public", username: "public"}
 ];
 var videoBoxWidth = 160;
 var videoBoxHeight = 120;

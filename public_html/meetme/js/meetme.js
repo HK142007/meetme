@@ -200,7 +200,7 @@ $(document).ready(function() {
 							// Add welcome notif
 							$('#roomdesc').removeClass().addClass('label label-default').html(labelRoomNumber+myRoomNumber);
 							// Add plugs
-							$('#meetmebox-plug').append('<iframe class="embed-responsive-item" src="'+plugURL+myRoomNumber+'"></iframe>');
+							$('#meetmebox-plug').append('<iframe class="embed-responsive-item" scrolling="no" src="plug.html?room='+myRoomNumber+'"></iframe>');
 							// set publisher video as large video
 							setLargeVideo('videolocal');
 						}

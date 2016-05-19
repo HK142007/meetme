@@ -62,6 +62,7 @@ video {
 
 #meetmebox-plug {
 	position: relative;
+	overflow: hidden;
 	margin: 0px !important;
 	padding: 0px !important;
 	max-width: 800px;
@@ -70,6 +71,7 @@ video {
 
 #videofocus {
 	position: relative;
+	overflow: hidden;
 	margin: 0px !important;
 	padding: 0px !important;
 	max-width: 640px;
@@ -78,6 +80,7 @@ video {
 
 #videolocal, div[id*='videoremote'] {
 	position: relative;
+	overflow: hidden;
 	margin: 0px !important;
 	padding: 0px !important;
 }
